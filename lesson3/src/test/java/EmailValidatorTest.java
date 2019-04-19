@@ -40,6 +40,6 @@ public class EmailValidatorTest
 
     boolean actual = validator.isValid("user!name@mail23.com");
 
-    Assert.assertTrue(actual);
+    Assert.assertFalse(actual);
   }
 }
