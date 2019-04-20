@@ -1,3 +1,8 @@
+package lesson3.src.main.java;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MsisdnValidator
 {
   /**
@@ -7,6 +12,8 @@ public class MsisdnValidator
    */
   public boolean validate(String msisdn)
   {
-    return true;
+    Pattern pattern = Pattern.compile("[+]380-[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}");
+    Matcher matcher = pattern.matcher(msisdn);
+    return matcher.matches();
   }
 }

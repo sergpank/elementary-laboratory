@@ -1,3 +1,6 @@
+package lesson3.src.test.java;
+
+import lesson3.src.main.java.TwoSum;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,7 +12,7 @@ public class TwoSumTest
     int[] expected = new int[]{0, 1};
 
     TwoSum twoSum = new TwoSum();
-    int[] actual = twoSum.calcIndexes(new int[]{2, 7, 11, 15}, 9);
+    int[] actual = twoSum.calcIndexes(new int[]{7, 2, 11, 15}, 9);
 
     Assert.assertEquals(expected.length, actual.length);
     Assert.assertEquals(expected[0], actual[0]);

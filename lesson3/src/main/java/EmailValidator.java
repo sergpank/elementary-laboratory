@@ -1,3 +1,8 @@
+package lesson3.src.main.java;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class EmailValidator
 {
   /**
@@ -9,6 +14,8 @@ public class EmailValidator
    */
   public boolean isValid(String email)
   {
-    return true;
+    Pattern pattern = Pattern.compile("[a-z[0-9][/./_/-]]+@[a-z[0-9][/./_/-]]+.[a-z]+");
+    Matcher matcher= pattern.matcher(email);
+    return matcher.matches();
   }
 }

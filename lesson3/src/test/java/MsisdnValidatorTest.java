@@ -1,3 +1,6 @@
+package lesson3.src.test.java;
+
+import lesson3.src.main.java.MsisdnValidator;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,3 +1,6 @@
+package lesson3.src.test.java;
+
+import lesson3.src.main.java.EmailValidator;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,7 +11,7 @@ public class EmailValidatorTest
   {
     EmailValidator validator = new EmailValidator();
 
-    boolean actual = validator.isValid("user@mail.com");
+    boolean actual = validator.isValid("username@mail.com");
 
     Assert.assertTrue(actual);
   }
