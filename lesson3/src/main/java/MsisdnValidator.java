@@ -1,4 +1,3 @@
-package lesson3.src.main.java;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

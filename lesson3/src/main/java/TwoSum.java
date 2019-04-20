@@ -1,4 +1,3 @@
-package lesson3.src.main.java;
 
 public class TwoSum
 {
