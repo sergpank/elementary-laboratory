@@ -5,7 +5,7 @@ public class EmailValidator
    * - username, companyname  -- могут содержать только символы латинского алфавита, ".", "_", "-" и цифры
    *  - domain -- может содержать только символы латинского алфавита
    * @param email электронный адрес для проверки
-   * @return true если email валиден, false в противном случае проверка
+   * @return true если email валиден, false в противном случае проверка давай работай
    */
   public boolean isValid(String email)
   {
