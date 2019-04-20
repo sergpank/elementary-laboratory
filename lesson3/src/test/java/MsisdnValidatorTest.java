@@ -38,4 +38,5 @@ public class MsisdnValidatorTest
 
     Assert.assertFalse(isValid);
   }
+
 }
