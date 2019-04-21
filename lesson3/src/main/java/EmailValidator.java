@@ -9,6 +9,7 @@ public class EmailValidator
    */
   public boolean isValid(String email)
   {
-    return true;
+    final String REGEX = "[._\\-0-9a-z]*@[._\\-0-9a-z]*.[a-z]*";
+    return email.matches(REGEX);
   }
 }

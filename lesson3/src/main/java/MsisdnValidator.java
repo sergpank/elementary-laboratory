@@ -7,6 +7,8 @@ public class MsisdnValidator
    */
   public boolean validate(String msisdn)
   {
-    return true;
+    final String REGEX = "^\\+380([0-9]{9})";
+    String number = msisdn.replaceAll("-", "");
+    return number.matches(REGEX);
   }
 }
