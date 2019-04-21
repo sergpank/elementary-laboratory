@@ -1,14 +1,43 @@
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
 public class EmailValidator
 {
-  /**
-   * Проверить что емейл соответствует формату username@companyname.domain
-   * - username, companyname  -- могут содержать только символы латинского алфавита, ".", "_", "-" и цифры
-   *  - domain -- может содержать только символы латинского алфавита
-   * @param email электронный адрес для проверки
-   * @return true если email валиден, false в противном случае
-   */
-  public boolean isValid(String email)
+  public static void main(String[] args)
   {
+    Scanner mail = new Scanner(System.in);
+    System.out.println("Введите Email адрес: ");
+    String email = mail.nextLine();
+    isValid(email);
+    if (isValid(email))
+    {
+      System.out.println("Email валиден");
+    }
+    else
+    {
+      System.out.println("Email не валиден");
+    }
+    System.out.println();
+  }
+
+  public static boolean isValid(String email)
+  {
+    for (int i = 0; i < email.length(); i++)
+    {
+      try
+      {
+        Pattern emailurl = Pattern.compile("^((\\w|[_-])+(\\.[\\w-]+)*@[\\w-]+((\\.[\\p{Alpha}]+)*(\\.\\p{Alpha}{2,})*)*)$");
+        Matcher m = emailurl.matcher(email);
+        return m.matches();
+      }
+      catch (PatternSyntaxException ex)
+      {
+        return false;
+      }
+    }
     return true;
   }
 }
