@@ -2,10 +2,32 @@ public class TwoSum
 {
   public static void main(String[] args)
   {
-  int i = 0;
+    TwoSum twoSum = new TwoSum();
+    int[] array = new int[20];
+    for(int i = 0; i < 20; i++)
+    {
+      array[i]= i;
+    }
+    for(int i = 0; i < 20; i++)
+    {
+      System.out.print(array[i]+" ");
+    }
+    twoSum.calcIndxes(array, 42);
+
   }
-  public int[] calcIndexes(int[] nums, int target)
+  public void calcIndxes(int[] array, int target)
   {
-    return new int[]{};
+    for(int i = 0; i < 20; i++)
+    {
+      for(int j = 0; j < 20; j++)
+      {
+        if((array[i]+array[j]==target))
+        {
+          System.out.println(i + " " + j);
+          return;
+        }
+      }
+    }
+    System.out.println("Не найдено соответствий");
   }
 }

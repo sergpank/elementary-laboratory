@@ -1,11 +1,18 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MsisdnValidator
 {
   public static void main(String[] args)
   {
-    System.out.println("pls");
+    MsisdnValidator msisdnValidator = new MsisdnValidator();
+    System.out.println(msisdnValidator.validate("введите номер телефона"));
   }
-  public boolean validate(String msisdn)
+  public boolean validate(String string)
   {
-    return true;
+    string = string.replaceAll("\\D","");
+    Pattern pattern = Pattern.compile("^((\\+?380)([0-9]{9}))$");
+    Matcher matcher = pattern.matcher(string);
+    return matcher.matches();
   }
 }
