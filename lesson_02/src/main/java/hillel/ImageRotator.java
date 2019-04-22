@@ -20,7 +20,8 @@ int size = img.length;
         turnedImg[size -1-j][i]= img[i][j];
       }
     }
-    return turnedImg;
+    img=turnedImg;
+    return img;
   }
 }
 
