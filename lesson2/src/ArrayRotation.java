@@ -2,7 +2,13 @@ public class ArrayRotation
 {
   public static void main(String[] argv)
   {
-    int m = 3;
+    imageRotator(4);
+  }
+
+  public static void imageRotator(int matrixSize)
+  {
+    int m = matrixSize;
+
     int[][] A = new int[m][m];
     for (int i = 0; i < m; i++)
     {
