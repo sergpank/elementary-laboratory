@@ -20,11 +20,11 @@ public class TwoSum
     {
       for (int k = 0; k < array.length; k++)
       {
-        if (j < k)
+        if (j <= k)
         {
           if (array[j] + array[k] == a)
           {
-            System.out.println(a + " = " + "intex: " + j + " and " + "intex: " + k);
+            System.out.println(a + " = " + "intex: " + j + "("+ array[j]+")"+ " and " + "intex: " + k + "("+ array[k]+")");
           }
         }
       }
