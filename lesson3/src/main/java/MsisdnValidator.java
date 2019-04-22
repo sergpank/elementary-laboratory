@@ -1,3 +1,6 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class MsisdnValidator
 {
   /**
@@ -7,6 +10,13 @@ public class MsisdnValidator
    */
   public boolean validate(String msisdn)
   {
-    return true;
+    Pattern p = Pattern.compile("^\\+380-\\d{2}-\\d{3}-\\d{2}-\\d{2}$");
+    Matcher m = p.matcher(msisdn);
+
+    while (m.find())
+    {
+      return true;
+    }
+    return false;
   }
 }
