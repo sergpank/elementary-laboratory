@@ -2,16 +2,25 @@ public class TwoSum
 {
   public int[] calcIndexes(int[] nums, int target)
   {
-    int i, j, sum;
-    for (i = 0; i < nums.length; i++)
+    int sum;
+
+    for (int index1 = 0; index1 < nums.length; index1++)
     {
-      sum = nums[i] + nums[i + 1];
-      if (sum == target)
+      for (int index2 = 1; index2 < nums.length - 1; index2++)
       {
-        i = nums[i];
-        j = nums[i + 1];
+        if (index1 == index2)
+        {
+          continue;
+        }
+
+        sum = nums[index1] + nums[index2];
+        if (sum == target)
+        {
+          System.out.println(index1 + " " + index2);
+          return new int[]{index1, index2};
+        }
       }
     }
-    return new int[]{i};
+    return new int[]{};
   }
 }
