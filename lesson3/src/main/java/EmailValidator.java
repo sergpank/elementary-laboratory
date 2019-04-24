@@ -14,18 +14,18 @@ public class EmailValidator
   {
 
 
-    boolean isEmailValid = Pattern.compile("^((\\w|[_-]|\\.)+@[a-zA-z]+\\.[a-zA-z]+)$").matcher(email).matches();
+    boolean isEmailValid = Pattern.compile("^((\\w|[_-]|\\.)+@[a-zA-z]+\\.[a-zA-Z]+)$").matcher(email).matches();
 
     return isEmailValid;
 
 
   }
 
-  public static void main(String[] args)
-  {
-    EmailValidator a = new EmailValidator();
-    System.out.println(a.isValid("..k.@mail.com"));
-  }
+//  public static void main(String[] args)
+//  {
+//    EmailValidator a = new EmailValidator();
+//    System.out.println(a.isValid("..k.@mail.com"));
+//  }
 }
 
 
