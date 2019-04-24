@@ -1,14 +1,17 @@
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class EmailValidator
 {
-  /**
-   * Проверить что емейл соответствует формату username@companyname.domain
-   * - username, companyname  -- могут содержать только символы латинского алфавита, ".", "_", "-" и цифры
-   *  - domain -- может содержать только символы латинского алфавита
-   * @param email электронный адрес для проверки
-   * @return true если email валиден, false в противном случае проверка давай работай
-   */
-  public boolean isValid(String email)
+  public static void main(String[] args)
   {
-    return true;
+    EmailValidator emailValidator = new EmailValidator();
+    System.out.println(emailValidator.validate("user@mail123.c"));
+  }
+  public boolean validate(String string)
+  {
+    Pattern pattern = Pattern.compile("^([a-z0-9_-]+\\.)*[a-z0-9_-]+@[a-z0-9_-]+(\\.[a-z0-9_-]+)*\\.[a-z]$");
+    Matcher matcher = pattern.matcher(string);
+    return matcher.matches();
   }
 }
