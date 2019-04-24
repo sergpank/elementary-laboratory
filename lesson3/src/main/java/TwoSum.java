@@ -3,13 +3,13 @@ public class TwoSum
 {
   public int[] calcIndexes(int[] nums, int target)
   {
-    if (nums.length<2){
-      return null;
-    }
       for (int i = 0; i < nums.length - 1; i++)
       {
         for (int j = i + 1; j < nums.length; j++)
         {
+          if (nums[i]==nums[j]){
+            continue;
+          }
           int sum = nums[i] + nums[j];
           if (sum == target)
           {
@@ -17,6 +17,6 @@ public class TwoSum
           }
         }
       }
-      return null;
+      return new int[]{};
     }
   }

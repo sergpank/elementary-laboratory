@@ -7,10 +7,10 @@ public class TwoSumTest
   @Test
   public void test()
   {
-    int[] expected = new int[]{0, 1};
+    int[] expected = new int[]{1, 4};
 
     TwoSum twoSum = new TwoSum();
-    int[] actual = twoSum.calcIndexes(new int[]{7, 2,11,15}, 9);
+    int[] actual = twoSum.calcIndexes(new int[]{7, 4,5,5,6,15}, 10);
 
     Assert.assertEquals(expected.length, actual.length);
     Assert.assertEquals(expected[0], actual[0]);
