@@ -14,7 +14,7 @@ public class EmailValidator
   {
 
 
-    boolean isEmailValid = Pattern.compile("^((\\w|[_-]|\\.)+@[a-zA-z]+\\.[a-zA-Z]+)$").matcher(email).matches();
+    boolean isEmailValid = Pattern.compile("^((\\w|[_-]|\\.)+@[\\w]+\\.[a-zA-Z]+)$").matcher(email).matches();
 
     return isEmailValid;
 
