@@ -1,4 +1,4 @@
-package main.java.hillel.geometricFigures;
+
 
 public class Main
 {

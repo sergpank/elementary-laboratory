@@ -1,4 +1,4 @@
-package main.java.hillel.geometricFigures;
+
 
 public class Cylinder extends Circle
 {
@@ -13,7 +13,7 @@ public class Cylinder extends Circle
   @Override
   public double square()
   {
-    double square = super.square() + (2 * super.getRadius() * Math.PI * this.height);
+    double square = 2*super.square() + (2 * super.getRadius() * Math.PI * this.height);
     return square;
   }
 
