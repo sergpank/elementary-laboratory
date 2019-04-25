@@ -1,0 +1,20 @@
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - 
+          resources:
+            requests:
+              cpu: "0.2"
+              memory: 1.5G
+            limits:
+              cpu: "1.0"
+              memory: 2G
+          env:
+          - name: ACTIVEMQ_SERVICE_NAME
+            value: activemq
+          - name: ACTIVEMQ_USERNAME
+            value: admin
+          - name: ACTIVEMQ_PASSWORD
+            value: admin
