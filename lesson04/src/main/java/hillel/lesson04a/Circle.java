@@ -9,6 +9,7 @@ public class Circle extends Dot
   public Circle(int x, int y, int radius)
   {
     super(x, y);
+
    this.radius=radius;
   }
 
@@ -22,9 +23,9 @@ public class Circle extends Dot
     return area;
   }
 
-  protected double calcAria(){
+  public double calcAria(){
 
-    double s = Math.PI* getRadius()*getRadius();
+    double s = Math.PI*radius*radius;
 
     return this.area=s;
 

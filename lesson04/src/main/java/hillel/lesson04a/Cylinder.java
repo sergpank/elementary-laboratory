@@ -2,28 +2,37 @@ package hillel.lesson04a;
 
 public class Cylinder extends Circle
 {
-  private int heiht;
+  private int height;
   private double vol;
   private double area;
+  //private Circle c;
 
-  public Cylinder(int x, int y, int radius, int heiht)
+
+  public Cylinder(int x, int y, int radius,  int height)
   {
-    super(x, y, radius);
-    this.heiht=heiht;
+    super(x, y,radius);
+    super.calcAria();
+    this.height=height;
+
   }
 
-  protected double calcCylVolume(){
-    double v = super.getArea()*heiht;
+  public double calcCylVolume(){
+    double v = super.getArea()*height;
     return this.vol=v;
   }
 
   @Override
-  protected double calcAria(){
+  public double calcAria(){
 
-    double s =2*super.getArea()+2*Math.PI*super.getRadius()*heiht;
+    double s =2*super.getArea()+2*Math.PI*super.getRadius()*height;
 
     return this.area=s;
 
+  }
+
+  public int getHeight()
+  {
+    return height;
   }
 
   public double getVol()
@@ -40,10 +49,10 @@ public class Cylinder extends Circle
   @Override
   public String toString()
   {
-
     return "Cylinder{" +
-        "heiht=" + heiht +
+        "heiht=" + height +
         ", vol=" + vol +
+        ", area=" + area +
         '}';
   }
 }
