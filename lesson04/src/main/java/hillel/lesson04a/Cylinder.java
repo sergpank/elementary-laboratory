@@ -4,6 +4,7 @@ public class Cylinder extends Circle
 {
   private int heiht;
   private double vol;
+  private double area;
 
   public Cylinder(int x, int y, int radius, int heiht)
   {
@@ -16,9 +17,24 @@ public class Cylinder extends Circle
     return this.vol=v;
   }
 
+  @Override
+  protected double calcAria(){
+
+    double s =2*super.getArea()+2*Math.PI*super.getRadius()*heiht;
+
+    return this.area=s;
+
+  }
+
   public double getVol()
   {
     return vol;
+  }
+
+
+  public double getArea()
+  {
+    return area;
   }
 
   @Override
