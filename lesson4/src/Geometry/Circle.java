@@ -1,3 +1,5 @@
+package Geometry;
+
 public class Circle extends Point
 {
   protected double r, s;
@@ -17,7 +19,7 @@ public class Circle extends Point
   @Override
   public String toString()
   {
-    return "Circle{" + "r=" + r + ", s=" + s + ", x=" + x + ", y=" + y + '}';
+    return "Geometry.Circle{" + "r=" + r + ", s=" + s + ", x=" + x + ", y=" + y + '}';
   }
 
   public double getR()

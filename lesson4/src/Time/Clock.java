@@ -1,3 +1,5 @@
+package Time;
+
 public class Clock
 {
   private int hour, minute, second;

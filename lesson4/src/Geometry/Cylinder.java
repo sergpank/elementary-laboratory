@@ -1,3 +1,5 @@
+package Geometry;
+
 public class Cylinder extends Circle
 {
   protected double h, s, v;
@@ -23,7 +25,7 @@ public class Cylinder extends Circle
   @Override
   public String toString()
   {
-    return "Cylinder{" + "h=" + h + ", s=" + s + ", v=" + v + ", r=" + r + ", s=" + s + ", x=" + x + ", y=" + y + '}';
+    return "Geometry.Cylinder{" + "h=" + h + ", s=" + s + ", v=" + v + ", r=" + r + ", s=" + s + ", x=" + x + ", y=" + y + '}';
   }
 
   public double getH()

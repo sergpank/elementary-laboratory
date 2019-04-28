@@ -1,3 +1,5 @@
+package Geometry;
+
 public class Point
 {
   protected int x, y;
@@ -11,7 +13,7 @@ public class Point
   @Override
   public String toString()
   {
-    return "Point{" + "x=" + x + ", y=" + y + '}';
+    return "Geometry.Point{" + "x=" + x + ", y=" + y + '}';
   }
 
   public int getX()
