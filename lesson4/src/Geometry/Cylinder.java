@@ -2,7 +2,7 @@ package Geometry;
 
 public class Cylinder extends Circle
 {
-  private double h; 
+  private double h;
 
   protected Cylinder(double x, double y, double r, double h)
   {
