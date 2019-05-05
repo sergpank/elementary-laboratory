@@ -2,7 +2,7 @@ package Geometry;
 
 public class Circle extends Point
 {
-  private double r;
+  private double r;   
 
   protected Circle(double x, double y, double r)
   {
