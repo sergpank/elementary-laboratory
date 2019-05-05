@@ -2,33 +2,30 @@ package Geometry;
 
 public class Circle extends Point
 {
-  protected double r, s;
+  private double r;
 
-  public Circle(int x, int y, double r)
+  protected Circle(double x, double y, double r)
   {
     super(x, y);
-    setR(r);
+    if (r > 0)
+    {
+      this.r = r;
+    }
   }
 
-  public double square()
+  protected double getSquare()
   {
-    s = Math.PI * (r * r);
-    return s;
+    return Math.PI * Math.pow(r, 2);
   }
 
   @Override
   public String toString()
   {
-    return "Geometry.Circle{" + "r=" + r + ", s=" + s + ", x=" + x + ", y=" + y + '}';
+    return super.toString() + " r=" + r + "; square=" + getSquare() + ";";
   }
 
-  public double getR()
+  protected double getR()
   {
     return r;
-  }
-
-  public void setR(double r)
-  {
-    this.r = r;
   }
 }

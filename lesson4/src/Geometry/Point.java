@@ -2,37 +2,28 @@ package Geometry;
 
 public class Point
 {
-  protected int x, y;
+  private double x;
+  private double y;
 
-  public Point(int x, int y)
+  protected Point(double x, double y)
   {
-    setX(x);
-    setY(y);
+    this.x = x;
+    this.y = y;
   }
 
   @Override
   public String toString()
   {
-    return "Geometry.Point{" + "x=" + x + ", y=" + y + '}';
+    return "x=" + x + "; y=" + y + ";";
   }
 
-  public int getX()
+  protected double getX()
   {
     return x;
   }
 
-  public int getY()
+  protected double getY()
   {
     return y;
-  }
-
-  public void setX(int x)
-  {
-    this.x = x;
-  }
-
-  public void setY(int y)
-  {
-    this.y = y;
   }
 }

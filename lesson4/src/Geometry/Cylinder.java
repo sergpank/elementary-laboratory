@@ -2,39 +2,30 @@ package Geometry;
 
 public class Cylinder extends Circle
 {
-  protected double h, s, v;
+  private double h;
 
-  public Cylinder(int x, int y, double r, double h)
+  protected Cylinder(double x, double y, double r, double h)
   {
     super(x, y, r);
-    setH(h);
+    if (h > 0)
+    {
+      this.h = h;
+    }
   }
 
-  public double square()
+  protected double getSquare()
   {
-    s = 2 * Math.PI * r * (r + h);
-    return s;
+    return (2 * super.getSquare()) + (2 * Math.PI * getR() * h);
   }
 
-  public double volume()
+  private double volume()
   {
-    v = Math.PI * (r * r) * h;
-    return v;
+    return Math.PI * Math.pow(getR(), 2) * h;
   }
 
   @Override
   public String toString()
   {
-    return "Geometry.Cylinder{" + "h=" + h + ", s=" + s + ", v=" + v + ", r=" + r + ", s=" + s + ", x=" + x + ", y=" + y + '}';
-  }
-
-  public double getH()
-  {
-    return h;
-  }
-
-  public void setH(double h)
-  {
-    this.h = h;
+    return super.toString() + " h=" + h + "; volume=" + volume() + ";";
   }
 }
