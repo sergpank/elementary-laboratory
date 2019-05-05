@@ -16,14 +16,4 @@ public class Point
   {
     return "x=" + x + "; y=" + y + ";";
   }
-
-  protected double getX()
-  {
-    return x;
-  }
-
-  protected double getY()
-  {
-    return y;
-  }
 }
