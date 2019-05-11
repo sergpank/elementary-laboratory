@@ -7,9 +7,12 @@ public class IpAddressValidator
 {
   public boolean isValid(String ip)
   {
-    Pattern p = Pattern.compile("[0-255]");
-    Matcher m = p.matcher(ip);
-
-    return true;
+    Pattern ipPattern = Pattern.compile(
+        "(([0-1]?[0-9]?[0-9])|(2[0-5][0-5]))." +
+            "(([0-1]?[0-9]?[0-9])|(2[0-5][0-5]))." +
+            "(([0-1]?[0-9]?[0-9])|(2[0-5][0-5]))." +
+            "(([0-1]?[0-9]?[0-9])|(2[0-5][0-5]))");
+    Matcher matcher = ipPattern.matcher(ip);
+    return matcher.matches();
   }
 }
