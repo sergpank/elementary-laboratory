@@ -19,10 +19,10 @@ public class MsisdnValidator
 
   }
 
-//  public static void main(String[] args)
-//  {
-//    MsisdnValidator test = new MsisdnValidator();
-//    System.out.println(test.validate("+380-12-325-67-89"));
-//  }
+  public static void main(String[] args)
+  {
+    MsisdnValidator test = new MsisdnValidator();
+    System.out.println(test.validate("+380-12-325-67-89"));
+  }
 
 }

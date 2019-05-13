@@ -6,6 +6,7 @@ public class Circle extends Dot
 {
  private int radius;
  private double area;
+
   public Circle(int x, int y, int radius)
   {
     super(x, y);

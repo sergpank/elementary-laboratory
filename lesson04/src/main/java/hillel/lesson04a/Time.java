@@ -3,13 +3,13 @@ package hillel.lesson04a;
 /*    printAmericanTime() - выводит в консоль время 12-часовом формате с приставкой АМ/РМ
     printStandardTime() - выводит время в 24-часовом формате
     tick() - увеличивает время на 1 секунду (если нужно увеличивает минуту и час) 10:59:59 -> tick() -> 11:00:00*/
-public class Times
+public class Time
 {
   private int hour;
   private int min;
   private int sec;
 
-  public Times(int hour, int min, int sec)
+  public Time(int hour, int min, int sec)
   {
     if (hour >= 0 && hour <= 24)
     {
@@ -108,7 +108,7 @@ public class Times
 
   public void printAmericanTime()
   {
-    if (hour >=0&& hour<=12){
+    if (hour >=0&& hour<12){
     System.out.printf("%02d:%02d:%02d%4s%n",hour,min,sec,"AM");}
     else{
       int h = (hour==24)?0:hour-12;
@@ -131,7 +131,7 @@ public class Times
 
   public static void main(String[] args)
   {
-    Times a = new Times(22, 59, 59);
+    Time a = new Time(22, 59, 59);
     a.tick();
     a.printStandardTime();
     a.printAmericanTime();

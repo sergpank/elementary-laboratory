@@ -21,11 +21,11 @@ public class EmailValidator
 
   }
 
-//  public static void main(String[] args)
-//  {
-//    EmailValidator a = new EmailValidator();
-//    System.out.println(a.isValid("..k.@mail.com"));
-//  }
+  public static void main(String[] args)
+  {
+    EmailValidator a = new EmailValidator();
+    System.out.println(a.isValid("..k.@mail.com"));
+  }
 }
 
 
