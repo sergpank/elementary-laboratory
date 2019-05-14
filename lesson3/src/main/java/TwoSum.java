@@ -1,6 +1,6 @@
 public class TwoSum
 {
-  public int[] calcIndexes(int[] nums, int target)
+  public int[] calcIndexes (int[] nums, int target)
   {
     int sum;
 
