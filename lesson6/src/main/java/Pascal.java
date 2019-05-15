@@ -7,7 +7,7 @@ public class Pascal
     {
       for (int col = 0; col <= row; col++)
       {
-        System.out.print(pascal.recursive(row, col) + " ");
+        System.out.printf("%4d ", pascal.recursive(row, col));
       }
       System.out.println();
     }
@@ -15,7 +15,7 @@ public class Pascal
 
   public long recursive(int row, int column)
   {
-    if ((row == 0) || (row == column))
+    if ((row == 0) || (column == 0) || (row == column))
     {
       return 1;
     }
