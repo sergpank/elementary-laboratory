@@ -8,6 +8,17 @@ public class StackOverflow
     func(1);
 
   }
+    /*
+      java 11.0.3 2019-04-16 LTS
+      Java(TM) SE Runtime Environment 18.9 (build 11.0.3+12-LTS)
+      Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.3+12-LTS, mixed mode)
+
+     */
+
+    /*
+        Intel Core 2 Duo CPU T6600 2.2GHz
+        2.9 GB RAM
+     */
 
     /*
         10608
