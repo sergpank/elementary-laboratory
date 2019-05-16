@@ -1,7 +1,6 @@
 package list;
 
 
-
 public class LinkedList
 {
   private int size;
@@ -13,11 +12,10 @@ public class LinkedList
 
     private Integer data;
 
-    public Element( Integer data)
+    public Element(Integer data)
     {
       this.data = data;
     }
-
 
 
     public Element getNext()
@@ -36,21 +34,22 @@ public class LinkedList
     }
 
 
-
   }
 
   public void add(Integer data)
   {
     Element newAdded = new Element(data);
 
-    if (isEmpty()){
-      head =newAdded;
+    if (isEmpty())
+    {
+      head = newAdded;
       size++;
       return;
     }
-    Element current= head;
+    Element current = head;
 
-    while(current.getNext()!=null){
+    while (current.getNext() != null)
+    {
 
       current = current.getNext();
 
@@ -58,75 +57,81 @@ public class LinkedList
     }
 
     current.setNext(newAdded);
-     size++;
+    size++;
 
   }
 
   public Integer get(int index)
   {
-    if(isEmpty()){
+    if (isEmpty())
+    {
       throw new NullPointerException();
     }
 
-    if(index<0||index>=size){throw new ArrayIndexOutOfBoundsException("Wrong Index");}
-
-    Element target =head;
-
-    for (int i = 0; i <index ; i++)
+    if (index < 0 || index >= size)
     {
-target=target.getNext();
+      throw new ArrayIndexOutOfBoundsException("Wrong Index");
+    }
+
+    Element target = head;
+
+    for (int i = 0; i < index; i++)
+    {
+      target = target.getNext();
 
     }
 
-return target.getData();
+    return target.getData();
   }
-
 
 
   /**
    * Удалить элемент из списка
+   *
    * @param index Индекс удаляемого элемента
    * @return значение элемента
    */
   public Integer remove(int index)
   {
 
-    if(isEmpty()){
+    if (isEmpty())
+    {
       throw new NullPointerException();
     }
 
-    if(index<0||index>=size){throw new ArrayIndexOutOfBoundsException("Wrong Index");}
+    if (index < 0 || index >= size)
+    {
+      throw new ArrayIndexOutOfBoundsException("Wrong Index");
+    }
 
 
     Element target = head;
-    Element prev=target;
+    Element prev = target;
 
     for (int i = 0; i < index; i++)
     {
       prev = target;
       target = target.getNext();
     }
-    if (target.getNext()!= null)
+    if (target.getNext() != null)
     {
-      prev.setNext(target.getNext()) ;
+      prev.setNext(target.getNext());
       size--;
     }
 
 
-
-return target.getData();
+    return target.getData();
   }
 
   public int size()
   {
-return size;
+    return size;
   }
 
-  public boolean isEmpty(){
-    return size ==0;
+  public boolean isEmpty()
+  {
+    return size == 0;
   }
-
-
 
 
 }
