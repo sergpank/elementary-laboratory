@@ -117,7 +117,8 @@ public class LinkedList
     {
       prev.setNext(target.getNext());
       size--;
-    }
+    }else {prev.setNext(null);
+    size--;}
 
 
     return target.getData();
@@ -133,5 +134,15 @@ public class LinkedList
     return size == 0;
   }
 
+  public static void main(String[] args)
+  {
+    LinkedList a = new LinkedList();
+    a.add(1);
+    a.add(2);
+    a.add(3);
 
+    a.remove(2);
+    System.out.println(a.get(0)+" ; "+ a.get(1));
+
+  }
 }
