@@ -9,7 +9,7 @@ public class LinkedListTest
   @Test
   public void test1()
   {
-    LinkedList list = new LinkedList();
+    LinkedList<Integer> list = new LinkedList<>();
 
     list.add(1);
     list.add(2);
