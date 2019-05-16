@@ -1,103 +1,107 @@
 package homework20;
 
+/*
+    Извиняюсь за немножко самодеятельности. Виноват.
+*/
+
 public class LinkedList<T>
 {
-    private int size;
-    private Element<T> first;
-    private Element<T> last;
+  private int size;
+  private Element<T> first;
+  private Element<T> last;
 
-    private static class Element<T>
+  private static class Element<T>
+  {
+    private Element<T> next;
+    private T data;
+
+    Element(T data)
     {
-        private Element<T> next;
-        private T data;
+      this.data = data;
+    }
+  }
 
-        Element(T data)
-        {
-            this.data=data;
-        }
+  public void add(T data)
+  {
+    @SuppressWarnings("unchecked")
+    Element<T> node = (Element<T>) new Element(data);
+
+    if (last == null)
+    {
+      first = node;
+      last = node;
+    }
+    else
+    {
+      last.next = node;
+      last = node;
+    }
+    size++;
+  }
+
+  public T get(int index)
+  {
+    Element<T> node = first;
+
+    for (int i = 1; i <= index && node != null; i++)
+    {
+      node = node.next;
     }
 
-    public void add(T data)
-    {
-        @SuppressWarnings("unchecked")
-        Element<T> node=(Element<T>) new Element(data);
+    return (node != null) ? node.data : null;
+  }
 
-        if(last==null)
-        {
-            first=node;
-            last=node;
-        }
-        else
-        {
-            last.next=node;
-            last=node;
-        }
-        size++;
+  public T getFirst()
+  {
+    Element<T> node = first;
+
+    return (node != null) ? node.data : null;
+  }
+
+  public T getLast()
+  {
+    Element<T> node = last;
+
+    return (node != null) ? node.data : null;
+  }
+
+  public T remove(int index)
+  {
+    Element<T> node = first;
+    Element<T> prevNode = null;
+    T removed = null;
+
+    for (int i = 1; i <= index && node != null; i++)
+    {
+      prevNode = node;
+      node = node.next;
     }
 
-    public T get(int index)
+    if (node != null)
     {
-        Element<T> node=first;
+      removed = node.data;
 
-        for(int i=1; i<=index && node!=null; i++)
-        {
-            node=node.next;
-        }
+      if (first == node)
+      {
+        first = node.next;
+      }
+      else
+      {
+        prevNode.next = node.next;
+      }
+      if (node == last)
+      {
+        last = prevNode;
+      }
 
-        return (node!=null)? node.data : null;
+      size--;
     }
 
-    public T getFirst()
-    {
-        Element<T> node=first;
+    return removed;
+  }
 
-        return (node!=null)? node.data : null;
-    }
-
-    public T getLast()
-    {
-        Element<T> node=last;
-
-        return (node!=null)? node.data : null;
-    }
-
-    public T remove(int index)
-    {
-        Element<T> node=first;
-        Element<T> prevNode=null;
-        T removed=null;
-
-        for(int i=1; i<=index && node!=null; i++)
-        {
-            prevNode=node;
-            node=node.next;
-        }
-
-        if(node!=null)
-        {
-            removed=node.data;
-            
-            if(first==node)
-            {
-                first=node.next;
-            }
-            else
-            {
-                prevNode.next=node.next;
-            }
-            if(node==last)
-            {
-                last=prevNode;
-            }
-
-            size--;
-        }
-
-        return removed;
-    }
-
-    public int size()
-    {
-        return size;
-    }
+  public int size()
+  {
+    return size;
+  }
 }
