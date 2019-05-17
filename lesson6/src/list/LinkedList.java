@@ -58,7 +58,6 @@ public class LinkedList
     if(index >= size)
     {
       System.out.println("Запрашиваемого элемента не существует");
-      System.exit(0);
       return 0;
     }
     else
