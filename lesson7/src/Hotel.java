@@ -1,8 +1,8 @@
+import com.sun.jdi.IntegerValue;
+
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.SQLOutput;
+import java.util.*;
 
 public class Hotel
 {
@@ -37,26 +37,46 @@ public class Hotel
 
   public void sortHotel()
   {
-    ArrayList<Integer> count = new ArrayList<>();
-    for(int i = 1; i <= hashMap.size(); i++)   // цикл пробегает по каждому отелю
+    Map<Integer, Integer> count = new HashMap<>();
+    for (int i = 1; i <= hashMap.size(); i++)   // цикл пробегает по каждому отелю
     {
-      count.add(0);                                          // создаем счетчик совпадений для каждого отеля
+      count.put(i, 0);                                          // создаем счетчик совпадений для каждого отеля
       String temp = new String(hashMap.get(i).toString());  // содержимое списка отзывов для каждого отеля кладем в строку
       temp = temp.toLowerCase();                            // для последующей обработки
-      for(int j = 0; j < keyWords.size(); j++)      // сравниваем строку с каждым ключевым словом
+      for (int j = 0; j < keyWords.size(); j++)      // сравниваем строку с каждым ключевым словом
       {
         int t = 0;
-        while(temp.indexOf(keyWords.get(j),t)>=0) // находим индекс слова и начинаем поиск с места на котором остановились
+        while (temp.indexOf(keyWords.get(j), t) >= 0) // находим индекс слова и начинаем поиск с места на котором остановились
         {
-          t = temp.indexOf(keyWords.get(j),t)+1;
-          count.set((i-1),(count.get(i-1)+1));
+          t = temp.indexOf(keyWords.get(j), t) + 1;
+          count.put(i, (count.get(i) + 1));
         }
       }
-      System.out.println("Количество совпадений ключевых слов для " + i + "го отеля равно " + count.get(i-1));
     }
-
-
-
+    System.out.println("Рейтинг отелей по релевантности:");
+    count.put(3, 14);                                  // эти два элемента добавил что-бы убедиться что сортировка работает
+    count.put(4, 10);                                 // бо сортировать 2 элемента тяжело
+    Map<Integer, Integer> countTemp = new HashMap<>();
+    for (int i = 1; i <= count.size(); i++)       // очень костыльная сортировка хешмапа через создание еще одной карты и
+    {
+      countTemp.put(i, count.get(i));
+    }                                         // удаления из неё "использованных" элементов
+    int temp = countTemp.size();
+    for(int i = 1; i <= temp; i++)
+    {
+      int currentMax = 1;
+      for(int j = 1; j <= temp; j++)
+      {
+        if(countTemp.get(j)!=null)
+        {
+          if (countTemp.get(j) > countTemp.get(currentMax))
+          {
+            currentMax = j;
+          }
+        }
+      }
+      System.out.println("Отель под номером " + currentMax + ", набравший " + countTemp.get(currentMax) + " совпадений по ключевым словам");
+      countTemp.remove(currentMax);
+    }
   }
-
 }
