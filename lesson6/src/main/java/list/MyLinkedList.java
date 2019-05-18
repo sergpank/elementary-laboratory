@@ -72,6 +72,6 @@ public class MyLinkedList
 
   public int size()
   {
-    return size;
+    return this.size;
   }
 }
