@@ -9,12 +9,6 @@ public class MyLinkedList
   {
     private Element next;
     private Integer data;
-    private int index;
-
-    {
-      this.index++;
-    }
-
 
     public Element getNext()
     {
@@ -36,15 +30,6 @@ public class MyLinkedList
       this.data = data;
     }
 
-    public int getIndex()
-    {
-      return index;
-    }
-
-    public void setIndex(int index)
-    {
-      this.index = index;
-    }
   }
 
 
