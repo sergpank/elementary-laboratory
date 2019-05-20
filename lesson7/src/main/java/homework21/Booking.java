@@ -80,7 +80,7 @@ public class Booking
   {
     Set<Map.Entry<Hotel, Integer>> entries = hotels.entrySet();
     LinkedList<Map.Entry<Hotel, Integer>> list = new LinkedList<>(entries);
-    Collections.sort(list,Comparator.comparing((a)->a.getValue(),(a,b)->a.compareTo(b)));
+    Collections.sort(list,Comparator.comparing((a)->a.getValue(),(a,b)->-a.compareTo(b)));
 
     return list;
   }
