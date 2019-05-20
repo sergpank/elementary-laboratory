@@ -79,41 +79,8 @@ public class Booking
   private LinkedList<Map.Entry<Hotel, Integer>> sortHotelsByRelevance()
   {
     Set<Map.Entry<Hotel, Integer>> entries = hotels.entrySet();
-    LinkedList<Map.Entry<Hotel, Integer>> list = new LinkedList<>();
-
-    for (Map.Entry<Hotel, Integer> entry : entries)
-    {
-      if (list.isEmpty())
-      {
-        list.add(entry);
-      }
-      else
-      {
-        ListIterator<Map.Entry<Hotel, Integer>> iter = list.listIterator();
-        boolean found = false;
-        Map.Entry<Hotel, Integer> current = null;
-
-        while (iter.hasNext() && !found)
-        {
-          current = iter.next();
-          if ((current.getValue().compareTo(entry.getValue()) < 0) ||
-              (current.getValue().compareTo(entry.getValue()) == 0 &&
-                  current.getKey().getId() > entry.getKey().getId()))
-          {
-            found = true;
-          }
-        }
-
-        if (found)
-        {
-          list.add(iter.previousIndex(), entry);
-        }
-        else
-        {
-          list.add(entry);
-        }
-      }
-    }
+    LinkedList<Map.Entry<Hotel, Integer>> list = new LinkedList<>(entries);
+    Collections.sort(list,Comparator.comparing((a)->a.getValue(),(a,b)->a.compareTo(b)));
 
     return list;
   }
