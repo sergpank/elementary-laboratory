@@ -24,4 +24,5 @@ public class Pascal
     long right = recursive(row - 1, column);
     return left + right;
   }
+
 }
