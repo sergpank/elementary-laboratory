@@ -76,10 +76,10 @@ public class Booking
     return hotels.keySet();
   }
 
-  private LinkedList<Map.Entry<Hotel, Integer>> sortHotelsByRelevance()
+  private ArrayList<Map.Entry<Hotel, Integer>> sortHotelsByRelevance()
   {
     Set<Map.Entry<Hotel, Integer>> entries = hotels.entrySet();
-    LinkedList<Map.Entry<Hotel, Integer>> list = new LinkedList<>(entries);
+    ArrayList<Map.Entry<Hotel, Integer>> list = new ArrayList<>(entries);
     Collections.sort(list,Comparator.comparing((a)->a.getValue(),(a,b)->-a.compareTo(b)));
 
     return list;
