@@ -80,7 +80,7 @@ public class Booking
   {
     Set<Map.Entry<Hotel, Integer>> entries = hotels.entrySet();
     ArrayList<Map.Entry<Hotel, Integer>> list = new ArrayList<>(entries);
-    Collections.sort(list,Comparator.comparing((a)->a.getValue(),(a,b)->-a.compareTo(b)));
+    Collections.sort(list,Comparator.comparing((a)->a.getValue(),(a,b)->b.compareTo(a)));
 
     return list;
   }
@@ -115,6 +115,7 @@ public class Booking
         for (String keyword : keywords)
         {
           String str = ".*\\b" + keyword + "\\b.*";
+
           Pattern ptn = Pattern.compile(str, Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE);
           Matcher matcher = ptn.matcher(review);
           while (matcher.find())
