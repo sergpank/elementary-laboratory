@@ -46,7 +46,7 @@ public class Fibonacci
     Fibonacci fibonacci = new Fibonacci();
     StopWatch sw = new StopWatch();
 
-    for (int i = 0; i <= 45; i++)
+    for (int i = 0; i <= 47; i++)
     {
       fibonacci.callCnt = 0;
 
