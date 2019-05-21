@@ -60,6 +60,6 @@ public class Hotel
   @Override
   public int hashCode()
   {
-    return (id + name).hashCode();
+    return Integer.valueOf(id).hashCode();
   }
 }

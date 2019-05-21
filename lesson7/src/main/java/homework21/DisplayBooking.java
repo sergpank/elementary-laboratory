@@ -42,17 +42,28 @@ public class DisplayBooking
     //     "it is quite fat from the citycenter. But price is cheap, so it is ok.");
     // booking.addReview(3,"Very friendly staff and "+
     //     "good cost-benefit ratio. Its location is a bit far from citycenter." );
+
     System.out.println("Не упорядоченный список отелей");
     for (Hotel item : booking.getHotels())
     {
       System.out.println(item + " relevance: " + booking.getRelevance(item));
     }
     System.out.println();
+
     System.out.println("Упорядоченный по релевантности список отелей");
     for (Hotel item : booking.getHotelsByRelevance())
     {
-      System.out.println(item);
+      System.out.println(item+ " relevance: " + booking.getRelevance(item));
     }
+
+//    booking.addKeyword("citycenter");
+//    System.out.println();
+//    System.out.println("Упорядоченный по релевантности список отелей");
+//    for (Hotel item : booking.getHotelsByRelevance())
+//    {
+//      System.out.println(item+ " relevance: " + booking.getRelevance(item));
+//    }
+
     System.out.println();
     booking.deleteHotel(1);
 
