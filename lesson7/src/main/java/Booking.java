@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Booking
+{
+  public static void main(String[] args)
+  {
+    Set<String> keys = new HashSet<>();
+    keys.add("breakfast");
+    keys.add("beach");
+    keys.add("citycenter");
+    keys.add("location");
+    keys.add("metro");
+    keys.add("view");
+    keys.add("staff");
+    keys.add("price");
+
+    Map<Integer, List<String>> reviewMap = createData();
+
+  }
+
+  private static Map<Integer, List<String>> createData()
+  {
+    Map<Integer, List<String>> reviewMap = new HashMap<>();
+
+    List<String> hotel1Reviews = new ArrayList<>();
+    hotel1Reviews.add("The breakfast is ok. Regarding location, it is quite fat from the citycenter. But price is cheap, so it is ok.");
+    hotel1Reviews.add("Very friendly staff and good cost-benefit ratio. Its location is a bit far from citycenter");
+
+    List<String> hotel2Reviews = new ArrayList<>();
+    hotel2Reviews.add("This hotel has a nice view of the citycenter. The location is perfect.");
+    hotel2Reviews.add("Location is excellent, 5 min from citycenter. There is also a metro station pretty close to the hotel.");
+    hotel2Reviews.add("They said I couldn't take my dog. But there were other guests with dogs! That is not fair.");
+
+    List<String> hotel3Reviews = new ArrayList<>();
+    hotel3Reviews.add("price price price price price price");
+
+    reviewMap.put(1, hotel1Reviews);
+    reviewMap.put(2, hotel2Reviews);
+    reviewMap.put(3, hotel3Reviews);
+    return reviewMap;
+  }
+}
