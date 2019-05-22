@@ -23,7 +23,6 @@ public class FileDataSort
       }
     }
     return columnCounter;
-
   }
   public void getPopularNames()
   {
@@ -80,7 +79,6 @@ public class FileDataSort
         }
         System.out.println();
       }
-
     }
     catch (FileNotFoundException e)
     {
@@ -90,7 +88,6 @@ public class FileDataSort
     {
       e.printStackTrace();
     }
-
   }
   public void getOlderAndYounger()
   {
@@ -145,10 +142,6 @@ public class FileDataSort
             System.out.println(temp);
           }
         }
-
-
-
-
       }
     }
 
