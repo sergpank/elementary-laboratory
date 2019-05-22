@@ -10,7 +10,7 @@ public class FileDataSort
     fileDataSort.getOlderAndYounger();
   }
   public int findColumn(String line, String columnName)  // метод считает номер нужного нам столбца в массиве
-  {                                                      // на требуемый столбец
+  {
     int temp = 0;
     int columnCounter = 1;
     while((line.indexOf(",",temp) + 1) != line.indexOf(columnName))
