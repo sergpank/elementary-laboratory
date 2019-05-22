@@ -144,42 +144,6 @@ public class FileDataSort
         }
       }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      /*
-      String line;
-      int columnCounter = -1;
-      line = bufferedReader.readLine(); // по первой строке смотрим где находится нужны столбец
-      columnCounter = this.findColumn(line, "Age in Yrs.");
-      if (columnCounter >= 0) // проверка на то что искомый столбец существует
-      {
-        ArrayList<Double> arrayList = new ArrayList<>();
-        while ((line = bufferedReader.readLine()) != null)
-        {
-          String[] arr = line.split(",");
-          arrayList.add(Double.parseDouble(arr[columnCounter]));
-        }
-        Collections.sort(arrayList);
-        Collections.reverse(arrayList);
-        System.out.println("Самому старому человеку из списка " + arrayList.get(0) + " лет. Его зовут ");
-      }
-      */
     catch (FileNotFoundException e)
     {
       e.printStackTrace();
