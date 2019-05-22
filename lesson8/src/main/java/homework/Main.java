@@ -1,9 +1,7 @@
 package homework;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Main
 {
@@ -15,7 +13,7 @@ public class Main
     File file = new File(path + name);
     BufferedReader reader = new BufferedReader(new FileReader(file));
     String str;
-    Map<Integer, HashMap<String, String>> mapPerson = new TreeMap<>();
+    Set<Person> mapPerson = new TreeSet<Person>(new ComparatorPerson());
     String[] keys = new String[]{"No working"};
     boolean title = false;
     while ((str = reader.readLine()) != null)
@@ -28,25 +26,26 @@ public class Main
       }
       else
       {
-        HashMap<String, String> mapString = new HashMap<>();
-        for (int i = 1; i < temp.length; i++)
-        {
-          int id = Integer.parseInt(temp[0]);
-          mapString.put(keys[i], temp[i]);
-          mapPerson.put(id, mapString);
-        }
+        int id = Integer.parseInt(temp[0]);
+        Person person = new Person(id,keys,temp);
+        mapPerson.add(person);
       }
     }
+    Iterator iterator = mapPerson.iterator();
+    System.out.println(mapPerson.size());
+      while (iterator.hasNext()){
+        Person person = (Person)iterator.next();
+        System.out.println(person.getDataByKey("Age in Yrs."));
+        System.out.println();
+      }
 
-    for (Map.Entry<Integer, HashMap<String, String>> pair : mapPerson.entrySet())
+    /*for (Map.Entry<Integer, Person> pair : mapPerson.entrySet())
     {
       System.out.print(pair.getKey() + ", ");
-      for (Map.Entry<String, String> pair2 : pair.getValue().entrySet())
-      {
-        System.out.print(pair2.getValue() + ", ");
-      }
+      Person person = pair.getValue();
+      person.showPair();
       System.out.println();
-    }
+    }*/
 
   }
 }
