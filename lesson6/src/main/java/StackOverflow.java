@@ -9,6 +9,7 @@ public class StackOverflow
     catch (Throwable t)
     {
       System.out.println("\n\n\n" + t.getClass().getName() + " : " + t.getMessage());
+      //t.printStackTrace();
     }
   }
 

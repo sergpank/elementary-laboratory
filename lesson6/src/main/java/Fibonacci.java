@@ -4,7 +4,7 @@ public class Fibonacci
 
   public long recursive(int f)
   {
-    callCnt++;
+    callCnt++;  //подсчет числа вызовов
     if (f == 0)
     {
       return 0;
@@ -46,7 +46,7 @@ public class Fibonacci
     Fibonacci fibonacci = new Fibonacci();
     StopWatch sw = new StopWatch();
 
-    for (int i = 0; i <= 45; i++)
+    for (int i = 5; i <= 47; i++)
     {
       fibonacci.callCnt = 0;
 
