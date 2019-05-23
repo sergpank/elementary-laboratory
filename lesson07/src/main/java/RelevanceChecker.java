@@ -1,78 +1,123 @@
-import java.util.TreeSet;
+import java.util.*;
 
 public class RelevanceChecker
 {
-  enum Keys
+  private Map<Integer, List<String>> ReviewsMap = addReviews();
+  private Set<String> keys = new HashSet<>();
+
   {
-    location, citycenter, beach, breakfast, metro, view, price, staff
+    keys.add("breakfast");
+    keys.add("beach");
+    keys.add("citycenter");
+    keys.add("location");
+    keys.add("metro");
+    keys.add("view");
+    keys.add("staff");
+    keys.add("price");
   }
 
 
+  private Map addReviews()
+  {
+    Map<Integer, List<String>> ReviewsMap = new HashMap<>();
 
-  private static String[] commentsDataBase(){
-    String[] comments = {"1 This hotel has a nice view of the citycenter. The location is perfect.",
-        "2 The breakfast is ok. Regarding location, it is quite far from the citycenter. But price is cheap, so it is ok.",
-        "1 Location is excellent, 5 min from citycenter. There is also a metro station pretty close to the hotel.",
-        "1 They said I couldn't take my dog. But there were other guests with dogs! That is not fair.",
-        "2 Very friendly staff and good cost-benefit ratio. Its location is a bit far from citycenter."};
+    List<String> hotel1Reviews = new ArrayList<>();
+    hotel1Reviews.add("This hotel has a nice view of the citycenter. The location is perfect.");
+    hotel1Reviews.add("Location is excellent, 5 min from citycenter. There is also a metro station pretty close to the hotel.");
+    hotel1Reviews.add("They said I couldn't take my dog. But there were other guests with dogs! That is not fair.");
 
-    return comments;
+    List<String> hotel2Reviews = new ArrayList<>();
+    hotel2Reviews.add("The breakfast is ok. Regarding location, it is quite fat from the citycenter. But price is cheap, so it is ok.");
+    hotel2Reviews.add("Very friendly staff and good cost-benefit ratio. Its location is a bit far from citycenter");
+
+
+    ReviewsMap.put(1, hotel1Reviews);
+    ReviewsMap.put(2, hotel2Reviews);
+    return ReviewsMap;
   }
 
 
   public static void main(String[] args)
   {
-    Hotel a = new Hotel(1);
-    Hotel b = new Hotel(2);
+    RelevanceChecker ch = new RelevanceChecker();
 
-
-    printMostRelevantID(a,b);
-
+    System.out.println(ch.calcMostRelevantID());
 
   }
 
-private static void printMostRelevantID(Hotel...e){
-  TreeSet <Hotel> t = new TreeSet<>();
-
-
-  for (Hotel hotel : e)
+  private Map calcMostRelevantID()
   {
-    valueSort(hotel, commentsDataBase());
-    t.add(hotel);
-  }
-  System.out.println(t);
-}
-  private static void valueSort(Hotel h, String[] comment)
-  {
+    Map<Integer, Integer> rankMap = new HashMap<>();
 
-    for (String str : comment)
+    for (Map.Entry<Integer, List<String>> entry : ReviewsMap.entrySet())
     {
+      Integer hotelID = entry.getKey();
 
-
-      String[] tmp = str.split("[\\s\\W]");
-
-      if (h.isMyID(tmp))
+      for (String review : entry.getValue())
       {
-        for (Keys k : Keys.values())
+        String[] splitReview = review.split("[\\s\\W]");
+        for (String words : splitReview)
         {
-          String a = ""+k;
-          for (String s : tmp)
-          {
-            if (a.equalsIgnoreCase(s))
+
+          if (keys.contains(words))
+          {   //применять contains вместо equals();
+
+            Integer rank = rankMap.get(hotelID);
+            if (rank == null)
             {
-
-              h.increaseRelevantValue();
-
+              rank = 0;
             }
+            rankMap.put(hotelID, rank + 1);
+
           }
 
         }
+
 
       }
 
     }
 
+    return sortByRank(rankMap);
+
   }
 
 
-}
+  private Map<Integer, Set<Integer>> sortByRank(Map<Integer, Integer> rankMap)
+  {
+    Map<Integer, Set<Integer>> sortedMap = new TreeMap<>(new Comparator<Integer>()
+    {
+      @Override
+      public int compare(Integer o1, Integer o2)
+      {
+        return o2-o1;
+      }
+    });
+
+    for (Integer id : rankMap.keySet())
+    {
+      Integer rank = rankMap.get(id);
+
+      //Set<Integer> ids = sortedMap.computeIfAbsent(rank, x -> new TreeSet<>());
+
+      Set<Integer> ids = sortedMap.get(rank);
+
+      if (ids == null)
+      {
+        ids = new TreeSet<>();
+
+      }
+
+      sortedMap.put(rank,ids);
+
+      ids.add(id);
+
+    }
+
+    return sortedMap;
+
+
+  }
+
+
+}//end

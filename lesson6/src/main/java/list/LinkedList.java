@@ -6,122 +6,100 @@ public class LinkedList
   private int size;
   private Element head;
 
+
   private class Element
   {
     private Element next;
-
     private Integer data;
 
     public Element(Integer data)
     {
       this.data = data;
     }
-
-
-    public Element getNext()
-    {
-      return next;
-    }
-
-    public void setNext(Element next)
-    {
-      this.next = next;
-    }
-
-    public Integer getData()
-    {
-      return data;
-    }
-
-
   }
+
+
 
   public void add(Integer data)
   {
     Element newAdded = new Element(data);
 
-    if (isEmpty())
+    if (size == 0)
     {
       head = newAdded;
       size++;
       return;
     }
+
+
     Element current = head;
 
-    while (current.getNext() != null)
+    while (current.next != null)
+
     {
-
-      current = current.getNext();
-
-
+      current = current.next;
     }
 
-    current.setNext(newAdded);
+    current.next = newAdded;
     size++;
-
   }
 
   public Integer get(int index)
   {
-    if (isEmpty())
+
+    if (size == 0)
     {
       throw new NullPointerException();
     }
-
     if (index < 0 || index >= size)
     {
-      throw new ArrayIndexOutOfBoundsException("Wrong Index");
+      throw new ArrayIndexOutOfBoundsException();
     }
 
-    Element target = head;
+    Element current = head;
 
-    for (int i = 0; i < index; i++)
+
+
+    for (int i = 0; i != index; i++)
     {
-      target = target.getNext();
-
+      current = current.next;
     }
-
-    return target.getData();
+    return current.data;
   }
-
 
   /**
    * Удалить элемент из списка
    *
    * @param index Индекс удаляемого элемента
    * @return значение элемента
+   *
    */
   public Integer remove(int index)
   {
-
-    if (isEmpty())
+    if (size == 0)
     {
       throw new NullPointerException();
     }
-
     if (index < 0 || index >= size)
     {
-      throw new ArrayIndexOutOfBoundsException("Wrong Index");
+      throw new ArrayIndexOutOfBoundsException();
     }
 
+    Element current = head;
+    Element prev = current;
 
-    Element target = head;
-    Element prev = target;
-
-    for (int i = 0; i < index; i++)
+    for (int i = 0; i != index; i++)
     {
-      prev = target;
-      target = target.getNext();
+      prev = current;
+      current = current.next;
     }
-    if (target.getNext() != null)
+    if (current.next != null)
     {
-      prev.setNext(target.getNext());
+      prev.next = current.next;
       size--;
-    }else {prev.setNext(null);
-    size--;}
+    }else {prev.next=null;}
 
-
-    return target.getData();
+    return current.data;
   }
 
   public int size()
@@ -129,20 +107,6 @@ public class LinkedList
     return size;
   }
 
-  public boolean isEmpty()
-  {
-    return size == 0;
-  }
 
-  public static void main(String[] args)
-  {
-    LinkedList a = new LinkedList();
-    a.add(1);
-    a.add(2);
-    a.add(3);
 
-    a.remove(2);
-    System.out.println(a.get(0)+" ; "+ a.get(1));
-
-  }
 }
