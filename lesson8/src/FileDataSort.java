@@ -9,21 +9,7 @@ public class FileDataSort
     fileDataSort.getPopularNames();
     fileDataSort.getOlderAndYounger();
   }
-  public int findColumn(String line, String columnName)  // метод считает номер нужного нам столбца в массиве
-  {
-    int temp = 0;
-    int columnCounter = 1;
-    while((line.indexOf(",",temp) + 1) != line.indexOf(columnName))
-    {
-      temp = line.indexOf(",", temp) + 1;
-      columnCounter++;
-      if(columnCounter >= line.length())
-      {
-        return -1;
-      }
-    }
-    return columnCounter;
-  }
+
   public void getPopularNames()
   {
     Map<String, Integer> nameRatingCount = new HashMap<>();
@@ -31,24 +17,19 @@ public class FileDataSort
         "\\lesson8\\data\\10000 Records.csv")))
     {
       String line;
-      int columnCounter = -1;
-      line = bufferedReader.readLine(); // по первой строке смотрим где находится нужны столбец
-      columnCounter = this.findColumn(line, "First Name");
-      if (columnCounter >= 0) // проверка на то что искомый столбец существует
-      {
+      line = bufferedReader.readLine();
         while ((line = bufferedReader.readLine()) != null)  // заполняем карту
         {
           String[] arr = line.split(",");
-          if (nameRatingCount.containsKey(arr[columnCounter]))
+          if (nameRatingCount.containsKey(arr[2]))
           {
-            nameRatingCount.put(arr[columnCounter], nameRatingCount.get(arr[columnCounter]) + 1);
+            nameRatingCount.put(arr[2], nameRatingCount.get(arr[2]) + 1);
           }
           else
           {
-            nameRatingCount.put(arr[columnCounter], 1);
+            nameRatingCount.put(arr[2], 1);
           }
         }
-      }
 
       ArrayList<Integer> arrayList = new ArrayList<>();
       for(Map.Entry<String, Integer> entry : nameRatingCount.entrySet())
@@ -96,25 +77,15 @@ public class FileDataSort
         "\\lesson8\\data\\10000 Records.csv")))
     {
       String line;
-      int NamePrefixColumnNumber = -1;
-      int FirstNameColumnNumber = -1;
-      int LastNameColumbNumber = -1;
-      int AgeColumnNumber = -1;
       line = bufferedReader.readLine();
-      NamePrefixColumnNumber = this.findColumn(line, "Name Prefix");
-      FirstNameColumnNumber = this.findColumn(line, "First Name");
-      LastNameColumbNumber = this.findColumn(line, "Last Name");
-      AgeColumnNumber = this.findColumn(line, "Age in Yrs.");
-      if (NamePrefixColumnNumber >= 0 && FirstNameColumnNumber >= 0 && LastNameColumbNumber >= 0 && AgeColumnNumber >= 0) // проверка на то что искомые столбцы существуют
-      {
-        while ((line = bufferedReader.readLine()) != null)  // заполгняем карту
+        while ((line = bufferedReader.readLine()) != null)  // заполняем карту
         {
           String[] arr = line.split(",");
           ArrayList<String> arrayList = new ArrayList<>();
-          arrayList.add(arr[NamePrefixColumnNumber]);
-          arrayList.add(arr[FirstNameColumnNumber]);
-          arrayList.add(arr[LastNameColumbNumber]);
-          ageCount.put(Double.parseDouble(arr[AgeColumnNumber]), arrayList);
+          arrayList.add(arr[1]);
+          arrayList.add(arr[2]);
+          arrayList.add(arr[4]);
+          ageCount.put(Double.parseDouble(arr[12]), arrayList);
         }
         ArrayList<Double> arrayListTemp = new ArrayList<>();
         for(Map.Entry<Double, ArrayList<String>> entry : ageCount.entrySet())
@@ -125,25 +96,18 @@ public class FileDataSort
         {
           if(entry.getKey()==arrayListTemp.get(0))
           {
-            StringBuilder sb = new StringBuilder("Самому младшему сотрулнику " + entry.getKey() +  " лет. Имя - ");
-            sb.append(entry.getValue().get(0) + " ");
-            sb.append(entry.getValue().get(1) + " ");
-            sb.append(entry.getValue().get(2) + " ");
-            String temp = sb.toString();
-            System.out.println(temp);
+            StringBuilder sb = new StringBuilder("Самому младшему сотруднику " + entry.getKey() +  " лет. Имя - ");
+            sb.append(entry.getValue().get(0) + " ").append(entry.getValue().get(1) + " ").append(entry.getValue().get(2) + " ");
+            System.out.println(sb.toString());
           }
           if(entry.getKey()==arrayListTemp.get(arrayListTemp.size()-1))
           {
-            StringBuilder sb = new StringBuilder("Самому старшему сотрулнику " + entry.getKey() +  " лет. Имя - ");
-            sb.append(entry.getValue().get(0) + " ");
-            sb.append(entry.getValue().get(1) + " ");
-            sb.append(entry.getValue().get(2) + " ");
-            String temp = sb.toString();
-            System.out.println(temp);
+            StringBuilder sb = new StringBuilder("Самому старшему сотруднику " + entry.getKey() +  " лет. Имя - ");
+            sb.append(entry.getValue().get(0) + " ").append(entry.getValue().get(1) + " ").append(entry.getValue().get(2) + " ");
+            System.out.println(sb.toString());
           }
         }
       }
-    }
     catch (FileNotFoundException e)
     {
       e.printStackTrace();
