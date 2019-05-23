@@ -30,8 +30,13 @@ public class Person
     }
     return newMap;
   }
-  public String getDataByKey(String key){
-    if (!dataMap.containsKey(key))return null;
+
+  public String getDataByKey(String key)
+  {
+    if (!dataMap.containsKey(key))
+    {
+      return null;
+    }
     return dataMap.get(key);
   }
 
@@ -40,13 +45,13 @@ public class Person
     return id;
   }
 
-  public void showPair()
+
+
+  @Override
+  public String toString()
   {
-    for (Map.Entry<String, String> pair : dataMap.entrySet())
-    {
-      if (pair.getKey().equals("Age in Company (Years)")){
-        System.out.println(pair.getValue() + ", ");
-      }
-    }
+    return "Person{Last name " + getDataByKey("Last Name")
+        + "; First name "+ getDataByKey("First Name") + "; "
+        + "Age " + getDataByKey("Age in Yrs.") + " }";
   }
 }
