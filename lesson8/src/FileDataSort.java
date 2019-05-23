@@ -94,9 +94,6 @@ public class FileDataSort
         }
       for(Map.Entry<Double, ArrayList<String>> entry : ageCount.entrySet()) // выводим самого старого и молодого по возрасту(ключу)
         {
-          /*В arrayListTemp лежит возраст каждого человека, список отсортирован. Пробегаем циклом по всем элементам карты
-          и сравниваем их ключ (возраст) с нулевым (самым молодым) и последним (самым старым) элементом arrayListTemp.
-          Потом по этому ключу подтягиваем имя, но что-то идет не так*/
           if(entry.getKey()==arrayListTemp.get(0))
           {
             StringBuilder sb = new StringBuilder("Самому младшему сотруднику " + entry.getKey() +  " лет. Имя - ");
