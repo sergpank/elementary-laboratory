@@ -6,7 +6,7 @@ public class FileDataSort
   public static void main(String[] args)
   {
     FileDataSort fileDataSort = new FileDataSort();
-    fileDataSort.getPopularNames();
+    //fileDataSort.getPopularNames();
     fileDataSort.getOlderAndYounger();
   }
 
@@ -72,7 +72,7 @@ public class FileDataSort
   }
   public void getOlderAndYounger()
   {
-    Map<Double, ArrayList<String>> ageCount = new TreeMap<>();
+    Map<Double, ArrayList<ArrayList<String>>> ageCount = new TreeMap<>();
     try(BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\Users\\Дмитрий\\IdeaProjects\\elementary-laboratory" +
         "\\lesson8\\data\\10000 Records.csv")))
     {
@@ -81,32 +81,48 @@ public class FileDataSort
         while ((line = bufferedReader.readLine()) != null)  // заполняем карту
         {
           String[] arr = line.split(",");
+          ArrayList<ArrayList<String>> mainArrayList = new ArrayList<>();
           ArrayList<String> arrayList = new ArrayList<>();
           arrayList.add(arr[1]);
           arrayList.add(arr[2]);
           arrayList.add(arr[4]);
-          ageCount.put(Double.parseDouble(arr[12]), arrayList);
+          if(ageCount.containsKey(Double.parseDouble(arr[12])))
+          {
+            ageCount.get(Double.parseDouble(arr[12])).add(arrayList);
+          }
+          else
+          {
+            mainArrayList.add(arrayList);
+            ageCount.put(Double.parseDouble(arr[12]), mainArrayList);
+          }
         }
         ArrayList<Double> arrayListTemp = new ArrayList<>();
-        for(Map.Entry<Double, ArrayList<String>> entry : ageCount.entrySet())
+        for(Map.Entry<Double, ArrayList<ArrayList<String>>> entry : ageCount.entrySet())
         {
           arrayListTemp.add(entry.getKey());  // помещаем в массив ключи (возраст)
         }
-      for(Map.Entry<Double, ArrayList<String>> entry : ageCount.entrySet()) // выводим самого старого и молодого по возрасту(ключу)
+      for(Map.Entry<Double, ArrayList<ArrayList<String>>> entry : ageCount.entrySet()) // выводим самого старого и молодого по возрасту(ключу)
         {
           if(entry.getKey()==arrayListTemp.get(0))
           {
-            StringBuilder sb = new StringBuilder("Самому младшему сотруднику " + entry.getKey() +  " лет. Имя - ");
-            sb.append(entry.getValue().get(0) + " ").append(entry.getValue().get(1) + " ").append(entry.getValue().get(2) + " ");
-            System.out.println(sb.toString());
+            for(int i = 0; i < entry.getValue().size(); i++)
+            {
+              StringBuilder sb = new StringBuilder("Самому младшему сотруднику " + entry.getKey() + " лет. Имя - ");
+              sb.append(entry.getValue().get(i).get(0) + " ").append(entry.getValue().get(i).get(1) + " ")
+                  .append(entry.getValue().get(i).get(2) + " ");
+              System.out.println(sb.toString());
+            }
           }
           if(entry.getKey()==arrayListTemp.get(arrayListTemp.size()-1))
           {
-            StringBuilder sb = new StringBuilder("Самому старшему сотруднику " + entry.getKey() +  " лет. Имя - ");
-            sb.append(entry.getValue().get(0) + " ").append(entry.getValue().get(1) + " ").append(entry.getValue().get(2) + " ");
-            System.out.println(sb.toString());
+            for(int i = 0; i < entry.getValue().size(); i++)
+            {
+              StringBuilder sb = new StringBuilder("Самому старшему сотруднику " + entry.getKey() + " лет. Имя - ");
+              sb.append(entry.getValue().get(i).get(0) + " ").append(entry.getValue().get(i).get(1) + " ")
+                  .append(entry.getValue().get(i).get(2) + " ");
+              System.out.println(sb.toString());
+            }
           }
-
         }
       }
     catch (FileNotFoundException e)
