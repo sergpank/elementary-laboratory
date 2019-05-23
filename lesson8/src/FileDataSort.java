@@ -6,7 +6,7 @@ public class FileDataSort
   public static void main(String[] args)
   {
     FileDataSort fileDataSort = new FileDataSort();
-    //fileDataSort.getPopularNames();
+    fileDataSort.getPopularNames();
     fileDataSort.getOlderAndYounger();
   }
 
