@@ -1,7 +1,3 @@
-import com.sun.jdi.IntegerValue;
-
-import java.lang.reflect.Array;
-import java.sql.SQLOutput;
 import java.util.*;
 
 public class Hotel
