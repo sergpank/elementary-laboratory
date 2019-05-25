@@ -1,5 +1,5 @@
 package homework;
 
-public class Employee
+public class Processing
 {
 }
