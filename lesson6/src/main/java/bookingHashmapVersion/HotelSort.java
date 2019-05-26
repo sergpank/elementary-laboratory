@@ -1,7 +1,6 @@
 package bookingHashmapVersion;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class HotelSort
 {
@@ -17,17 +16,18 @@ public class HotelSort
     ID2.add("Very friendly staff and good cost-benefit ratio. Its location is a bit far from citycenter.");
     reviews.put(1, ID1);
     reviews.put(2,ID2);
-    for(Integer i: sort(reviews,1,2))
+    for(Map.Entry<Integer,Integer> e : sort(reviews).entrySet())
     {
-      System.out.println(i + " ");
+      System.out.printf("Hotel %d has rank %d", e.getValue(),e.getKey());
+      System.out.println();
     }
 
   }
 
-  public static int findKeywords(HashMap <Integer, ArrayList <String>> reviews, Integer ID)
+  public static int findKeywords(HashMap <Integer, ArrayList <String>> reviews, int Id)
   {
     int count = 0;
-    for(String s: reviews.get(ID))
+    for(String s: reviews.get(Id))
     {
       for(String d: s.split("\\s|\\.|\\,"))
       {
@@ -46,18 +46,12 @@ public class HotelSort
     }
     return count;
   }
-  public static ArrayList<Integer> sort(HashMap <Integer, ArrayList <String>> reviews, Integer firstHotel, Integer secondHotel)
+  public static Map<Integer, Integer> sort(HashMap <Integer, ArrayList <String>> reviews)
   {
-    ArrayList <Integer> sorted = new ArrayList<>();
-    if((findKeywords(reviews, firstHotel)>findKeywords(reviews, secondHotel)))
+    Map<Integer, Integer> sorted = new TreeMap<>();
+    for(Map.Entry<Integer,ArrayList<String>> e : reviews.entrySet())
     {
-      sorted.add(firstHotel);
-      sorted.add(secondHotel);
-    }
-    else
-    {
-      sorted.add(secondHotel);
-      sorted.add(firstHotel);
+      sorted.put(findKeywords(reviews, e.getKey()), e.getKey());
     }
     return sorted;
   }

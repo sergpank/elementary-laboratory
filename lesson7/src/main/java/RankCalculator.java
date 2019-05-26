@@ -48,4 +48,5 @@ public class RankCalculator
 
     return rankToIdMap;
   }
+
 }
