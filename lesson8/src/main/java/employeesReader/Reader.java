@@ -48,7 +48,11 @@ public class Reader
         names.add(name);
 
       }
-      System.out.println(Collections.max(sortedByNameCount.entrySet(), Map.Entry.comparingByKey()).getValue());
+      Iterator<Map.Entry<Integer,Set<String>>> iterator = sortedByNameCount.entrySet().iterator();
+      while (iterator.hasNext())
+      {
+        System.out.println(iterator.next());
+      }
       return sortedByNameCount;
     }
     public ArrayList<Employee> readEmployees(File file)
@@ -101,8 +105,7 @@ public class Reader
       System.out.println(employees.get(0).getAge());
       System.out.println(employees.get(employees.size()-1).getAge());
     }
-  }
-  class Employee
+  }class Employee
   {
     public String getFirstName()
     {
