@@ -10,7 +10,7 @@ public class Solution
 {
   public static void main(String[] args)
   {
-    File file = new File("lesson8/csv/10000 Records.csv");
+    File file = new File("10000 Records.csv");
 
     System.out.println(file.getAbsolutePath());
 
