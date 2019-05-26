@@ -65,7 +65,8 @@ public class MyLinkedList
     }
 
     Integer temp = tempElement.getData ( );
-    tempElement = tempElement.next;
+    tempElement.next = tempElement.next.next;
+    size--;
     return temp;
 
   }
@@ -74,4 +75,27 @@ public class MyLinkedList
   {
     return this.size;
   }
+
+    public static void main(String[] args)
+    {
+        MyLinkedList list = new MyLinkedList();
+        list.addFirst(11);
+        list.addFirst(21);
+        list.addFirst(31);
+        list.addFirst(41);
+
+        for (int i = 0; i < list.size(); i ++)
+        {
+            System.out.println(list.getIndexData(i));
+        }
+
+        System.out.println();
+
+        list.remove(2);
+
+        for (int i = 0; i < list.size(); i ++)
+        {
+            System.out.println(list.getIndexData(i));
+        }
+    }
 }
