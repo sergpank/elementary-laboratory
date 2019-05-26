@@ -3,6 +3,7 @@ package list;
 public class MyLinkedList
 {
   private Element firstElement;
+  private Element lastElement;
   private int size;
 
   private class Element
@@ -10,42 +11,46 @@ public class MyLinkedList
     private Element next;
     private Integer data;
 
-    public Integer getData()
-    {
-      return data;
-    }
-
-    public void setData(Integer data)
+    public Element(Integer data)
     {
       this.data = data;
     }
-
   }
 
-
-  public void addFirst(Integer data)
+  public void add(Integer data)
   {
-    Element e = new Element ( );
-    e.next = firstElement;
-    e.setData ( data );
-    firstElement = e;
+    Element e = new Element(data);
+
+    if (firstElement == null)
+    {
+      firstElement = e;
+    }
+    else if (lastElement == null)
+    {
+      lastElement = e;
+      firstElement.next = lastElement;
+    }
+    else
+    {
+      lastElement.next = e;
+      lastElement = e;
+    }
     this.size++;
   }
 
-  public Integer getIndexData(int index)
+  public Integer get(int index)
   {
     Element current = firstElement;
-    Integer indexData = null;
-    for ( int i = 0 ; i <= index ; i++ )
+    for (int i = 0; i < index; i++)
     {
-      indexData = current.getData ( );
+      if (current.next == null)
+      {
+        throw new IndexOutOfBoundsException();
+      }
       current = current.next;
-
     }
-
-    return indexData;
+    return current.data;
   }
-
 
   /**
    * Удалить элемент из списка
@@ -55,20 +60,31 @@ public class MyLinkedList
    */
   public Integer remove(int index)
   {
-    Element current = firstElement;
-    Element tempElement = null;
-
-    for ( int i = 0 ; i <= index ; i++ )
+    Integer tmp;
+    if (index == 0)
     {
-      tempElement = current;
-      current = current.next;
+      tmp = firstElement.data;
+      firstElement = firstElement.next;
+      size--;
+      return tmp;
     }
 
-    Integer temp = tempElement.getData ( );
-    tempElement.next = tempElement.next.next;
-    size--;
-    return temp;
+    Element previous = firstElement;
+    Element removeMe = firstElement.next;
 
+    while (--index > 0)
+    {
+      previous = removeMe;
+      removeMe = removeMe.next;
+    }
+
+    Integer temp = removeMe.data;
+    previous.next = removeMe.next; // remove from list
+    size--;
+
+    removeMe = null; // remove from memory
+
+    return temp;
   }
 
   public int size()
@@ -76,26 +92,26 @@ public class MyLinkedList
     return this.size;
   }
 
-    public static void main(String[] args)
+  public static void main(String[] args)
+  {
+    MyLinkedList list = new MyLinkedList();
+    list.add(11);
+    list.add(21);
+    list.add(31);
+    list.add(41);
+
+    for (int i = 0; i < list.size(); i++)
     {
-        MyLinkedList list = new MyLinkedList();
-        list.addFirst(11);
-        list.addFirst(21);
-        list.addFirst(31);
-        list.addFirst(41);
-
-        for (int i = 0; i < list.size(); i ++)
-        {
-            System.out.println(list.getIndexData(i));
-        }
-
-        System.out.println();
-
-        list.remove(2);
-
-        for (int i = 0; i < list.size(); i ++)
-        {
-            System.out.println(list.getIndexData(i));
-        }
+      System.out.println(list.get(i));
     }
+
+    System.out.println();
+
+    list.remove(1);
+
+    for (int i = 0; i < list.size(); i++)
+    {
+      System.out.println(list.get(i));
+    }
+  }
 }
