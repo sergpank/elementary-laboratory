@@ -42,11 +42,13 @@ public class HotelSort
       {
         addHotelReviewRankMap(line);
       }
+      reader.close();
     }
     catch (java.io.IOException e)
     {
       e.printStackTrace();
     }
+
   }
 
   private void addHotelReviewRankMap(String review)
