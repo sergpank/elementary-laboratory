@@ -34,7 +34,7 @@ public class ColorSpectrumGenerator
         "        }\n" +
         "\n" +
         "        td {\n" +
-        "          height: 30px;\n" +
+        "          height: 1px;\n" +
         "          width: 100px;\n" +
         "        }\n" +
         "\n" +
