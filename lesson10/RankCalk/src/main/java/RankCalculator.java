@@ -16,6 +16,7 @@ public class RankCalculator
 
   private void addKeySet()
   {
+
     keySet.add("breakfast");
     keySet.add("beach");
     keySet.add("citycenter");
@@ -28,17 +29,29 @@ public class RankCalculator
 
   private void addHotelReviewsMap()
   {
-    List<String> hotel1Reviews = new ArrayList<>();
-    hotel1Reviews.add("1 The breakfast is ok. Regarding location, it is quite fat from the citycenter. But price is cheap, so it is ok.");
-    hotel1Reviews.add("1 Very friendly staff and good cost-benefit ratio. Its location is a bit far from citycenter");
+    List<String> hotel1Reviews = new ArrayList<>(
+        Arrays.asList(
+            "1 The breakfast is ok. Regarding location, it is quite fat from the citycenter. But price is cheap, so it is ok.",
+            "1 Very friendly staff and good cost-benefit ratio. Its location is a bit far from citycenter"
+        )
+    );
 
-    List<String> hotel2Reviews = new ArrayList<>();
-    hotel2Reviews.add("2 This hotel has a nice view of the citycenter. The location is perfect.");
-    hotel2Reviews.add("2 Location is excellent, 5 min from citycenter. There is also a metro station pretty close to the hotel.");
-    hotel2Reviews.add("2 They said I couldn't take my dog. But there were other guests with dogs! That is not fair.");
 
-    List<String> hotel3Reviews = new ArrayList<>();
-    hotel3Reviews.add("3 price price price price price price");
+    List<String> hotel2Reviews = new ArrayList<>(
+        Arrays.asList(
+            "2 This hotel has a nice view of the citycenter. The location is perfect.",
+            "2 Location is excellent, 5 min from citycenter. There is also a metro station pretty close to the hotel.",
+            "2 They said I couldn't take my dog. But there were other guests with dogs! That is not fair."
+        )
+    );
+
+
+    List<String> hotel3Reviews = new ArrayList<>(
+        Arrays.asList(
+            "3 price price price price price price"
+        )
+    );
+
 
     hotelReviewsMap.put(1, hotel1Reviews);
     hotelReviewsMap.put(2, hotel2Reviews);
