@@ -330,6 +330,17 @@ public class RomanConverterTest
 
     Assert.assertEquals(expected, actual);
   }
+  @Test
+  public void test33()
+  {
+    RomanConverter converter = new RomanConverter();
+
+    String actual = converter.toRoman(4000);
+    String expected = "";
+
+    Assert.assertEquals(expected, actual);
+  }
+
 
 
 
