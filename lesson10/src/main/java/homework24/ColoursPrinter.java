@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /*
 * Извиняйте за много букв - увлекся.
-*
+* html файлы шаблона и готового представления в папке html
 * */
 
 public class ColoursPrinter
