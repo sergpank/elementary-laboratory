@@ -6,7 +6,6 @@ import java.io.IOException;
 public class HtmlWriter
 {
   StringBuilder sb = new StringBuilder();
-  String htmlText =sb.toString();
 
   public void rgbColor()
   {
