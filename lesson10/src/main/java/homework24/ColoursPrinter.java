@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 /*
 * Извиняйте за много букв - увлекся.
 * html файлы шаблона и готового представления в папке html
+* до тестов руки не дошли
 * */
 
 public class ColoursPrinter
@@ -41,6 +42,11 @@ public class ColoursPrinter
   }
 
 
+  /**
+   * Метод читает шаблон html страницы из файла
+   * @param path путь к шаблону
+   * @return строка, содержащая шаблон
+   */
   public static String readTemplate(String path)
   {
     File file = new File(path);
@@ -66,6 +72,11 @@ public class ColoursPrinter
     return new String(sb);
   }
 
+  /**
+   * Метод записывает в файл готовую html страницу
+   * @param destinationPath путь к фалу
+   * @param view строка, содержащая готовую html страницу
+   */
   public static void writeView(String destinationPath, String view)
   {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(destinationPath)))
@@ -78,6 +89,12 @@ public class ColoursPrinter
     }
   }
 
+  /**
+   * Метод создаёт готовую html страницу из шаблона и фрагмента, содержащего таблицу цветовых оттенков
+   * @param template строка, содержащая шаблон
+   * @param html строка, содержащая сгенерированную разметку
+   * @return строка, содержащая готовую html страницу
+   */
   public static String prepareView(String template, String html)
   {
     Pattern ptn = Pattern.compile(BODY_MARKER);
@@ -85,6 +102,11 @@ public class ColoursPrinter
     return matcher.replaceFirst(html);
   }
 
+  /**
+   * Метод создаёт колонку оттенков одного из цветов
+   * @param color соответствующий объект перечисления Rgb
+   * @return объект класса, инкапсулирующий сответствующий html-элемент
+   */
   public static HtmlItem buildColumn(Rgb color)
   {
     HtmlItem column = new HtmlItem(HtmlTag.DIV);
@@ -118,6 +140,11 @@ public class ColoursPrinter
     return column;
   }
 
+  /**
+   * Метод создаёт элемент, содержащий определенный цвет
+   * @param value цвет элемента, инкапсулированный в классе Colour
+   * @return объект класса, инкапсулирующий сответствующий html-элемент
+   */
   public static HtmlItem buildColorfulItem(Colour value)
   {
     HtmlItem item = new HtmlItem(HtmlTag.DIV);
@@ -129,6 +156,10 @@ public class ColoursPrinter
     return item;
   }
 
+  /**
+   * Метод создаёт таблицу оттенков красного, зеленого и синего цветов
+   * @return объект класса, инкапсулирующий корневой html-элемент таблицы
+   */
   public static HtmlItem buildColorTable()
   {
     HtmlItem container = new HtmlItem(HtmlTag.DIV);
