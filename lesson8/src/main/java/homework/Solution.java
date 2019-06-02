@@ -20,14 +20,14 @@ public class Solution
 
     for (Employee e : employees)
     {
-      Integer cnt = nameMap.get(e.getFistName());
+      Integer cnt = nameMap.get(e.getFirstName());
 
       if (cnt == null)
       {
         cnt = 0;
       }
       cnt++;
-      nameMap.put(e.getFistName(), cnt);
+      nameMap.put(e.getLastName(), cnt);
     }
 
     Map<Integer, Set<String>> cntMap = new TreeMap<>(new Comparator<Integer>()
@@ -71,8 +71,8 @@ public class Solution
 
     employeesSet.addAll(employees);
 
-    System.out.println(employeesSet.first());
-    System.out.println(employeesSet.last());
+    System.out.println("\nYoungest : " + employeesSet.first());
+    System.out.println("Oldest   : " + employeesSet.last());
   }
 
   private static List<Employee> readEmployees(File file)
