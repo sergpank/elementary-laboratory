@@ -4,18 +4,31 @@ public class Group extends ValueObject
 
   public Group(String name, String description)
   {
-    this.id +=1;
     this.name = name;
     this.description = description;
+  }
+  public Group(String name)
+  {
+    this.name = name;
   }
 
   @Override
   public String toString()
   {
-    return "Group{" +
-        "description='" + description + '\'' +
-        ", id=" + id +
-        ", name='" + name + '\'' +
-        '}';
+    if(this.description == null)
+    {
+      return "Group{" +
+          "name='" + name + '\'' +
+          '}';
+    }
+    else
+    {
+      return "Group{" +
+          "description='" + description + '\'' +
+          ", id=" + id +
+          ", name='" + name + '\'' +
+          '}';
+    }
   }
+
 }

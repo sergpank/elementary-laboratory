@@ -4,7 +4,6 @@ public class Role extends ValueObject
 
   public Role(String name, String description)
   {
-    this.id +=1;
     this.name = name;
     this.description = description;
   }
