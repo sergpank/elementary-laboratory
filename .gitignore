@@ -2,4 +2,5 @@
 *.iml
 *.csv
 !RomanNumbers.csv
+lesson10/html/view.html
 **/target
