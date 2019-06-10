@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.util.ArrayList;
 
 public class main
 {
@@ -10,7 +9,8 @@ public class main
     GroupsDAO groupsDAO = new GroupsDAO();
     RolesDAO rolesDAO = new RolesDAO();
     Connection connection = getConnection();
-    
+
+
     try
     {
       Statement statement = connection.createStatement();
@@ -24,7 +24,7 @@ public class main
       //usersDAO.create(statement, new User("Kirill","kirilllok","qazwsxedc", new Group("programmers")));
       //usersDAO.create(statement, new User("Vasya","vaska","plre", new Group("others")));
       //usersDAO.create(statement, new User("Sveta","svetik","g123d", new Group("programmers")));
-      System.out.println(usersDAO.read(statement,25));
+      //System.out.println(usersDAO.read(statement,25));
       /*ArrayList<User> show = usersDAO.read(statement);
       for(User a : show)
       {

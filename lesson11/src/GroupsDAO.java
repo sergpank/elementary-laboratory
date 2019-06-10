@@ -2,7 +2,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 
 public class GroupsDAO implements DAO
 {
@@ -34,7 +33,6 @@ public class GroupsDAO implements DAO
     }
 
     return list;
-
   }
 
   public boolean update(Statement statement, Group group, long id) throws SQLException
