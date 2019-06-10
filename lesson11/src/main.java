@@ -4,12 +4,10 @@ public class main
 {
   public static void main(String[] args) throws SQLException
   {
-    loadDriver();
     UsersDAO usersDAO = new UsersDAO();
     GroupsDAO groupsDAO = new GroupsDAO();
     RolesDAO rolesDAO = new RolesDAO();
-    Connection connection = getConnection();
-
+    Connection connection = ConnectDB.getConnection();
 
     try
     {
@@ -61,31 +59,5 @@ public class main
       connection.close();
     }
 
-  }
-
-  private static void  loadDriver()
-  {
-    try
-    {
-      Class.forName("org.sqlite.JDBC");
-    }
-    catch (ClassNotFoundException e)
-    {
-      e.printStackTrace();
-    }
-  }
-
-  private static Connection getConnection()
-  {
-    Connection connection = null;
-    try
-    {
-      connection = DriverManager.getConnection("jdbc:sqlite:data/lesson11.sqlite3");
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    return connection;
   }
 }
