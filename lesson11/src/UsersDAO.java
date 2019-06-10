@@ -4,7 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersDAO
+public class UsersDAO implements DAO
 {
   public boolean create(Statement statement, User user) throws SQLException
   {
@@ -21,7 +21,6 @@ public class UsersDAO
     user.id = resultSet.getInt("id");
     return user;
   }
-
 
   public ArrayList<User> read(Statement statement) throws SQLException
   {

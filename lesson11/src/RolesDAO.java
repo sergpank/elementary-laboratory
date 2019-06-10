@@ -4,7 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RolesDAO
+public class RolesDAO implements DAO
 {
   public boolean create(Statement statement, Role role) throws SQLException
   {

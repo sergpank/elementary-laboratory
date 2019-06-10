@@ -4,7 +4,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupsDAO
+public class GroupsDAO implements DAO
 {
   public boolean create(Statement statement, Group group) throws SQLException
   {

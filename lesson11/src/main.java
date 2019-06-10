@@ -3,14 +3,15 @@ import java.util.ArrayList;
 
 public class main
 {
-  public static void main(String[] args)
+  public static void main(String[] args) throws SQLException
   {
     loadDriver();
     UsersDAO usersDAO = new UsersDAO();
     GroupsDAO groupsDAO = new GroupsDAO();
     RolesDAO rolesDAO = new RolesDAO();
-
-    try (Connection connection = getConnection())
+    Connection connection = getConnection();
+    
+    try
     {
       Statement statement = connection.createStatement();
 
@@ -23,7 +24,7 @@ public class main
       //usersDAO.create(statement, new User("Kirill","kirilllok","qazwsxedc", new Group("programmers")));
       //usersDAO.create(statement, new User("Vasya","vaska","plre", new Group("others")));
       //usersDAO.create(statement, new User("Sveta","svetik","g123d", new Group("programmers")));
-      //System.out.println(usersDAO.read(statement,25));
+      System.out.println(usersDAO.read(statement,25));
       /*ArrayList<User> show = usersDAO.read(statement);
       for(User a : show)
       {
@@ -54,6 +55,10 @@ public class main
     catch (SQLException e)
     {
       e.printStackTrace();
+    }
+    finally
+    {
+      connection.close();
     }
 
   }
