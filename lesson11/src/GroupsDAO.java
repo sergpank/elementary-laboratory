@@ -5,22 +5,25 @@ import java.util.ArrayList;
 
 public class GroupsDAO implements DAO
 {
-  public boolean create(Statement statement, Group group) throws SQLException
+  public boolean create(Group group) throws SQLException
   {
+    Statement statement = connection.createStatement();
     statement.executeUpdate("INSERT INTO Groups (name, description) VALUES('" + group.name + "','" +
         group.description + "')");
     return true;
   }
 
-  public Group read(Statement statement, long id) throws SQLException
+  public Group read(long id) throws SQLException
   {
+    Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Groups WHERE groupsid = '" + id + "'");
     Group group = new Group(resultSet.getInt("groupsid"), resultSet.getString("name"), resultSet.getString("description"));
     return group;
   }
 
-  public ArrayList<Group> read(Statement statement) throws SQLException
+  public ArrayList<Group> read() throws SQLException
   {
+    Statement statement = connection.createStatement();
     ArrayList<Group> list = new ArrayList<>();
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Groups");
 
@@ -33,14 +36,16 @@ public class GroupsDAO implements DAO
     return list;
   }
 
-  public boolean update(Statement statement, Group group, long id) throws SQLException
+  public boolean update(Group group, long id) throws SQLException
   {
+    Statement statement = connection.createStatement();
     statement.executeUpdate("UPDATE Groups SET name = '" + group.name + "', description = '" + group.description + "' WHERE groupsid = '" + id + "'");
     return true;
   }
 
-  public boolean delete(Statement statement, long id) throws SQLException
+  public boolean delete(long id) throws SQLException
   {
+    Statement statement = connection.createStatement();
     statement.executeUpdate("DELETE FROM Groups WHERE groupsid = '" + id + "'");
     return true;
   }
