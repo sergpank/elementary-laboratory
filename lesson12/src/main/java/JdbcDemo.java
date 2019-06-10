@@ -1,21 +1,25 @@
-import dao.UserDao;
-import entity.User;
+import dao.ClientDAO;
+import entity.Address;
+import entity.Client;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class JdbcDemo
 {
   public static void main(String[] args) throws SQLException
   {
-    final UserDao dao = new UserDao();
-    final User mendeleev = new User("Дмитрий Менделеев", "химик", "elementary_table");
+    Address address = new Address("Sadovaya", "14a", 55, 65000);
+    Client client = new Client("Sergey", "Panko", address, new Date(), "+380-1234-56-78");
 
-    System.out.println("Creating: " + mendeleev);
-    dao.create(mendeleev);
+    ClientDAO clientDAO = new ClientDAO();
 
-    final User read = dao.read(mendeleev.getId());
-    System.out.println("Read: " + read);
+    clientDAO.create(client);
+    System.out.println(client);
 
-    System.out.println(read.equals(mendeleev));
+    Client dbClient = clientDAO.read(client.getId());
+    System.out.println(client);
+
+    System.out.println(client.equals(dbClient));
   }
 }

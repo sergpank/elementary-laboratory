@@ -1,40 +1,28 @@
-create table users
+CREATE TABLE client
 (
-  id integer primary key,
+  id integer primary key not null,
   name text,
-  login text,
-  password text
+  surname text,
+  address_id integer,
+  date_of_birth integer,
+  phone_nr text,
+
+  FOREIGN KEY(address_id) REFERENCES address(id)
 );
 
-select * from users;
-
-
-insert into users (name, login, password) values
-  ('Alexandr Alexandrov', 'alex', 'asd123'),
-  ('Ivan Ivanov', 'vanya', '123456'),
-  ('Pavel Pavlov', 'pasha', '1q2w3e'),
-  ('Vladimir Vladimirov', 'vova', 'qwe123');
-
-create table groups
+CREATE TABLE address
 (
-  id integer primary key,
-  name text,
-  description text
+    id integer primary key not null,
+    street text,
+    house text,
+    apartmentNr integer,
+    zip integer
 );
 
-insert into groups (name, description) values
-  ('admin', 'super user'),
-  ('user', 'regular user'),
-  ('guest', 'limited acces user');
-
-create table roles
+CREATE TABLE pet
 (
-  id integer primary key,
-  name text,
-  description text
+    id integer primary key not null,
+    name text,
+    birthDate integer,
+    type text
 );
-
-insert into roles (name, description) values
-  ('rwx','full access'),
-  ('rw', 'read and write file, no execution premitted'),
-  ('r', 'read-only access');
