@@ -1,12 +1,12 @@
 package entity;
 
-import service.GroupService;
+import DAO.GroupDAO;
 
 import java.sql.SQLException;
 
 public class UserVO extends ValueObject
 {
-  GroupService groupService = new GroupService();
+  GroupDAO groupDAO = new GroupDAO();
   private String login;
   private String password;
   GroupVO group;
@@ -48,7 +48,7 @@ public class UserVO extends ValueObject
 
   public void setGroup(long group_id) throws SQLException
   {
-    this.group = groupService.read(group_id);
+    this.group = groupDAO.read(group_id);
   }
 
 
