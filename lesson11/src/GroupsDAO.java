@@ -15,8 +15,7 @@ public class GroupsDAO implements DAO
   public Group read(Statement statement, long id) throws SQLException
   {
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Groups WHERE groupsid = '" + id + "'");
-    Group group = new Group(resultSet.getString("name"), resultSet.getString("description"));
-    group.id = resultSet.getInt("groupsid");
+    Group group = new Group(resultSet.getInt("groupsid"), resultSet.getString("name"), resultSet.getString("description"));
     return group;
   }
 
@@ -27,8 +26,7 @@ public class GroupsDAO implements DAO
 
     while(resultSet.next())
     {
-      Group group = new Group(resultSet.getString("name"), resultSet.getString("description"));
-      group.id = resultSet.getInt("groupsid");
+      Group group = new Group(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getString("description"));
       list.add(group);
     }
 

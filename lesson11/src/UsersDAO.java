@@ -16,8 +16,7 @@ public class UsersDAO implements DAO
   public User read(Statement statement, long id) throws SQLException
   {
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Users INNER JOIN Groups ON Users.groupID = Groups.groupsid  WHERE Users.id = '" + id + "'");
-    User user = new User(resultSet.getString("name"),resultSet.getString("login"),resultSet.getString("password"),new Group(resultSet.getString("name")));
-    user.id = resultSet.getInt("id");
+    User user = new User(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getString("login"),resultSet.getString("password"),new Group(resultSet.getString("name")));
     return user;
   }
 
@@ -28,8 +27,7 @@ public class UsersDAO implements DAO
 
     while(resultSet.next())
     {
-      User user = new User(resultSet.getString("name"),resultSet.getString("login"),resultSet.getString("password"),new Group(resultSet.getString("name")));
-      user.id = resultSet.getInt("id");
+      User user = new User(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getString("login"),resultSet.getString("password"),new Group(resultSet.getString("name")));
       list.add(user);
     }
     return list;

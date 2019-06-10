@@ -7,6 +7,13 @@ public class Group extends ValueObject
     this.name = name;
     this.description = description;
   }
+
+  public Group(long id,String name, String description)
+  {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+  }
   public Group(String name)
   {
     this.name = name;

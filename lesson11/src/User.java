@@ -12,6 +12,15 @@ public class User extends ValueObject
       this.group = group;
   }
 
+  public User(long id, String name, String login, String password, Group group)
+  {
+      this.id = id;
+      this.name = name;
+      this.login = login;
+      this.password = password;
+      this.group = group;
+  }
+
   @Override
   public String toString()
   {

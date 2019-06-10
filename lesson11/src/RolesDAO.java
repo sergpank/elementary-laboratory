@@ -15,8 +15,7 @@ public class RolesDAO implements DAO
   public Role read(Statement statement, long id) throws SQLException
   {
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Roles WHERE rolesid = '" + id + "'");
-    Role role = new Role(resultSet.getString("name"), resultSet.getString("description"));
-    role.id = resultSet.getInt("rolesid");
+    Role role = new Role(resultSet.getInt("rolesid"), resultSet.getString("name"), resultSet.getString("description"));
     return role;
   }
 
@@ -27,8 +26,7 @@ public class RolesDAO implements DAO
 
     while(resultSet.next())
     {
-      Role role = new Role(resultSet.getString("name"), resultSet.getString("description"));
-      role.id = resultSet.getInt("rolesid");
+      Role role = new Role(resultSet.getInt("rolesid"), resultSet.getString("name"), resultSet.getString("description"));
       list.add(role);
     }
 

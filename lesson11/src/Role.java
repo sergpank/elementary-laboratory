@@ -8,6 +8,13 @@ public class Role extends ValueObject
     this.description = description;
   }
 
+  public Role(long id, String name, String description)
+  {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+  }
+
   @Override
   public String toString()
   {
