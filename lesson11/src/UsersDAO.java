@@ -11,6 +11,7 @@ public class UsersDAO implements DAO
     ResultSet resultSet = statement.executeQuery("SELECT * From Groups WHERE name = '" + user.group.name  + "'");
     statement.executeUpdate("INSERT INTO Users (name, login, password, GroupID) VALUES ('" + user.name + "','" +
         user.login + "','" + user.password + "','" + resultSet.getInt("groupsid") + "')");
+    statement.close();
     return true;
   }
 
@@ -19,6 +20,7 @@ public class UsersDAO implements DAO
     Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Users INNER JOIN Groups ON Users.groupID = Groups.groupsid  WHERE Users.id = '" + id + "'");
     User user = new User(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getString("login"),resultSet.getString("password"),new Group(resultSet.getString("name")));
+    statement.close();
     return user;
   }
 
@@ -33,6 +35,7 @@ public class UsersDAO implements DAO
       User user = new User(resultSet.getInt("id"), resultSet.getString("name"),resultSet.getString("login"),resultSet.getString("password"),new Group(resultSet.getString("name")));
       list.add(user);
     }
+    statement.close();
     return list;
   }
 
@@ -42,6 +45,7 @@ public class UsersDAO implements DAO
     ResultSet resultSet = statement.executeQuery("SELECT * From Groups WHERE name = '" + user.group.name  + "'");
     statement.executeUpdate("UPDATE Users SET name = '" + user.name + "', login = '" + user.login + "', password = '" + user.password + "'," +
         "groupID = '" + resultSet.getInt("groupsid") + "' WHERE id = '" + id + "'");
+    statement.close();
     return true;
   }
 
@@ -49,6 +53,7 @@ public class UsersDAO implements DAO
   {
     Statement statement = connection.createStatement();
     statement.executeUpdate("DELETE FROM Users WHERE id = '" + id + "'");
+    statement.close();
     return true;
   }
 }

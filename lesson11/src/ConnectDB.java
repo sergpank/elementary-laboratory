@@ -4,6 +4,8 @@ import java.sql.SQLException;
 
 public class ConnectDB
 {
+  private static Connection connection;
+
   public static void main(String[] args)
   {
   loadDriver();
@@ -21,7 +23,7 @@ public class ConnectDB
   }
   public static Connection getConnection()
   {
-    Connection connection = null;
+    connection = null;
     try
     {
       connection = DriverManager.getConnection("jdbc:sqlite:data/lesson11.sqlite3");
@@ -32,4 +34,19 @@ public class ConnectDB
     }
     return connection;
   }
+
+    public static void close()
+    {
+      if (connection != null)
+      {
+        try
+        {
+          connection.close();
+        }
+        catch (SQLException e)
+        {
+          e.printStackTrace();
+        }
+      }
+    }
 }

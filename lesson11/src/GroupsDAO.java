@@ -10,6 +10,7 @@ public class GroupsDAO implements DAO
     Statement statement = connection.createStatement();
     statement.executeUpdate("INSERT INTO Groups (name, description) VALUES('" + group.name + "','" +
         group.description + "')");
+    statement.close();
     return true;
   }
 
@@ -18,6 +19,7 @@ public class GroupsDAO implements DAO
     Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Groups WHERE groupsid = '" + id + "'");
     Group group = new Group(resultSet.getInt("groupsid"), resultSet.getString("name"), resultSet.getString("description"));
+    statement.close();
     return group;
   }
 
@@ -33,6 +35,7 @@ public class GroupsDAO implements DAO
       list.add(group);
     }
 
+    statement.close();
     return list;
   }
 
@@ -40,6 +43,7 @@ public class GroupsDAO implements DAO
   {
     Statement statement = connection.createStatement();
     statement.executeUpdate("UPDATE Groups SET name = '" + group.name + "', description = '" + group.description + "' WHERE groupsid = '" + id + "'");
+    statement.close();
     return true;
   }
 
@@ -47,6 +51,7 @@ public class GroupsDAO implements DAO
   {
     Statement statement = connection.createStatement();
     statement.executeUpdate("DELETE FROM Groups WHERE groupsid = '" + id + "'");
+    statement.close();
     return true;
   }
 }

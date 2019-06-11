@@ -10,6 +10,7 @@ public class RolesDAO implements DAO
     Statement statement = connection.createStatement();
     statement.executeUpdate("INSERT INTO Roles (name, description) VALUES('" + role.name + "','" +
         role.description + "')");
+    statement.close();
     return true;
   }
 
@@ -18,6 +19,7 @@ public class RolesDAO implements DAO
     Statement statement = connection.createStatement();
     ResultSet resultSet = statement.executeQuery("SELECT * FROM Roles WHERE rolesid = '" + id + "'");
     Role role = new Role(resultSet.getInt("rolesid"), resultSet.getString("name"), resultSet.getString("description"));
+    statement.close();
     return role;
   }
 
@@ -32,6 +34,7 @@ public class RolesDAO implements DAO
       Role role = new Role(resultSet.getInt("rolesid"), resultSet.getString("name"), resultSet.getString("description"));
       list.add(role);
     }
+    statement.close();
 
     return list;
   }
@@ -40,6 +43,7 @@ public class RolesDAO implements DAO
   {
     Statement statement = connection.createStatement();
     statement.executeUpdate("UPDATE Roles SET name = '" + role.name + "', description = '" + role.description + "' WHERE rolesid = '" + id + "'");
+    statement.close();
     return true;
   }
 
@@ -47,6 +51,7 @@ public class RolesDAO implements DAO
   {
     Statement statement = connection.createStatement();
     statement.executeUpdate("DELETE FROM Roles WHERE rolesid = '" + id + "'");
+    statement.close();
     return true;
   }
 }

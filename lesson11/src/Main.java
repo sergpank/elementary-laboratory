@@ -1,8 +1,7 @@
 import java.sql.*;
 
-public class main
+public class Main
 {
-  public static Connection connection = ConnectDB.getConnection();
   public static void main(String[] args) throws SQLException
   {
     UsersDAO usersDAO = new UsersDAO();
@@ -46,5 +45,6 @@ public class main
       //rolesDAO.update(new Role("lol", "works"), 3);
       //rolesDAO.delete(3);
 
+    ConnectDB.close();
   }
 }
