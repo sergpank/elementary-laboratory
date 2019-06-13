@@ -9,7 +9,9 @@ public class RomanConverterTest
   @Test
   public void test1() throws MaxException
   {
-    String actual = converter.toRoman(1);
+
+
+    String actual = converter.convert(1);
     String expected = "I";
 
     Assert.assertEquals("Expected 'I' !!!", expected, actual);
@@ -18,7 +20,9 @@ public class RomanConverterTest
   @Test
   public void test2() throws MaxException
   {
-    String actual = converter.toRoman(2);
+
+    String actual = converter.convert(2);
+
     String expected = "II";
 
     Assert.assertEquals(expected, actual);
@@ -27,7 +31,10 @@ public class RomanConverterTest
   @Test
   public void test3() throws MaxException
   {
-    String actual = converter.toRoman(3);
+
+
+    String actual = converter.convert(3);
+
     String expected = "III";
 
     Assert.assertEquals(expected, actual);
@@ -36,7 +43,9 @@ public class RomanConverterTest
   @Test
   public void test4() throws MaxException
   {
-    String actual = converter.toRoman(4);
+
+
+    String actual = converter.convert(4);
     String expected = "IV";
 
     Assert.assertEquals(expected, actual);
@@ -45,7 +54,9 @@ public class RomanConverterTest
   @Test
   public void test5() throws MaxException
   {
-    String actual = converter.toRoman(5);
+
+    String actual = converter.convert(5);
+
     String expected = "V";
 
     Assert.assertEquals(expected, actual);
@@ -127,4 +138,5 @@ public class RomanConverterTest
 
     Assert.assertEquals(expected, actual);
   }
+
 }

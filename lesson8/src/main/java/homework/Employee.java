@@ -38,6 +38,4 @@ public class Employee
     sb.append('}');
     return sb.toString();
   }
-
-
 }
