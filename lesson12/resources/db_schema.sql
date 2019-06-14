@@ -26,3 +26,19 @@ CREATE TABLE pet
     birthDate integer,
     type text
 );
+CREATE TABLE doc (
+	  id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE
+	  name	TEXT NOT NULL
+	  surname	TEXT NOT NULL
+	  birthdate	INTEGER
+	  phone	INTEGER
+);
+CREATE TABLE visit (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    birthdate   INTEGER NOT NULL,
+    doc_id      INTEGER REFERENCES doc (id),
+    client_id   INTEGER REFERENCES client (id),
+    pet_id      INTEGER REFERENCES pet (id),
+    description TEXT,
+    charge      INTEGER
+);

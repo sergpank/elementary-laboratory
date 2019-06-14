@@ -61,4 +61,43 @@ public class Pet
   {
     this.type = type;
   }
+
+  @Override
+  public boolean equals(Object o)
+  {
+    if (this == o)
+    {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass())
+    {
+      return false;
+    }
+
+    Pet pet = (Pet) o;
+
+    if (id != pet.id)
+    {
+      return false;
+    }
+    if (!name.equals(pet.name))
+    {
+      return false;
+    }
+    if (!birthDate.equals(pet.birthDate))
+    {
+      return false;
+    }
+    return type.equals(pet.type);
+  }
+
+  @Override
+  public int hashCode()
+  {
+    int result = (int) (id ^ (id >>> 32));
+    result = 31 * result + name.hashCode();
+    result = 31 * result + birthDate.hashCode();
+    result = 31 * result + type.hashCode();
+    return result;
+  }
 }

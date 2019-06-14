@@ -96,7 +96,8 @@ public class Client
     sb.append(", address=").append(address);
     sb.append(", birthDate=").append(birthDate);
     sb.append(", phoneNr='").append(phoneNr).append('\'');
-    sb.append('}');
+    sb.append('}'+
+    "\n");
     return sb.toString();
   }
 

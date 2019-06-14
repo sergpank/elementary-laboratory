@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +21,12 @@ public class ClientDAO extends DAO<Client>
       "  FROM client c" +
       "  JOIN address a on c.address_id = a.id" +
       "  WHERE c.id = ?;";
+  public static final String SELECT_CLIENT_SQL_All = "SELECT c.id, c.name, c.surname, c.date_of_birth, c.phone_nr," +
+      "  a.id, a.street, a.house, a.apartmentNr, a.zip" +
+      "  FROM client c" +
+      "  JOIN address a on c.address_id = a.id" +
+      "  where c.id < 10;";
+  public static final String UPDATE_CLIENT_SQL = "update client SET name=?,surname=?, address_id=?, date_of_birth=?, phone_nr=? WHERE id=?";
 
   @Override
   public Client create(Client client)
@@ -99,13 +106,64 @@ public class ClientDAO extends DAO<Client>
   @Override
   public List<Client> readAll()
   {
-    return null;
+    ArrayList<Client> clients = new ArrayList<>();
+
+
+    try (Connection con = DbUtil.getConnectionFromPool())
+    {
+      PreparedStatement pStmt = con.prepareStatement(SELECT_CLIENT_SQL_All);
+      Client client;
+      ResultSet resultSet = pStmt.executeQuery();
+      while (resultSet.next())
+      {
+        int pos = 1;
+        long cId = resultSet.getLong(pos++);
+        String name = resultSet.getString(pos++);
+        String surname = resultSet.getString(pos++);
+        Date birthDate = new Date(resultSet.getLong(pos++));
+        String phoneNr = resultSet.getString(pos++);
+
+        long aId = resultSet.getLong(pos++);
+        String street = resultSet.getString(pos++);
+        String house = resultSet.getString(pos++);
+        long apartmentNr = resultSet.getLong(pos++);
+        long zip = resultSet.getLong(pos);
+
+        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+        clients.add(client);
+      }
+      return clients;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   @Override
   public boolean update(Client entity)
   {
-    return false;
+    boolean rez = false;
+    try (Connection con = DbUtil.getConnectionFromPool())
+    {
+      PreparedStatement pStmt = con.prepareStatement(UPDATE_CLIENT_SQL);
+      pStmt.setString(1, entity.getName());
+      pStmt.setString(2, entity.getSurname());
+      pStmt.setLong(3, entity.getAddress().getId());
+      pStmt.setLong(4, entity.getBirthDate().getTime());
+      pStmt.setString(5, entity.getPhoneNr());
+      pStmt.setLong(6, entity.getId());
+
+      System.out.println(pStmt.executeUpdate());
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+
+    }
+    return rez;
+
   }
 
   @Override
