@@ -2,6 +2,7 @@ package dao;
 
 import entity.Address;
 import entity.Client;
+import entity.ClientBuilder;
 import util.DbUtil;
 
 import java.sql.Connection;
@@ -75,19 +76,26 @@ public class ClientDAO extends DAO<Client>
       resultSet.next();
 
       int pos = 1;
-      long cId = resultSet.getLong(pos++);
-      String name = resultSet.getString(pos++);
-      String surname = resultSet.getString(pos++);
-      Date birthDate = new Date(resultSet.getLong(pos++));
-      String phoneNr = resultSet.getString(pos++);
+//      long cId = resultSet.getLong(pos++);
+//      String name = resultSet.getString(pos++);
+//      String surname = resultSet.getString(pos++);
+//      Date birthDate = new Date(resultSet.getLong(pos++));
+//      String phoneNr = resultSet.getString(pos++);
+//
+//      long aId = resultSet.getLong(pos++);
+//      String street = resultSet.getString(pos++);
+//      String house = resultSet.getString(pos++);
+//      long apartmentNr = resultSet.getLong(pos++);
+//      long zip = resultSet.getLong(pos);
+//
+//      return new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
 
-      long aId = resultSet.getLong(pos++);
-      String street = resultSet.getString(pos++);
-      String house = resultSet.getString(pos++);
-      long apartmentNr = resultSet.getLong(pos++);
-      long zip = resultSet.getLong(pos);
+      ClientBuilder builder = new ClientBuilder();
 
-      return new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+      builder.setBirthDate(new Date(resultSet.getLong(pos++)));
+      builder.setName(resultSet.getString(pos++));
+
+      return builder.build();
     }
     catch (SQLException e)
     {

@@ -31,19 +31,9 @@ public class Client
     return id;
   }
 
-  public void setId(long id)
-  {
-    this.id = id;
-  }
-
   public String getName()
   {
     return name;
-  }
-
-  public void setName(String name)
-  {
-    this.name = name;
   }
 
   public String getSurname()
@@ -51,19 +41,9 @@ public class Client
     return surname;
   }
 
-  public void setSurname(String surname)
-  {
-    this.surname = surname;
-  }
-
   public Address getAddress()
   {
     return address;
-  }
-
-  public void setAddress(Address address)
-  {
-    this.address = address;
   }
 
   public Date getBirthDate()
@@ -71,19 +51,9 @@ public class Client
     return birthDate;
   }
 
-  public void setBirthDate(Date birthDate)
-  {
-    this.birthDate = birthDate;
-  }
-
   public String getPhoneNr()
   {
     return phoneNr;
-  }
-
-  public void setPhoneNr(String phoneNr)
-  {
-    this.phoneNr = phoneNr;
   }
 
   @Override
@@ -147,5 +117,10 @@ public class Client
     result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
     result = 31 * result + (phoneNr != null ? phoneNr.hashCode() : 0);
     return result;
+  }
+
+  public void setId(long key)
+  {
+
   }
 }
