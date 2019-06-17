@@ -14,12 +14,11 @@ public class Doc {
     private String phoneNr;
     private List<Pet> petList;
 
-    public Doc(String name, String surname, Date birthDate, String phoneNr, List<Pet> petList) {
+    public Doc(String name, String surname, Date birthDate, String phoneNr) {
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
         this.phoneNr = phoneNr;
-        this.petList = petList;
     }
 
     public Doc(long id, String name, String surname, Date birthDate, String phoneNr, List<Pet> petList) {
@@ -87,7 +86,7 @@ public class Doc {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", birthDate=" + birthDate +
-                ", phoneNr='" + phoneNr + '\'' +
+                ", phoneNr='" + phoneNr + '\'' + "\n" +
                 ", petList=" + petList +
                 '}' + "\n";
     }
