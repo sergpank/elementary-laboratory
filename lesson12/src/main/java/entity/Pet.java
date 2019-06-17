@@ -14,7 +14,18 @@ public class Pet
     this(0, name, birthDate, type);
   }
 
-  public Pet(long id, String name, Date birthDate, String type)
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", birthDate=" + birthDate +
+                ", type='" + type + '\'' +
+                '}' +
+                "\n";
+    }
+
+    public Pet(long id, String name, Date birthDate, String type)
   {
     this.id = id;
     this.name = name;

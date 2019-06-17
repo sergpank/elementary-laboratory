@@ -24,9 +24,9 @@ public class ClientDAO extends DAO<Client>
   public static final String SELECT_CLIENT_SQL_All = "SELECT c.id, c.name, c.surname, c.date_of_birth, c.phone_nr," +
       "  a.id, a.street, a.house, a.apartmentNr, a.zip" +
       "  FROM client c" +
-      "  JOIN address a on c.address_id = a.id" +
-      "  where c.id < 10;";
+      "  JOIN address a on c.address_id = a.id";
   public static final String UPDATE_CLIENT_SQL = "update client SET name=?,surname=?, address_id=?, date_of_birth=?, phone_nr=? WHERE id=?";
+  public static final String DELETE_CLIENT_SQL = "DELETE FROM client WHERE id=?";
 
   @Override
   public Client create(Client client)
@@ -155,7 +155,9 @@ public class ClientDAO extends DAO<Client>
       pStmt.setString(5, entity.getPhoneNr());
       pStmt.setLong(6, entity.getId());
 
-      System.out.println(pStmt.executeUpdate());
+      if (pStmt.executeUpdate() == 1){
+          rez = true;
+      }
     }
     catch (SQLException e)
     {
@@ -169,6 +171,22 @@ public class ClientDAO extends DAO<Client>
   @Override
   public boolean delete(Client entity)
   {
-    return false;
+      boolean rez = false;
+      try (Connection con = DbUtil.getConnectionFromPool())
+      {
+          PreparedStatement pStmt = con.prepareStatement(DELETE_CLIENT_SQL);
+
+          pStmt.setLong(1, entity.getId());
+          if (pStmt.executeUpdate() == 1){
+              rez = true;
+          }
+
+      }
+      catch (SQLException e)
+      {
+          e.printStackTrace();
+
+      }
+      return rez;
   }
 }
