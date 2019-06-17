@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 public class LoggerDemo
 {
     private static final org.apache.logging.log4j.Logger log4j2 = LogManager.getLogger(LoggerDemo.class);
+
     private static final org.slf4j.Logger slf4j = LoggerFactory.getLogger(LoggerDemo.class);
 
     public static void main(String[] args)
