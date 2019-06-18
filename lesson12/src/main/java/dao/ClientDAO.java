@@ -14,6 +14,11 @@ import java.util.List;
 
 public class ClientDAO extends DAO<Client>
 {
+  public static final String SELECT_CLIENT_SQL_BY_CLIENT = "SELECT c.id, c.name, c.surname, c.date_of_birth, c.phone_nr," +
+      "  a.id, a.street, a.house, a.apartmentNr, a.zip" +
+      "  FROM client c" +
+      "  JOIN address a on c.address_id = a.id" +
+      "  WHERE c.name = ? , c.surname = ?, c.phone_nr = ?;";
   public static final String INSERT_ADDRESS_SQL = "INSERT INTO address (street, house, apartmentNr, zip) VALUES (?, ?, ?, ?)";
   public static final String INSERT_CLIENT_SQL = "INSERT INTO client (name, surname, address_id, date_of_birth, phone_nr) VALUES (?, ?, ?, ?, ?)";
   public static final String SELECT_CLIENT_SQL = "SELECT c.id, c.name, c.surname, c.date_of_birth, c.phone_nr," +
@@ -31,6 +36,8 @@ public class ClientDAO extends DAO<Client>
   @Override
   public Client create(Client client)
   {
+    Client tempClient = readAll(client);
+    if (tempClient == null)
     try (Connection con = DbUtil.getConnectionFromPool())
     {
       long addressId = saveAddress(client.getAddress(), con);
@@ -133,6 +140,42 @@ public class ClientDAO extends DAO<Client>
         clients.add(client);
       }
       return clients;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+      return null;
+    }
+  }
+  private Client readAll(Client clientI)
+  {
+    try (Connection con = DbUtil.getConnectionFromPool())
+    {
+      PreparedStatement pStmt = con.prepareStatement(SELECT_CLIENT_SQL_BY_CLIENT);
+      pStmt.setString(1,clientI.getName());
+      pStmt.setString(2,clientI.getSurname());
+      pStmt.setString(3,clientI.getPhoneNr());
+      Client client = null;
+      ResultSet resultSet = pStmt.executeQuery();
+      resultSet.next();
+
+        int pos = 1;
+        long cId = resultSet.getLong(pos++);
+        String name = resultSet.getString(pos++);
+        String surname = resultSet.getString(pos++);
+        Date birthDate = new Date(resultSet.getLong(pos++));
+        String phoneNr = resultSet.getString(pos++);
+
+        long aId = resultSet.getLong(pos++);
+        String street = resultSet.getString(pos++);
+        String house = resultSet.getString(pos++);
+        long apartmentNr = resultSet.getLong(pos++);
+        long zip = resultSet.getLong(pos);
+
+        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+
+
+      return client;
     }
     catch (SQLException e)
     {
