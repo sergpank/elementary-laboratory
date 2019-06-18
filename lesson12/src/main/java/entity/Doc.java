@@ -80,6 +80,40 @@ public class Doc {
     }
 
     @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+
+        Doc doc = (Doc) o;
+
+        if (name != null ? !name.equals(doc.name) : doc.name != null)
+        {
+            return false;
+        }
+        if (surname != null ? !surname.equals(doc.surname) : doc.surname != null)
+        {
+            return false;
+        }
+        return phoneNr != null ? phoneNr.equals(doc.phoneNr) : doc.phoneNr == null;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result + (phoneNr != null ? phoneNr.hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Doc{" +
                 "id=" + id +

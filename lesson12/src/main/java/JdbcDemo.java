@@ -18,5 +18,9 @@ public class JdbcDemo
    DocDAO docDAO = new DocDAO();
     Doc doc = new Doc("Kostia","Shylov",new Date(1986,10,29),"80630701721");
     System.out.println(docDAO.readAll());
+    doc.setId(11);
+    System.out.println(docDAO.delete(doc));
+    System.out.println(docDAO.readAll());
+
   }
 }

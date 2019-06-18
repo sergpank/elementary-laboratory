@@ -87,28 +87,23 @@ public class Pet
 
     Pet pet = (Pet) o;
 
-    if (id != pet.id)
+    if (name != null ? !name.equals(pet.name) : pet.name != null)
     {
       return false;
     }
-    if (!name.equals(pet.name))
+    if (birthDate != null ? !birthDate.equals(pet.birthDate) : pet.birthDate != null)
     {
       return false;
     }
-    if (!birthDate.equals(pet.birthDate))
-    {
-      return false;
-    }
-    return type.equals(pet.type);
+    return type != null ? type.equals(pet.type) : pet.type == null;
   }
 
   @Override
   public int hashCode()
   {
-    int result = (int) (id ^ (id >>> 32));
-    result = 31 * result + name.hashCode();
-    result = 31 * result + birthDate.hashCode();
-    result = 31 * result + type.hashCode();
+    int result = name != null ? name.hashCode() : 0;
+    result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
+    result = 31 * result + (type != null ? type.hashCode() : 0);
     return result;
   }
 }

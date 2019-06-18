@@ -20,8 +20,10 @@ public class DocDAO extends DAO<Doc>
   public static final String INSERT_Doc_SQL = "INSERT INTO doc (name, surname, birthdate, phone) VALUES (?,?,?,?);";
   public static final String SELECT_Doc_SQL = "SELECT id, name, surname, birthdate, phone  FROM doc WHERE id = ?;";
   public static final String SELECT_Doc_SQL_ALL = "SELECT id, name, surname, birthdate, phone  FROM doc;";
+  public static final String UPDATE_Doc_SQL = "UPDATE doc SET name = ?, surname = ?, birthdate = ?, phone = ? WHERE id = ?;";
+  public static final String DELETE_Doc_SQL = "DELETE FROM doc WHERE id = ?;";
 
-  public List<Pet> getPets(Connection con, long id)
+  private List<Pet> getPets(Connection con, long id)
   {
     Set<Pet> pets = new HashSet<>();
     try
@@ -122,12 +124,47 @@ public class DocDAO extends DAO<Doc>
   @Override
   public boolean update(Doc entity)
   {
-    return false;
+    boolean rez = false;
+    try (Connection connection = DbUtil.getConnectionFromPool())
+    {
+      PreparedStatement statement = connection.prepareStatement(UPDATE_Doc_SQL);
+      statement.setString(1, entity.getName());
+      statement.setString(2, entity.getSurname());
+      statement.setLong(3, entity.getBirthDate().getTime());
+      statement.setLong(4, Long.parseLong(entity.getPhoneNr()));
+      statement.setLong(5, entity.getId());
+
+      if (statement.executeUpdate() == 1)
+      {
+        rez = true;
+      }
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return rez;
   }
 
   @Override
   public boolean delete(Doc entity)
   {
-    return false;
+    boolean rez = false;
+    try (Connection connection = DbUtil.getConnectionFromPool())
+    {
+      PreparedStatement statement = connection.prepareStatement(DELETE_Doc_SQL);
+
+      statement.setLong(1, entity.getId());
+
+      if (statement.executeUpdate() == 1)
+      {
+        rez = true;
+      }
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+    }
+    return rez;
   }
 }

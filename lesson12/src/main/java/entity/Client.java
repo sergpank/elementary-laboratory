@@ -104,34 +104,22 @@ public class Client
   @Override
   public boolean equals(Object o)
   {
-    if(this == o)
+    if (this == o)
     {
       return true;
     }
-    if(o == null || getClass() != o.getClass())
+    if (o == null || getClass() != o.getClass())
     {
       return false;
     }
 
     Client client = (Client) o;
 
-    if(id != client.id)
+    if (name != null ? !name.equals(client.name) : client.name != null)
     {
       return false;
     }
-    if(name != null ? !name.equals(client.name) : client.name != null)
-    {
-      return false;
-    }
-    if(surname != null ? !surname.equals(client.surname) : client.surname != null)
-    {
-      return false;
-    }
-    if(address != null ? !address.equals(client.address) : client.address != null)
-    {
-      return false;
-    }
-    if(birthDate != null ? !birthDate.equals(client.birthDate) : client.birthDate != null)
+    if (surname != null ? !surname.equals(client.surname) : client.surname != null)
     {
       return false;
     }
@@ -141,11 +129,8 @@ public class Client
   @Override
   public int hashCode()
   {
-    int result = (int) (id ^ (id >>> 32));
-    result = 31 * result + (name != null ? name.hashCode() : 0);
+    int result = name != null ? name.hashCode() : 0;
     result = 31 * result + (surname != null ? surname.hashCode() : 0);
-    result = 31 * result + (address != null ? address.hashCode() : 0);
-    result = 31 * result + (birthDate != null ? birthDate.hashCode() : 0);
     result = 31 * result + (phoneNr != null ? phoneNr.hashCode() : 0);
     return result;
   }
