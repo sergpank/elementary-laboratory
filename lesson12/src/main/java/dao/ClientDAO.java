@@ -2,6 +2,7 @@ package dao;
 
 import entity.Address;
 import entity.Client;
+import entity.Pet;
 import util.DbUtil;
 
 import java.sql.Connection;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class ClientDAO extends DAO<Client>
 {
+  public static final String SELECT_PET_ID_SQL = "select id from pet where master_id = ?;";
   public static final String SELECT_CLIENT_SQL_BY_CLIENT = "SELECT c.id, c.name, c.surname, c.date_of_birth, c.phone_nr," +
       "  a.id, a.street, a.house, a.apartmentNr, a.zip" +
       "  FROM client c" +
@@ -37,30 +39,46 @@ public class ClientDAO extends DAO<Client>
   public Client create(Client client)
   {
     Client tempClient = readAll(client);
-    if (tempClient == null)
-    try (Connection con = DbUtil.getConnectionFromPool())
-    {
-      long addressId = saveAddress(client.getAddress(), con);
+      if (tempClient == null)
+      {
+        try (Connection con = DbUtil.getConnectionFromPool())
+        {
+          long addressId = saveAddress(client.getAddress(), con);
 
-      PreparedStatement pStmt = con.prepareStatement(INSERT_CLIENT_SQL);
-      pStmt.setString(1, client.getName());
-      pStmt.setString(2, client.getSurname());
-      pStmt.setLong(3, addressId);
-      pStmt.setLong(4, client.getBirthDate().getTime());
-      pStmt.setString(5, client.getPhoneNr());
+          PreparedStatement pStmt = con.prepareStatement(INSERT_CLIENT_SQL);
+          pStmt.setString(1, client.getName());
+          pStmt.setString(2, client.getSurname());
+          pStmt.setLong(3, addressId);
+          pStmt.setLong(4, client.getBirthDate().getTime());
+          pStmt.setString(5, client.getPhoneNr());
 
-      pStmt.execute();
+          pStmt.execute();
 
-      client.setId(getKey(pStmt));
-      return client;
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-      return null;
-    }
+          client.setId(getKey(pStmt));
+          return client;
+        }
+        catch (SQLException e)
+        {
+          e.printStackTrace();
+          return null;
+        }
+      }
+      else {
+        return tempClient;
+      }
   }
-
+  private List<Pet> getPets(Connection con, long id) throws SQLException
+  {
+    PreparedStatement statement = con.prepareStatement(SELECT_PET_ID_SQL);
+    statement.setLong(1,id);
+    ResultSet set = statement.executeQuery();
+    PetDAO petDAO = new PetDAO();
+    List<Pet> pets = new ArrayList<>();
+    while (set.next()){
+      pets.add(petDAO.read(set.getLong("id")));
+    }
+    return pets;
+  }
   private long saveAddress(Address address, Connection con) throws SQLException
   {
     PreparedStatement pStmt = con.prepareStatement(INSERT_ADDRESS_SQL);
@@ -100,8 +118,8 @@ public class ClientDAO extends DAO<Client>
       String house = resultSet.getString(pos++);
       long apartmentNr = resultSet.getLong(pos++);
       long zip = resultSet.getLong(pos);
-
-      return new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+      List<Pet>pets = getPets(con,cId);
+      return new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr,pets);
     }
     catch (SQLException e)
     {
@@ -135,8 +153,8 @@ public class ClientDAO extends DAO<Client>
         String house = resultSet.getString(pos++);
         long apartmentNr = resultSet.getLong(pos++);
         long zip = resultSet.getLong(pos);
-
-        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+        List<Pet>pets = getPets(con,cId);
+        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr,pets);
         clients.add(client);
       }
       return clients;
@@ -171,8 +189,8 @@ public class ClientDAO extends DAO<Client>
         String house = resultSet.getString(pos++);
         long apartmentNr = resultSet.getLong(pos++);
         long zip = resultSet.getLong(pos);
-
-        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+        List<Pet>pets = getPets(con,cId);
+        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr, pets);
 
 
       return client;

@@ -8,25 +8,40 @@ public class Pet
   private String name;
   private Date birthDate;
   private String type;
+  private long master_id;
 
-  public Pet(String name, Date birthDate, String type)
+
+
+  public Pet(String name, Date birthDate, String type,long master)
   {
-    this(0, name, birthDate, type);
+    this(0, name, birthDate, type,master);
   }
 
-    @Override
-    public String toString() {
-        return "Pet{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", birthDate=" + birthDate +
-                ", type='" + type + '\'' +
-                '}' +
-                "\n";
-    }
-
-    public Pet(long id, String name, Date birthDate, String type)
+  public long getMaster_id()
   {
+    return master_id;
+  }
+
+  public void setMaster_id(long master_id)
+  {
+    this.master_id = master_id;
+  }
+
+  @Override
+  public String toString()
+  {
+    return "Pet{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", birthDate=" + birthDate +
+        ", type='" + type + '\'' +
+        ", master_id=" + master_id +
+        '}' + "\n";
+  }
+
+  public Pet(long id, String name, Date birthDate, String type, long master)
+  {
+    this.master_id = master;
     this.id = id;
     this.name = name;
     this.birthDate = birthDate;
