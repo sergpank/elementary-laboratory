@@ -23,3 +23,5 @@
 2019-06-19 02:20:08,717 INFO MainFrame [AWT-EventQueue-0] UI is initialized
 2019-06-19 02:22:02,691 INFO MainFrame [AWT-EventQueue-0] UI is initialized
 2019-06-19 02:22:49,129 INFO MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-19 21:27:52,287 DEBUG z.SwingDemo [main] Starting application ...
+2019-06-19 21:27:52,695 INFO z.MainFrame [AWT-EventQueue-0] UI is initialized
