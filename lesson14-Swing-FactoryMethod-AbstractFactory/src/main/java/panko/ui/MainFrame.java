@@ -1,17 +1,24 @@
-package panko;
+package panko.ui;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.swing.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import panko.db.DbUtil;
 
 public class MainFrame extends JFrame
 {
   private static final Logger log = LogManager.getLogger(MainFrame.class);
+  private JPanel tableListPanel;
+  private JPanel dataTable;
 
   public void initUI()
   {
@@ -20,8 +27,8 @@ public class MainFrame extends JFrame
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     JPanel connectionPanel = createConnectionPanel();
-    JPanel tableListPanel = createTableListPanel();
-    JPanel dataTable = createMockTablePanel();
+    tableListPanel = createTableListPanel();
+    dataTable = createMockTablePanel();
 
     this.add(connectionPanel, BorderLayout.NORTH);
     this.add(tableListPanel, BorderLayout.WEST);
@@ -53,7 +60,45 @@ public class MainFrame extends JFrame
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        JOptionPane.showMessageDialog(panel, "HELLO !");
+        String dbPath = pathField.getText();
+
+        log.info("Sqlite DB path : {}", dbPath);
+
+        DbUtil.init(dbPath);
+        JOptionPane.showMessageDialog(panel, "Database is loaded successfully");
+
+        try (Connection con = DbUtil.getConnection())
+        {
+          tableListPanel.removeAll();
+          tableListPanel.setLayout(new BoxLayout(tableListPanel, BoxLayout.Y_AXIS));
+
+          Statement stmt = con.createStatement();
+          ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
+
+          while(rs.next())
+          {
+            String tableName = rs.getString(1);
+            System.out.println(tableName);
+
+            JButton tableButton = new JButton(tableName);
+            tableListPanel.add(tableButton);
+
+            tableButton.addActionListener(new ActionListener()
+            {
+              @Override
+              public void actionPerformed(ActionEvent e)
+              {
+                JOptionPane.showMessageDialog(MainFrame.this, "Table = " + tableName);
+              }
+            });
+          }
+          tableListPanel.revalidate();
+        }
+        catch (SQLException ex)
+        {
+          log.error("{} : {}", ex.getClass(), ex.getMessage(), ex);
+          ex.printStackTrace();
+        }
       }
     });
 
