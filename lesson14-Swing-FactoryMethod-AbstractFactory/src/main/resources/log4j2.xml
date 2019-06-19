@@ -2,7 +2,7 @@
 <Configuration status="WARN">
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
-      <PatternLayout pattern="%d{HH:mm:ss} %-5level %class:%line - %msg%n"/>
+      <PatternLayout pattern="%d{HH:mm:ss:SSS} %-5level %class:%line - %msg%n"/>
     </Console>
 
     <File name="File" fileName="logs/app.log">
