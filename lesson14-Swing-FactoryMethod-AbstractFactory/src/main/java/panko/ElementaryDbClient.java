@@ -7,9 +7,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import panko.ui.MainFrame;
 
-public class SqliteClient
+public class ElementaryDbClient
 {
-  private static final Logger log = LogManager.getLogger(SqliteClient.class);
+  private static final Logger log = LogManager.getLogger(ElementaryDbClient.class);
 
   public static void main(String[] args)
   {
