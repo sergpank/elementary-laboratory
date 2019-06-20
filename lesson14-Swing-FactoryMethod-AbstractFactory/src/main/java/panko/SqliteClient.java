@@ -5,10 +5,11 @@ import javax.swing.*;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import panko.ui.MainFrame;
 
-public class SwingDemo
+public class SqliteClient
 {
-  private static final Logger log = LogManager.getLogger(SwingDemo.class);
+  private static final Logger log = LogManager.getLogger(SqliteClient.class);
 
   public static void main(String[] args)
   {
