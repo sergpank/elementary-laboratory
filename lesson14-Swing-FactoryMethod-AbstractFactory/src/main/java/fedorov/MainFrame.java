@@ -1,58 +1,48 @@
 package fedorov;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 public class MainFrame extends JFrame
 {
-  private static final Logger log = LogManager.getLogger(MainFrame.class);
-
   public void initUI()
   {
-    this.setTitle("Super cool DB client");
+    this.setSize(960 ,640);
+    this.setTitle("DB client");
     this.setLayout(new BorderLayout());
-    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     JPanel connectionPanel = createConnectionPanel();
     JPanel tableListPanel = createTableListPanel();
-    JPanel dataTable = createMockTablePanel();
+    JPanel dataPanel = createDataPanel();
 
     this.add(connectionPanel, BorderLayout.NORTH);
     this.add(tableListPanel, BorderLayout.WEST);
-    this.add(dataTable, BorderLayout.CENTER);
+    this.add(connectionPanel, BorderLayout.CENTER);
 
-    this.pack();
-    this.setSize(960, 640);
-//    setResizable(false);
     this.setVisible(true);
-
-    log.info("UI is initialized");
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
 
   private JPanel createConnectionPanel()
   {
-    JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-
-    final JLabel label = new JLabel("JDBC URL : ");
-    panel.add(label, BorderLayout.WEST);
-
-    final JTextField pathField = new JTextField("insert jdbc path here", 32);
-    panel.add(pathField, BorderLayout.NORTH);
+    JPanel panel = new JPanel(new FlowLayout());
+    panel.add(new Label("JDBC URL: "));
+    JTextField textField = new JTextField("enter path here");
+    panel.add(textField);
 
     JButton openButton = new JButton("Open");
-    panel.add(openButton, BorderLayout.EAST);
+    panel.add(openButton);
 
     openButton.addActionListener(new ActionListener()
     {
       @Override
-      public void actionPerformed(ActionEvent e)
+      public void actionPerformed(ActionEvent actionEvent)
       {
-        JOptionPane.showMessageDialog(panel, "HELLO !");
+        ConnectionDB connectionDB = new ConnectionDB();
+        Connection connection = connectionDB.getConnection("jdbc:sqlite:data/lesson11.sqlite3");
       }
     });
 
@@ -61,43 +51,13 @@ public class MainFrame extends JFrame
 
   private JPanel createTableListPanel()
   {
-    JPanel tableListPanel = new JPanel();
-    tableListPanel.setLayout(new BoxLayout(tableListPanel, BoxLayout.Y_AXIS));
-
-    tableListPanel.add(new JLabel("Table_01"));
-    tableListPanel.add(new JLabel("Table_02"));
-    tableListPanel.add(new JLabel("Table_03"));
-    tableListPanel.add(new JLabel("Table_04"));
-    tableListPanel.add(new JLabel("Table_05"));
-    tableListPanel.add(new JLabel("Table_06"));
-    tableListPanel.add(new JLabel("Table_07"));
-
-    final JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-    panel.add(tableListPanel);
+    JPanel panel = new JPanel();
     return panel;
   }
 
-  private JPanel createMockTablePanel()
+  private JPanel createDataPanel()
   {
-    String[] columnNames = new String[] {"Column A", "Column B", "Column C"};
-    String[][] rowData = new String[][]{
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"}
-    };
-
-    JTable table = new JTable(rowData, columnNames);
-
-    JPanel panel = new JPanel(new BorderLayout(10, 10));
-    panel.add(new JScrollPane(table), BorderLayout.CENTER);
-
+    JPanel panel = new JPanel();
     return panel;
   }
 }
