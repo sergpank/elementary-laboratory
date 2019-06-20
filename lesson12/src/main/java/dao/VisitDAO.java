@@ -2,6 +2,7 @@ package dao;
 
 import entity.Client;
 import entity.Visit;
+import util.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -38,8 +39,13 @@ public class VisitDAO extends DAO<Visit>
   }
 
   @Override
-  public boolean update(Visit entity)
-  {
+  public boolean update(Visit entity) throws SQLException {
+      boolean rezult = false;
+      Connection con = DbUtil.getConnectionFromPool();
+      PreparedStatement statement = con.prepareStatement("UPDATE visit SET birthDate = ?," +
+              "");
+
+
     return false;
   }
 
