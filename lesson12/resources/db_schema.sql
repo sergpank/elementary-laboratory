@@ -24,7 +24,8 @@ CREATE TABLE pet
     id integer primary key not null,
     name text,
     birthDate integer,
-    type text
+    type text,
+    client_id text
 );
 CREATE TABLE doc (
 	  id	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE
