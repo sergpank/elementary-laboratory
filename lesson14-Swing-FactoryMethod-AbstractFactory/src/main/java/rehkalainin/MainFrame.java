@@ -4,7 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
-import javax.xml.bind.SchemaOutputResolver;
+import javax.swing.event.AncestorListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +17,11 @@ public class MainFrame extends JFrame
   private static final Logger log = LogManager.getLogger(MainFrame.class);
   public JTextField textField = new JTextField("insert jdbc path here");
   List<String> tableList = new ArrayList<>();
+  List<String> columnNames = new ArrayList<>();
+  String [] rows;
+  List<String[]> rowData = new ArrayList<>();
   Connection connection = null;
-  JPanel panel = null;
+  JPanel connectPanel = null;
 
   public void initUI()
   {
@@ -42,21 +45,21 @@ public class MainFrame extends JFrame
 
   public JPanel createConnectionPanel()
   {
-    if (panel == null)
+    if (connectPanel == null)
     {
-      panel = new JPanel(new FlowLayout());
+      connectPanel = new JPanel(new FlowLayout());
 
-      panel.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
-      panel.add(new JLabel("JDBC URL : "));
+      connectPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 5, 0));
+      connectPanel.add(new JLabel("JDBC URL : "));
 
-      panel.add(textField);
+      connectPanel.add(textField);
 
       JButton openButton = new JButton("Open");
-      panel.add(openButton);
+      connectPanel.add(openButton);
       actionListener(openButton);
     }
 
-    return panel;
+    return connectPanel;
 
   }
 
@@ -69,7 +72,7 @@ public class MainFrame extends JFrame
       {
         try
         {
-          System.out.println(textField.getText());
+
           String url = "jdbc:sqlite:" + textField.getText();
           connection = DriverManager.getConnection(url);
 
@@ -84,9 +87,7 @@ public class MainFrame extends JFrame
             String tableName = rs.getString("tbl_name");
             tableList.add(tableName);
           }
-
           initUI();
-
         }
         catch (SQLException ex)
         {
@@ -106,11 +107,16 @@ public class MainFrame extends JFrame
 
     if (connection != null)
     {
+      ButtonGroup buttonGroup = new ButtonGroup();
+
       for (int i = 1; i < tableList.size(); i++)
       {
         String tableName = tableList.get(i);
-        panel.add(new JLabel(tableName));
-        panel.add(Box.createRigidArea(new Dimension(0, 5)));
+        JRadioButton radioButton = new JRadioButton(tableName);
+        panel.add(radioButton);
+        buttonGroup.add(radioButton);
+
+        actionRadioButtonListener(radioButton);
 
       }
       return panel;
@@ -135,34 +141,94 @@ public class MainFrame extends JFrame
     return panel;
   }
 
-  private JPanel createTablePanel()
+  private void actionRadioButtonListener(JRadioButton radioButton)
   {
+    radioButton.addActionListener(new ActionListener()
+    {
+      @Override
+      public void actionPerformed(ActionEvent event)
+      {
+        String query = "PRAGMA table_info(" + radioButton.getText() + ")";
+        try
+        {
+          PreparedStatement statement = connection.prepareStatement(query);
+          ResultSet rs = statement.executeQuery();
 
-    String[] columnNames = new String[]{"Column A", "Column B", "Column C"};
-    String[][] rowData = new String[][]{
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"}
-    };
+          while (rs.next())
+          {
+            String result = rs.getString(2);
+            columnNames.add(result);
+          }
 
-    JTable table = new JTable(rowData, columnNames);
-    JScrollPane scrollPane = new JScrollPane(table);
+          String query2 = "SELECT * FROM " + radioButton.getText();
+          PreparedStatement statement1 = connection.prepareStatement(query2);
+          ResultSet rs2 = statement.executeQuery();
 
-    JPanel panel = new JPanel(new BorderLayout());
+          while (rs2.next())
+          {
+          String [] row = rs2.toString().split(" ");
 
-    panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 10));
-    panel.add(table.getTableHeader(), BorderLayout.NORTH);
-    panel.add(scrollPane, BorderLayout.CENTER);
-
-    return panel;
+          rowData.add(row);
+          }
+         // initUI();
+        }
+        catch (SQLException e)
+        {
+          e.printStackTrace();
+        }
+      }
+    });
   }
 
 
+  private JPanel createTablePanel()
+  {
+    if (connection == null)
+    {
+      String[] emptyColumnNames = new String[]{"Column A", "Column B", "Column C"};
+      String[][] emptyRowData = new String[][]{
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"},
+          {"cell 1", "cell 2", "cell 3"}
+      };
+
+      JTable table = new JTable(emptyRowData, emptyColumnNames);
+      JScrollPane scrollPane = new JScrollPane(table);
+
+      JPanel panel = new JPanel(new BorderLayout());
+
+      panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 10));
+      panel.add(table.getTableHeader(), BorderLayout.NORTH);
+      panel.add(scrollPane, BorderLayout.CENTER);
+
+      return panel;
+    }
+    else
+    {
+      String [] columns = columnNames.toArray(new String[columnNames.size()]);
+      String[][] tableData = rowData.toArray(new String[rowData.size()][columnNames.size()]);
+
+     // ModelTable modelTable = new ModelTable(columnNames,rowData);
+      //JTable table = new JTable(modelTable);
+      JTable table = new JTable(tableData,columns);
+
+      JScrollPane scrollPane = new JScrollPane(table);
+
+      JPanel panel = new JPanel(new BorderLayout());
+
+      panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 10));
+      panel.add(table.getTableHeader(), BorderLayout.NORTH);
+      panel.add(scrollPane, BorderLayout.CENTER);
+      return panel;
+    }
+  }
 }
+
+
