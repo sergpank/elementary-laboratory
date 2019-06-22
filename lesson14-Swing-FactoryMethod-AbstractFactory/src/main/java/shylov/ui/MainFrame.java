@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MainFrame extends JFrame
 {
@@ -94,26 +95,51 @@ public class MainFrame extends JFrame
     return panel;
   }
   private class TableButtonListener implements ActionListener{
-    private Connection connection;
-    private String tibleName;
+    private String tableName;
 
-    public TableButtonListener(Connection connection, String tibleName)
+    public TableButtonListener( String tableName)
     {
-      this.connection = connection;
-      this.tibleName = tibleName;
+      this.tableName = tableName;
     }
 
     @Override
     public void actionPerformed(ActionEvent e)
     {
-      try
-      {
-        PreparedStatement statement = connection.prepareStatement("select * from" + tibleName );
+        String[]columns = getColumns(tableName);
+        for (int i = 0; i < columns.length; i++)
+        {
+          System.out.println(columns[i]);
+        }
+
+    }
+  }
+  private String[] getColumns(String tableName)
+  {
+    try(Connection connection = DbUtil.getConnection())
+    {
+
+
+      PreparedStatement statement = connection.prepareStatement("PRAGMA table_info('" + tableName + "');" );
+      ResultSet set = statement.executeQuery();
+
+      //JOptionPane.showMessageDialog(MainFrame.this, "Table = " + tableName);
+      ArrayList<String> list = new ArrayList<>();
+
+      while (set.next()){
+        String str = set.getString(2);
+        list.add(str);
       }
-      catch (SQLException e1)
+      String []str = new String[list.size()];
+      for (int i = 0; i < str.length; i++)
       {
-        e1.printStackTrace();
+        str[i] = list.get(i);
       }
+      return str;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+      return null;
     }
   }
   private class OpenButtonListener implements ActionListener{
@@ -152,10 +178,9 @@ public class MainFrame extends JFrame
 
           JButton tableButton = new JButton(tableName);
           tableButton.setBackground(new Color(255,255,255));
-          tableButton.setSize(new Dimension(60,25));
           tableListPanel.add(tableButton);
 
-          tableButton.addActionListener(new TableButtonListener(con,tableName));
+          tableButton.addActionListener(new TableButtonListener(tableName));
         }
         tableListPanel.revalidate();
       }
