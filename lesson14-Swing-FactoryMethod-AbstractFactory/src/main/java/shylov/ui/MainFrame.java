@@ -10,10 +10,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainFrame extends JFrame
 {
-  private static final String url = "src/main/java/shylov/resource/users.db";
   private static final Logger log = LogManager.getLogger(MainFrame.class);
   private JPanel tableListPanel;
   private JPanel dataTable;
@@ -53,7 +53,7 @@ public class MainFrame extends JFrame
     JButton openButton = new JButton("Open");
     panel.add(openButton, BorderLayout.EAST);
 
-    openButton.addActionListener(new OpenButtonListener(tableListPanel,pathField));
+    openButton.addActionListener(new OpenButtonListener(pathField));
 
     return panel;
   }
@@ -61,43 +61,43 @@ public class MainFrame extends JFrame
   private JPanel createTableListPanel()
   {
     JPanel panel = new JPanel();
-    panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-    panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-
-
+    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
     panel.add(new JLabel("Tibles"));
-
-
     return panel;
   }
 
   private JPanel createMockTablePanel()
   {
-    String[] columnNames = new String[] {"Column A", "Column B", "Column C"};
-    String[][] rowData = new String[][]{
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"},
-        {"cell 1", "cell 2", "cell 3"}
-    };
-
-    JTable table = new JTable(rowData, columnNames);
-
     JPanel panel = new JPanel(new BorderLayout(10, 10));
-    panel.add(new JScrollPane(table), BorderLayout.CENTER);
-
+    panel.add(new JScrollPane(new JTable()), BorderLayout.CENTER);
     return panel;
   }
-  private class TableButtonListener implements ActionListener{
+
+  private void updateMockTablePanel(String[] names, String[][] data)
+  {
+    JTable table;
+    if (names == null || data == null)
+    {
+      log.info("columnNames : {}", names);
+      log.info("dataRow : {}", data);
+      return;
+    }
+    else
+    {
+      table = new JTable(data, names);
+    }
+    dataTable.removeAll();
+    dataTable.setLayout(new BorderLayout(10, 10));
+    dataTable.add(new JScrollPane(table), BorderLayout.CENTER);
+    dataTable.revalidate();
+  }
+
+  private class TableButtonListener implements ActionListener
+  {
     private String tableName;
 
-    public TableButtonListener( String tableName)
+    public TableButtonListener(String tableName)
     {
       this.tableName = tableName;
     }
@@ -105,31 +105,76 @@ public class MainFrame extends JFrame
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        String[]columns = getColumns(tableName);
-        for (int i = 0; i < columns.length; i++)
-        {
-          System.out.println(columns[i]);
-        }
+      String[] columnNames = getColumnNames(tableName);
+      String[][] tableRow = getRowData(columnNames.length);
+      updateMockTablePanel(columnNames, tableRow);
 
     }
-  }
-  private String[] getColumns(String tableName)
-  {
-    try(Connection connection = DbUtil.getConnection())
+
+    private String[][] getRowData(int size)
     {
+      String[][] tableRow = null;
+      try (Connection connection = DbUtil.getConnection())
+      {
 
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + tableName);
+        ResultSet resultSet = statement.executeQuery();
 
-      PreparedStatement statement = connection.prepareStatement("PRAGMA table_info('" + tableName + "');" );
+        List<String[]> rowList = new ArrayList<>();
+
+        while (resultSet.next())
+        {
+          String[] row = new String[size];
+          for (int x = 0, i = 1; x < size; i++, x++)
+          {
+            row[x] = resultSet.getString(i);
+          }
+          rowList.add(row);
+        }
+        if (rowList.size() > 0)
+        {
+          tableRow = new String[rowList.size()][rowList.get(0).length];
+        }
+        else
+        {
+          return tableRow;
+        }
+        int columnSize = tableRow.length;
+        int rowSise = tableRow[0].length;
+        for (int i = 0; i < columnSize; i++)
+        {
+          for (int j = 0; j < rowSise; j++)
+          {
+            tableRow[i][j] = rowList.get(i)[j];
+          }
+
+        }
+      }
+      catch (SQLException ex)
+      {
+        ex.printStackTrace();
+      }
+      return tableRow;
+    }
+
+  }
+
+  private String[] getColumnNames(String tableName)
+  {
+    try (Connection connection = DbUtil.getConnection())
+    {
+      PreparedStatement statement = connection.prepareStatement("PRAGMA table_info('" + tableName + "');");
       ResultSet set = statement.executeQuery();
 
       //JOptionPane.showMessageDialog(MainFrame.this, "Table = " + tableName);
       ArrayList<String> list = new ArrayList<>();
 
-      while (set.next()){
+      while (set.next())
+      {
         String str = set.getString(2);
         list.add(str);
       }
-      String []str = new String[list.size()];
+      String[] str = new String[list.size()];
       for (int i = 0; i < str.length; i++)
       {
         str[i] = list.get(i);
@@ -142,13 +187,15 @@ public class MainFrame extends JFrame
       return null;
     }
   }
-  private class OpenButtonListener implements ActionListener{
-    private JPanel panel;
+
+  private class OpenButtonListener implements ActionListener
+  {
+
     private JTextField pathField;
 
-    public OpenButtonListener(JPanel panel, JTextField pathField)
+    public OpenButtonListener(JTextField pathField)
     {
-      this.panel = panel;
+
       this.pathField = pathField;
     }
 
@@ -161,23 +208,21 @@ public class MainFrame extends JFrame
       log.info("Sqlite DB path : {}", dbPath);
 
       DbUtil.init(dbPath);
-     // JOptionPane.showMessageDialog(panel, "Database is loaded successfully");
+      // JOptionPane.showMessageDialog(panel, "Database is loaded successfully");
 
       try (Connection con = DbUtil.getConnection())
       {
         tableListPanel.removeAll();
         tableListPanel.setLayout(new BoxLayout(tableListPanel, BoxLayout.Y_AXIS));
-
+        tableListPanel.add(new JLabel("Tables"));
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
 
-        while(rs.next())
+        while (rs.next())
         {
           String tableName = rs.getString(1);
-          System.out.println(tableName);
 
           JButton tableButton = new JButton(tableName);
-          tableButton.setBackground(new Color(255,255,255));
           tableListPanel.add(tableButton);
 
           tableButton.addActionListener(new TableButtonListener(tableName));
