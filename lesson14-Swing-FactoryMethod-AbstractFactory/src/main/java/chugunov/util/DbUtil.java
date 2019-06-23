@@ -93,9 +93,9 @@ public abstract class DbUtil
     return result;
   }
 
-  public List<List<Object>> getTabledata(String tableName, List<String> columnNames)
+  public List<Object[]> getTabledata(String tableName, List<String> columnNames)
   {
-    List<List<Object>> result = new ArrayList<>();
+    List<Object[]> result = new ArrayList<>();
     String query = "SELECT * FROM " + tableName;
 
     try (Connection conn = getConnection(); Statement st = conn.createStatement())
@@ -103,10 +103,10 @@ public abstract class DbUtil
       ResultSet rs = st.executeQuery(query);
       while (rs.next())
       {
-        List<Object> row = new ArrayList<>();
+        Object[] row = new Object[columnNames.size()];
         for (int i = 0; i < columnNames.size(); i++)
         {
-          row.add(rs.getObject(columnNames.get(i)));
+          row[i]=rs.getObject(columnNames.get(i));
         }
         result.add(row);
       }

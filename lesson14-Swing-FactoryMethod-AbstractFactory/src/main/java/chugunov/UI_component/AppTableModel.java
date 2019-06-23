@@ -8,15 +8,15 @@ import java.util.List;
 public class AppTableModel extends AbstractTableModel
 {
   private List<String> columnNames;
-  private List<List<Object>> tableData;
+  private List<Object[]> tableData;
 
-  public AppTableModel(List<String> columnNames, List<List<Object>> tableData)
+  public AppTableModel()
   {
-    this.columnNames = columnNames;
-    this.tableData = tableData;
+    this.columnNames = new ArrayList<>();
+    this.tableData = new ArrayList<>();
   }
 
-  public void setTableData(List<String> columnNames, List<List<Object>> tableData)
+  public void setTableData(List<String> columnNames, List<Object[]> tableData)
   {
     this.columnNames = columnNames;
     this.tableData = tableData;
@@ -38,7 +38,7 @@ public class AppTableModel extends AbstractTableModel
   @Override
   public Object getValueAt(int rowIndex, int columnIndex)
   {
-    return tableData.get(rowIndex).get(columnIndex);
+    return tableData.get(rowIndex)[columnIndex];
   }
 
   @Override

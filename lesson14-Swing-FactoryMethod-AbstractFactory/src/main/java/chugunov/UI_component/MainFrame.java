@@ -15,12 +15,10 @@ public class MainFrame extends JFrame
 {
   private static final Logger log = LogManager.getLogger(MainFrame.class);
 
-  JPanel connectionPanel;
-  JPanel tableListPanel;
-  JPanel dataTable;
   JTextField pathField;
   JTable table;
-  JList<String> tableNames;
+  JList<String> tableList;
+  JButton openButton;
 
   DbUtil dbUtil;
 
@@ -30,17 +28,18 @@ public class MainFrame extends JFrame
     this.setLayout(new BorderLayout());
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    connectionPanel = createConnectionPanel();
-    tableListPanel = createTableListPanel();
-    dataTable = createMockTablePanel();
+    JPanel connectionPanel = createConnectionPanel();
+    JPanel tableListPanel = createTableListPanel();
+    JPanel tableContentPanel = createMockTablePanel();
 
     this.add(connectionPanel, BorderLayout.NORTH);
     this.add(tableListPanel, BorderLayout.WEST);
-    this.add(dataTable, BorderLayout.CENTER);
+    this.add(tableContentPanel, BorderLayout.CENTER);
 
     this.pack();
     this.setPreferredSize(new Dimension(960, 640));
-//    setResizable(false);
+    this.setMinimumSize(new Dimension(600, 300));
+
     this.setVisible(true);
 
     log.info("UI is initialized");
@@ -48,16 +47,10 @@ public class MainFrame extends JFrame
 
   private JPanel createConnectionPanel()
   {
-    JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+    ConnectionPanel panel = new ConnectionPanel();
 
-    final JLabel label = new JLabel("JDBC URL : ");
-    panel.add(label, BorderLayout.WEST);
-
-    pathField = new JTextField("insert jdbc path here", 32);
-    panel.add(pathField, BorderLayout.NORTH);
-
-    JButton openButton = new JButton("Open");
-    panel.add(openButton, BorderLayout.EAST);
+    this.openButton = panel.getOpenButton();
+    this.pathField = panel.getPathField();
 
     openButton.addActionListener(new ActionListener()
     {
@@ -67,7 +60,11 @@ public class MainFrame extends JFrame
         String path = pathField.getText();
         if (!path.isEmpty())
         {
-          setDbUtil(new SQLiteDbUtil(path));
+          connectDb(path);
+        }
+        else
+        {
+          JOptionPane.showMessageDialog(null, "The field \"JDBC URL\" must be filled in");
         }
       }
     });
@@ -77,69 +74,62 @@ public class MainFrame extends JFrame
 
   private JPanel createTableListPanel()
   {
-    tableListPanel = new JPanel();
-    tableListPanel.setLayout(new BoxLayout(tableListPanel, BoxLayout.Y_AXIS));
+    TableListPanel panel = new TableListPanel();
 
-    tableListPanel.add(new JLabel("Tables: "));
+    this.tableList = panel.getTableList();
 
-    tableNames = new JList<>();
-    tableNames.setPrototypeCellValue("table name");
-    tableNames.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    tableNames.addListSelectionListener(e -> {
-      String tableName = tableNames.getSelectedValue();
+    this.tableList.addListSelectionListener(e -> {
+      String tableName = tableList.getSelectedValue();
       setTableData(tableName);
     });
-
-    tableListPanel.add(new JScrollPane(tableNames));
-
-    final JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
-    panel.add(tableListPanel);
 
     return panel;
   }
 
   private JPanel createMockTablePanel()
   {
-    table = new JTable();
-    table.getModel().addTableModelListener(table);
+    TableContentPanel panel = new TableContentPanel();
 
-    JPanel panel = new JPanel(new BorderLayout(10, 10));
-    panel.add(new JScrollPane(table), BorderLayout.CENTER);
+    this.table = panel.getTable();
 
     return panel;
   }
 
-  private void setDbUtil(DbUtil dbUtil)
+  private void connectDb(String path)
   {
-    this.dbUtil = dbUtil;
+    this.dbUtil = new SQLiteDbUtil(path);
+
+    setTableNames();
+  }
+
+  private void setTableNames()
+  {
     List<String> tables = dbUtil.getTableNames();
 
-    DefaultListModel<String> model = new DefaultListModel<>();
+    DefaultListModel<String> model = (DefaultListModel<String>) tableList.getModel();
+    model.clear();
     for (String str : tables)
     {
       model.addElement(str);
     }
-    tableNames.setSelectedIndex(0);
-    tableNames.setModel(model);
-
-    setTableData(tables.get(0));
-
+    if (tables.size() > 0)
+    {
+      tableList.setSelectedIndex(0);
+      setTableData(tables.get(0));
+    }
+    tableList.validate();
   }
+
 
   private void setTableData(String tableName)
   {
     List<String> colNames = dbUtil.getColumnNames(tableName);
 
-    List<List<Object>> data = dbUtil.getTabledata(tableName, colNames);
+    List<Object[]> data = dbUtil.getTabledata(tableName, colNames);
     if (table.getModel() instanceof AppTableModel)
     {
       AppTableModel tableModel = (AppTableModel) table.getModel();
       tableModel.setTableData(colNames, data);
-    }
-    else
-    {
-      table.setModel(new AppTableModel(colNames, data));
-      table.getModel().addTableModelListener(table);
     }
   }
 }
