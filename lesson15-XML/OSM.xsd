@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+
+  <xs:element name="bounds" type="boundsType"/>
+  <xs:element name="node" type="nodeType"/>
+  <xs:element name="way" type="wayType"/>
+  <xs:element name="tag" type="keyValueType"/>
+
+  <xs:element name="osm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="bounds" type="boundsType" minOccurs="1" maxOccurs="1"/>
+        <xs:element name="node" type="nodeType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element name="way" type="wayType" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:float"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="boundsType">
+    <xs:attribute name="minlat" type="xs:double" default="90"/>
+    <xs:attribute name="minlon" type="xs:double" default="180"/>
+    <xs:attribute name="maxlat" type="xs:double" default="0"/>
+    <xs:attribute name="maxlon" type="xs:double" default="0"/>
+  </xs:complexType>
+
+  <xs:complexType name="nodeType">
+    <xs:attribute name="id" type="xs:long"/>
+    <xs:attribute name="lat" type="xs:double"/>
+    <xs:attribute name="lon" type="xs:double"/>
+    <xs:attribute name="version" type="xs:int"/>
+    <xs:attribute name="visible" type="xs:boolean"/>
+  </xs:complexType>
+
+  <xs:complexType name="wayType">
+    <xs:sequence>
+      <xs:element name="nd" type="ndType" minOccurs="1" maxOccurs="unbounded"/>
+      <xs:element name="tag" type="keyValueType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:long"/>
+    <xs:attribute name="version" type="xs:int"/>
+    <xs:attribute name="visible" type="xs:boolean"/>
+  </xs:complexType>
+
+  <xs:complexType name="ndType">
+    <xs:attribute name="ref" type="xs:long"/>
+  </xs:complexType>
+
+  <xs:complexType name="keyValueType">
+    <xs:attribute name="k" type="xs:string"/>
+    <xs:attribute name="v" type="xs:string"/>
+  </xs:complexType>
+</xs:schema>
