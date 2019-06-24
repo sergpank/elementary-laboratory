@@ -4,7 +4,7 @@ public class HomeTask
 {
   public static void main(String[] args)
   {
-    
+
     List<String> keyList = new ArrayList<>();
     keyList.add("breakfast");
     keyList.add("beach");
