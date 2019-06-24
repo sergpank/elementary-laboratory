@@ -1,0 +1,667 @@
+2019-06-21 09:48:14,124 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 09:48:16,328 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 09:48:27,527 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : shylov/resource/users.db
+2019-06-21 09:48:27,528 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : shylov/resource/users.db
+2019-06-21 09:48:27,561 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 09:48:27,573 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 09:48:27,573 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 09:48:27,581 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 09:48:27,581 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 09:48:27,582 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 09:48:27,582 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 09:48:27,583 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 09:48:27,584 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 09:48:27,584 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 09:48:27,585 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 09:48:27,585 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 09:48:27,588 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 09:48:27,588 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 09:48:27,589 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 09:48:27,590 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 09:48:27,590 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 09:48:27,591 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 09:48:27,591 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 09:48:27,592 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:shylov/resource/users.db
+2019-06-21 09:48:27,592 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 09:48:27,593 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 09:48:27,593 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 09:48:27,594 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 09:48:27,594 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 09:48:27,594 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 09:48:27,595 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 09:48:27,595 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 09:48:27,597 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 09:48:27,597 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 09:48:27,597 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 09:48:27,598 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 09:48:27,599 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 09:48:27,599 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 09:48:27,600 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 09:48:27,601 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 09:48:27,613 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 09:48:27,764 DEBUG c.z.h.p.PoolBase [AWT-EventQueue-0] SQLitePool - Failed to create/setup connection: path to 'shylov/resource/users.db': '/home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/shylov' does not exist
+2019-06-21 09:48:27,765 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Cannot acquire connection from data source
+java.sql.SQLException: path to 'shylov/resource/users.db': '/home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/shylov' does not exist
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:215) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:61) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:21) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:115) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.JDBC.connect(JDBC.java:90) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121) ~[HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:353) ~[HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:473) [HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:562) [HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) [HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81) [HikariCP-3.3.1.jar:?]
+	at shylov.db.DbUtil.init(DbUtil.java:36) [classes/:?]
+	at shylov.ui.MainFrame$1.actionPerformed(MainFrame.java:66) [classes/:?]
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022) [?:1.8.0_161]
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348) [?:1.8.0_161]
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402) [?:1.8.0_161]
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259) [?:1.8.0_161]
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252) [?:1.8.0_161]
+	at java.awt.Component.processMouseEvent(Component.java:6533) [?:1.8.0_161]
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324) [?:1.8.0_161]
+	at java.awt.Component.processEvent(Component.java:6298) [?:1.8.0_161]
+	at java.awt.Container.processEvent(Container.java:2237) [?:1.8.0_161]
+	at java.awt.Component.dispatchEventImpl(Component.java:4889) [?:1.8.0_161]
+	at java.awt.Container.dispatchEventImpl(Container.java:2295) [?:1.8.0_161]
+	at java.awt.Component.dispatchEvent(Component.java:4711) [?:1.8.0_161]
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4889) [?:1.8.0_161]
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4526) [?:1.8.0_161]
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4467) [?:1.8.0_161]
+	at java.awt.Container.dispatchEventImpl(Container.java:2281) [?:1.8.0_161]
+	at java.awt.Window.dispatchEventImpl(Window.java:2746) [?:1.8.0_161]
+	at java.awt.Component.dispatchEvent(Component.java:4711) [?:1.8.0_161]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758) [?:1.8.0_161]
+	at java.awt.EventQueue.access$500(EventQueue.java:97) [?:1.8.0_161]
+	at java.awt.EventQueue$3.run(EventQueue.java:709) [?:1.8.0_161]
+	at java.awt.EventQueue$3.run(EventQueue.java:703) [?:1.8.0_161]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_161]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80) [?:1.8.0_161]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:90) [?:1.8.0_161]
+	at java.awt.EventQueue$4.run(EventQueue.java:731) [?:1.8.0_161]
+	at java.awt.EventQueue$4.run(EventQueue.java:729) [?:1.8.0_161]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_161]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80) [?:1.8.0_161]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82) [?:1.8.0_161]
+2019-06-21 09:48:27,790 ERROR c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Exception during pool initialization.
+java.sql.SQLException: path to 'shylov/resource/users.db': '/home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/shylov' does not exist
+	at org.sqlite.SQLiteConnection.open(SQLiteConnection.java:215) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.SQLiteConnection.<init>(SQLiteConnection.java:61) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.jdbc3.JDBC3Connection.<init>(JDBC3Connection.java:28) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.jdbc4.JDBC4Connection.<init>(JDBC4Connection.java:21) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.JDBC.createConnection(JDBC.java:115) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at org.sqlite.JDBC.connect(JDBC.java:90) ~[sqlite-jdbc-3.27.2.1.jar:?]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:121) ~[HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:353) ~[HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:201) ~[HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:473) [HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:562) [HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115) [HikariCP-3.3.1.jar:?]
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:81) [HikariCP-3.3.1.jar:?]
+	at shylov.db.DbUtil.init(DbUtil.java:36) [classes/:?]
+	at shylov.ui.MainFrame$1.actionPerformed(MainFrame.java:66) [classes/:?]
+	at javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:2022) [?:1.8.0_161]
+	at javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2348) [?:1.8.0_161]
+	at javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:402) [?:1.8.0_161]
+	at javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:259) [?:1.8.0_161]
+	at javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:252) [?:1.8.0_161]
+	at java.awt.Component.processMouseEvent(Component.java:6533) [?:1.8.0_161]
+	at javax.swing.JComponent.processMouseEvent(JComponent.java:3324) [?:1.8.0_161]
+	at java.awt.Component.processEvent(Component.java:6298) [?:1.8.0_161]
+	at java.awt.Container.processEvent(Container.java:2237) [?:1.8.0_161]
+	at java.awt.Component.dispatchEventImpl(Component.java:4889) [?:1.8.0_161]
+	at java.awt.Container.dispatchEventImpl(Container.java:2295) [?:1.8.0_161]
+	at java.awt.Component.dispatchEvent(Component.java:4711) [?:1.8.0_161]
+	at java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4889) [?:1.8.0_161]
+	at java.awt.LightweightDispatcher.processMouseEvent(Container.java:4526) [?:1.8.0_161]
+	at java.awt.LightweightDispatcher.dispatchEvent(Container.java:4467) [?:1.8.0_161]
+	at java.awt.Container.dispatchEventImpl(Container.java:2281) [?:1.8.0_161]
+	at java.awt.Window.dispatchEventImpl(Window.java:2746) [?:1.8.0_161]
+	at java.awt.Component.dispatchEvent(Component.java:4711) [?:1.8.0_161]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:758) [?:1.8.0_161]
+	at java.awt.EventQueue.access$500(EventQueue.java:97) [?:1.8.0_161]
+	at java.awt.EventQueue$3.run(EventQueue.java:709) [?:1.8.0_161]
+	at java.awt.EventQueue$3.run(EventQueue.java:703) [?:1.8.0_161]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_161]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80) [?:1.8.0_161]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:90) [?:1.8.0_161]
+	at java.awt.EventQueue$4.run(EventQueue.java:731) [?:1.8.0_161]
+	at java.awt.EventQueue$4.run(EventQueue.java:729) [?:1.8.0_161]
+	at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_161]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80) [?:1.8.0_161]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:728) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93) [?:1.8.0_161]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82) [?:1.8.0_161]
+2019-06-21 09:49:06,706 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : /home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/src/main/java/shylov/resource/users.db
+2019-06-21 09:49:06,707 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : /home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/src/main/java/shylov/resource/users.db
+2019-06-21 09:49:06,707 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 09:49:06,708 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 09:49:06,708 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 09:49:06,711 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 09:49:06,711 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 09:49:06,712 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 09:49:06,712 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 09:49:06,712 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 09:49:06,713 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 09:49:06,713 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 09:49:06,714 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 09:49:06,714 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 09:49:06,714 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 09:49:06,715 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 09:49:06,715 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 09:49:06,715 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 09:49:06,715 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 09:49:06,716 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 09:49:06,716 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 09:49:06,717 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:/home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/src/main/java/shylov/resource/users.db
+2019-06-21 09:49:06,717 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 09:49:06,717 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 09:49:06,717 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 09:49:06,718 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 09:49:06,718 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 09:49:06,718 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 09:49:06,718 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 09:49:06,719 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 09:49:06,719 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 09:49:06,719 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 09:49:06,720 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 09:49:06,720 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 09:49:06,720 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 09:49:06,720 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 09:49:06,721 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 09:49:06,721 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 09:49:06,721 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 09:49:06,817 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@42b1f01e
+2019-06-21 09:49:06,819 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 09:49:06,920 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:49:36,921 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:49:44,017 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 09:49:44,018 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 09:49:44,018 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 09:49:44,018 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 09:49:44,019 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 09:49:44,021 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 09:49:44,022 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 09:49:44,022 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 09:49:44,023 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 09:49:44,023 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 09:49:44,023 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 09:49:44,024 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 09:49:44,024 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 09:49:44,025 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 09:49:44,025 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 09:49:44,026 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 09:49:44,026 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 09:49:44,027 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 09:49:44,027 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 09:49:44,027 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 09:49:44,027 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 09:49:44,028 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 09:49:44,028 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 09:49:44,028 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 09:49:44,029 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 09:49:44,029 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 09:49:44,029 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 09:49:44,029 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 09:49:44,030 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 09:49:44,030 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 09:49:44,030 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 09:49:44,030 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 09:49:44,031 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 09:49:44,031 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 09:49:44,031 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 09:49:44,032 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 09:49:44,032 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 09:49:44,032 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 09:49:44,032 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 09:49:44,034 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@95c9ed3
+2019-06-21 09:49:44,034 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 09:49:44,134 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:50:05,515 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@66e68dd5
+2019-06-21 09:50:05,515 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@42b1f01e: (connection has passed maxLifetime)
+2019-06-21 09:50:06,921 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:50:14,135 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:50:36,922 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:50:43,471 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@95c9ed3: (connection has passed maxLifetime)
+2019-06-21 09:50:43,473 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@46909c5
+2019-06-21 09:50:44,136 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:56:17,394 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 09:56:17,982 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 09:57:12,061 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 09:57:12,062 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 09:57:12,082 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 09:57:12,092 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 09:57:12,093 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 09:57:12,101 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 09:57:12,101 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 09:57:12,102 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 09:57:12,102 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 09:57:12,103 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 09:57:12,104 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 09:57:12,104 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 09:57:12,105 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 09:57:12,105 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 09:57:12,107 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 09:57:12,108 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 09:57:12,109 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 09:57:12,109 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 09:57:12,109 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 09:57:12,110 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 09:57:12,110 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 09:57:12,111 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 09:57:12,112 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 09:57:12,112 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 09:57:12,113 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 09:57:12,113 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 09:57:12,114 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 09:57:12,114 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 09:57:12,115 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 09:57:12,116 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 09:57:12,117 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 09:57:12,117 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 09:57:12,117 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 09:57:12,118 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 09:57:12,119 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 09:57:12,120 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 09:57:12,121 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 09:57:12,121 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 09:57:12,124 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 09:57:12,329 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@462c9584
+2019-06-21 09:57:12,331 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 09:57:12,432 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 09:58:18,080 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 09:58:18,712 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 10:01:47,169 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 10:01:47,813 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 10:03:20,336 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 10:03:21,060 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 10:04:07,804 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 10:04:08,601 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 10:25:56,598 DEBUG c.SwingDemo [main] Starting application ...
+2019-06-21 10:25:59,907 INFO c.U.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 10:26:11,807 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 10:26:11,815 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 10:26:11,815 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 10:26:11,819 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 10:26:11,820 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 10:26:11,820 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 10:26:11,820 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 10:26:11,821 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 10:26:11,821 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 10:26:11,821 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 10:26:11,822 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 10:26:11,822 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 10:26:11,824 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 10:26:11,824 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 10:26:11,825 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 10:26:11,825 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 10:26:11,826 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 10:26:11,826 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 10:26:11,827 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 10:26:11,827 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:/home/kshilov/Documents/Hillel/get/elementary-laboratory/lesson14-Swing-FactoryMethod-AbstractFactory/src/main/java/shylov/resource/users.db
+2019-06-21 10:26:11,828 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 10:26:11,828 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 10:26:11,828 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................10
+2019-06-21 10:26:11,828 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 10:26:11,830 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 10:26:11,831 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................10
+2019-06-21 10:26:11,831 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 10:26:11,832 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 10:26:11,832 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 10:26:11,833 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 10:26:11,834 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 10:26:11,834 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 10:26:11,835 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 10:26:11,835 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 10:26:11,836 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 10:26:11,836 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 10:26:11,839 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 10:26:11,992 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@2894fcb0
+2019-06-21 10:26:11,995 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 10:26:12,095 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 10:26:12,097 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@50621b1d
+2019-06-21 10:26:12,099 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@5ea5ef61
+2019-06-21 10:26:12,100 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@5a9a706d
+2019-06-21 10:26:12,101 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@1f98e55a
+2019-06-21 10:26:12,101 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@5f62bf47
+2019-06-21 10:26:12,102 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@2e4d9d2d
+2019-06-21 10:26:12,103 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@275d9991
+2019-06-21 10:26:12,104 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@7fb71a15
+2019-06-21 10:26:12,107 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@35e50a23
+2019-06-21 10:26:12,108 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - After adding stats (total=10, active=0, idle=10, waiting=0)
+2019-06-21 10:26:42,097 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=10, active=0, idle=10, waiting=0)
+2019-06-21 10:27:10,826 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@2894fcb0: (connection has passed maxLifetime)
+2019-06-21 10:27:10,828 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@7eae7f0e
+2019-06-21 10:27:10,959 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@5ea5ef61: (connection has passed maxLifetime)
+2019-06-21 10:27:10,960 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@70699eab
+2019-06-21 10:27:11,275 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@2e4d9d2d: (connection has passed maxLifetime)
+2019-06-21 10:27:11,276 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@7456147e
+2019-06-21 10:27:11,455 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@35e50a23: (connection has passed maxLifetime)
+2019-06-21 10:27:11,456 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@31549490
+2019-06-21 10:27:11,530 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@5a9a706d: (connection has passed maxLifetime)
+2019-06-21 10:27:11,531 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@3c8fcbbb
+2019-06-21 10:27:11,575 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@7fb71a15: (connection has passed maxLifetime)
+2019-06-21 10:27:11,576 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@2f8647
+2019-06-21 10:27:11,586 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@1f98e55a: (connection has passed maxLifetime)
+2019-06-21 10:27:11,587 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@441e87d8
+2019-06-21 10:27:11,589 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@5f62bf47: (connection has passed maxLifetime)
+2019-06-21 10:27:11,589 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@517b6bdf
+2019-06-21 10:27:11,680 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@275d9991: (connection has passed maxLifetime)
+2019-06-21 10:27:11,681 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@136bb058
+2019-06-21 10:27:11,725 DEBUG c.z.h.p.PoolBase [SQLitePool connection closer] SQLitePool - Closing connection org.sqlite.jdbc4.JDBC4Connection@50621b1d: (connection has passed maxLifetime)
+2019-06-21 10:27:11,726 DEBUG c.z.h.p.HikariPool [SQLitePool connection adder] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@6f8a11cc
+2019-06-21 10:27:12,097 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=10, active=0, idle=10, waiting=0)
+2019-06-21 11:36:39,289 DEBUG c.SwingDemo [main] Starting application ...
+2019-06-21 11:36:39,965 INFO c.U.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 11:36:53,863 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:36:54,501 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 11:38:35,924 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:41:58,354 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:41:59,015 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 11:47:07,471 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:48:07,030 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:48:07,664 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 11:49:24,949 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:49:25,656 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 11:54:18,037 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 11:54:18,849 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 12:19:57,051 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 12:19:59,869 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 12:21:02,908 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 12:21:03,848 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 12:26:44,536 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 12:26:48,864 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 12:39:22,325 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 12:41:45,422 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 12:41:46,332 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 12:58:52,463 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 12:58:56,055 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:07:45,503 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:07:46,144 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:10:32,289 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:10:32,924 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:12:46,243 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:12:46,942 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:28:43,543 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:28:47,841 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:42:25,693 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:42:26,550 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:51:54,630 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:51:55,657 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:52:05,787 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 13:52:05,788 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 13:52:05,861 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 13:52:05,892 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 13:52:05,893 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 13:52:05,899 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 13:52:05,899 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 13:52:05,899 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 13:52:05,900 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 13:52:05,900 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 13:52:05,900 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 13:52:05,901 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 13:52:05,901 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 13:52:05,901 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 13:52:05,904 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 13:52:05,905 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 13:52:05,905 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 13:52:05,905 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 13:52:05,905 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 13:52:05,906 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 13:52:05,906 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 13:52:05,906 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 13:52:05,907 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 13:52:05,907 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 13:52:05,907 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 13:52:05,908 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 13:52:05,908 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 13:52:05,908 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 13:52:05,909 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 13:52:05,909 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 13:52:05,909 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 13:52:05,909 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 13:52:05,910 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 13:52:05,910 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 13:52:05,910 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 13:52:05,911 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 13:52:05,911 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 13:52:05,911 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 13:52:05,920 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 13:52:06,204 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@14aaae51
+2019-06-21 13:52:06,208 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 13:52:06,310 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 13:54:40,739 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:54:41,409 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:54:55,957 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 13:54:55,958 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 13:54:55,977 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 13:54:55,986 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 13:54:55,987 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 13:54:55,994 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 13:54:55,995 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 13:54:55,995 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 13:54:55,996 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 13:54:55,996 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 13:54:55,997 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 13:54:55,997 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 13:54:55,998 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 13:54:55,998 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 13:54:56,001 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 13:54:56,001 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 13:54:56,002 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 13:54:56,003 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 13:54:56,003 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 13:54:56,004 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 13:54:56,004 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 13:54:56,005 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 13:54:56,005 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 13:54:56,005 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 13:54:56,006 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 13:54:56,006 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 13:54:56,007 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 13:54:56,008 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 13:54:56,008 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 13:54:56,009 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 13:54:56,010 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 13:54:56,010 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 13:54:56,010 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 13:54:56,011 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 13:54:56,012 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 13:54:56,012 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 13:54:56,013 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 13:54:56,014 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 13:54:56,016 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 13:54:56,200 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@62a01ee6
+2019-06-21 13:54:56,212 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 13:54:56,312 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 13:56:12,188 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:56:12,780 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:56:20,954 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 13:56:20,956 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 13:56:20,973 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 13:56:20,981 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 13:56:20,981 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 13:56:20,985 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 13:56:20,986 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 13:56:20,986 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 13:56:20,986 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 13:56:20,987 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 13:56:20,987 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 13:56:20,987 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 13:56:20,988 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 13:56:20,988 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 13:56:20,990 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 13:56:20,990 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 13:56:20,990 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 13:56:20,991 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 13:56:20,991 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 13:56:20,991 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 13:56:20,992 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 13:56:20,992 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 13:56:20,993 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 13:56:20,993 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 13:56:20,993 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 13:56:20,994 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 13:56:20,994 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 13:56:20,994 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 13:56:20,995 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 13:56:20,995 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 13:56:20,995 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 13:56:20,996 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 13:56:20,996 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 13:56:20,996 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 13:56:20,996 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 13:56:20,997 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 13:56:20,997 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 13:56:20,997 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 13:56:20,999 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 13:56:21,193 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@48e0aa48
+2019-06-21 13:56:21,195 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 13:56:21,296 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 13:58:43,609 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 13:58:44,285 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 13:58:54,111 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 13:58:54,113 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 13:58:54,133 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 13:58:54,141 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 13:58:54,141 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 13:58:54,146 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 13:58:54,146 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 13:58:54,147 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 13:58:54,147 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 13:58:54,147 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 13:58:54,148 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 13:58:54,148 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 13:58:54,148 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 13:58:54,149 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 13:58:54,151 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 13:58:54,152 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 13:58:54,153 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 13:58:54,153 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 13:58:54,153 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 13:58:54,154 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 13:58:54,154 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 13:58:54,155 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 13:58:54,155 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 13:58:54,155 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 13:58:54,155 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 13:58:54,156 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 13:58:54,156 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 13:58:54,156 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 13:58:54,157 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 13:58:54,157 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 13:58:54,157 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 13:58:54,158 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 13:58:54,158 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 13:58:54,158 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 13:58:54,158 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 13:58:54,159 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 13:58:54,159 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 13:58:54,159 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 13:58:54,161 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 13:58:54,336 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@38b1234f
+2019-06-21 13:58:54,338 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 13:58:54,439 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 14:03:14,879 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 14:03:18,556 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 14:03:30,084 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 14:03:30,085 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 14:03:30,158 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 14:03:30,189 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 14:03:30,189 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 14:03:30,195 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 14:03:30,196 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 14:03:30,196 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 14:03:30,196 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 14:03:30,197 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 14:03:30,197 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 14:03:30,198 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 14:03:30,198 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 14:03:30,199 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 14:03:30,201 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 14:03:30,202 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 14:03:30,202 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 14:03:30,203 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 14:03:30,203 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 14:03:30,203 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 14:03:30,204 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 14:03:30,205 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 14:03:30,205 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 14:03:30,206 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 14:03:30,206 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 14:03:30,207 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 14:03:30,207 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 14:03:30,207 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 14:03:30,208 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 14:03:30,208 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 14:03:30,209 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 14:03:30,209 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 14:03:30,210 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 14:03:30,210 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 14:03:30,210 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 14:03:30,210 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 14:03:30,211 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 14:03:30,211 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 14:03:30,225 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 14:03:30,568 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@1d37fd10
+2019-06-21 14:03:30,571 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 14:03:30,672 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 14:04:37,045 DEBUG s.ElementaryDbClient [main] Starting application ...
+2019-06-21 14:04:37,811 INFO s.u.MainFrame [AWT-EventQueue-0] UI is initialized
+2019-06-21 14:04:47,559 INFO s.u.MainFrame [AWT-EventQueue-0] Sqlite DB path : src/main/java/shylov/resource/users.db
+2019-06-21 14:04:47,560 DEBUG s.d.DbUtil [AWT-EventQueue-0] Db file path : src/main/java/shylov/resource/users.db
+2019-06-21 14:04:47,578 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] Driver class org.sqlite.JDBC found in Thread context class loader sun.misc.Launcher$AppClassLoader@18b4aac2
+2019-06-21 14:04:47,585 WARN c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2019-06-21 14:04:47,586 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] SQLitePool - configuration:
+2019-06-21 14:04:47,590 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] allowPoolSuspension.............false
+2019-06-21 14:04:47,590 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] autoCommit......................true
+2019-06-21 14:04:47,591 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] catalog.........................none
+2019-06-21 14:04:47,591 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionInitSql...............none
+2019-06-21 14:04:47,591 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTestQuery............."SELECT 1"
+2019-06-21 14:04:47,592 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] connectionTimeout...............30000
+2019-06-21 14:04:47,592 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSource......................none
+2019-06-21 14:04:47,592 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceClassName.............none
+2019-06-21 14:04:47,592 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceJNDI..................none
+2019-06-21 14:04:47,594 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] dataSourceProperties............{password=<masked>}
+2019-06-21 14:04:47,595 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] driverClassName................."org.sqlite.JDBC"
+2019-06-21 14:04:47,595 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckProperties...........{}
+2019-06-21 14:04:47,595 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] healthCheckRegistry.............none
+2019-06-21 14:04:47,596 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] idleTimeout.....................45000
+2019-06-21 14:04:47,596 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] initializationFailTimeout.......1
+2019-06-21 14:04:47,596 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] isolateInternalQueries..........false
+2019-06-21 14:04:47,597 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] jdbcUrl.........................jdbc:sqlite:src/main/java/shylov/resource/users.db
+2019-06-21 14:04:47,597 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] leakDetectionThreshold..........0
+2019-06-21 14:04:47,598 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maxLifetime.....................60000
+2019-06-21 14:04:47,598 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] maximumPoolSize.................1
+2019-06-21 14:04:47,598 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricRegistry..................none
+2019-06-21 14:04:47,599 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] metricsTrackerFactory...........none
+2019-06-21 14:04:47,599 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] minimumIdle.....................1
+2019-06-21 14:04:47,599 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] password........................<masked>
+2019-06-21 14:04:47,599 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] poolName........................"SQLitePool"
+2019-06-21 14:04:47,600 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] readOnly........................false
+2019-06-21 14:04:47,600 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] registerMbeans..................false
+2019-06-21 14:04:47,601 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] scheduledExecutor...............none
+2019-06-21 14:04:47,601 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] schema..........................none
+2019-06-21 14:04:47,601 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] threadFactory...................internal
+2019-06-21 14:04:47,601 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] transactionIsolation............default
+2019-06-21 14:04:47,602 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] username........................none
+2019-06-21 14:04:47,602 DEBUG c.z.h.HikariConfig [AWT-EventQueue-0] validationTimeout...............5000
+2019-06-21 14:04:47,604 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Starting...
+2019-06-21 14:04:47,783 DEBUG c.z.h.p.HikariPool [AWT-EventQueue-0] SQLitePool - Added connection org.sqlite.jdbc4.JDBC4Connection@1f7c3390
+2019-06-21 14:04:47,786 INFO c.z.h.HikariDataSource [AWT-EventQueue-0] SQLitePool - Start completed.
+2019-06-21 14:04:47,886 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)
+2019-06-21 14:05:17,887 DEBUG c.z.h.p.HikariPool [SQLitePool housekeeper] SQLitePool - Pool stats (total=1, active=0, idle=1, waiting=0)

@@ -38,27 +38,30 @@ public class ClientDAO extends DAO<Client>
   {
     Client tempClient = readAll(client);
     if (tempClient == null)
-    try (Connection con = DbUtil.getConnectionFromPool())
     {
-      long addressId = saveAddress(client.getAddress(), con);
+      try (Connection con = DbUtil.getConnectionFromPool())
+      {
+        long addressId = saveAddress(client.getAddress(), con);
 
-      PreparedStatement pStmt = con.prepareStatement(INSERT_CLIENT_SQL);
-      pStmt.setString(1, client.getName());
-      pStmt.setString(2, client.getSurname());
-      pStmt.setLong(3, addressId);
-      pStmt.setLong(4, client.getBirthDate().getTime());
-      pStmt.setString(5, client.getPhoneNr());
+        PreparedStatement pStmt = con.prepareStatement(INSERT_CLIENT_SQL);
+        pStmt.setString(1, client.getName());
+        pStmt.setString(2, client.getSurname());
+        pStmt.setLong(3, addressId);
+        pStmt.setLong(4, client.getBirthDate().getTime());
+        pStmt.setString(5, client.getPhoneNr());
 
-      pStmt.execute();
+        pStmt.execute();
 
-      client.setId(getKey(pStmt));
-      return client;
+        client.setId(getKey(pStmt));
+        return client;
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+        return null;
+      }
     }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-      return null;
-    }
+    return tempClient;
   }
 
   private long saveAddress(Address address, Connection con) throws SQLException
@@ -147,32 +150,33 @@ public class ClientDAO extends DAO<Client>
       return null;
     }
   }
+
   private Client readAll(Client clientI)
   {
     try (Connection con = DbUtil.getConnectionFromPool())
     {
       PreparedStatement pStmt = con.prepareStatement(SELECT_CLIENT_SQL_BY_CLIENT);
-      pStmt.setString(1,clientI.getName());
-      pStmt.setString(2,clientI.getSurname());
-      pStmt.setString(3,clientI.getPhoneNr());
+      pStmt.setString(1, clientI.getName());
+      pStmt.setString(2, clientI.getSurname());
+      pStmt.setString(3, clientI.getPhoneNr());
       Client client = null;
       ResultSet resultSet = pStmt.executeQuery();
       resultSet.next();
 
-        int pos = 1;
-        long cId = resultSet.getLong(pos++);
-        String name = resultSet.getString(pos++);
-        String surname = resultSet.getString(pos++);
-        Date birthDate = new Date(resultSet.getLong(pos++));
-        String phoneNr = resultSet.getString(pos++);
+      int pos = 1;
+      long cId = resultSet.getLong(pos++);
+      String name = resultSet.getString(pos++);
+      String surname = resultSet.getString(pos++);
+      Date birthDate = new Date(resultSet.getLong(pos++));
+      String phoneNr = resultSet.getString(pos++);
 
-        long aId = resultSet.getLong(pos++);
-        String street = resultSet.getString(pos++);
-        String house = resultSet.getString(pos++);
-        long apartmentNr = resultSet.getLong(pos++);
-        long zip = resultSet.getLong(pos);
+      long aId = resultSet.getLong(pos++);
+      String street = resultSet.getString(pos++);
+      String house = resultSet.getString(pos++);
+      long apartmentNr = resultSet.getLong(pos++);
+      long zip = resultSet.getLong(pos);
 
-        client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
+      client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
 
 
       return client;
@@ -198,8 +202,9 @@ public class ClientDAO extends DAO<Client>
       pStmt.setString(5, entity.getPhoneNr());
       pStmt.setLong(6, entity.getId());
 
-      if (pStmt.executeUpdate() == 1){
-          rez = true;
+      if (pStmt.executeUpdate() == 1)
+      {
+        rez = true;
       }
     }
     catch (SQLException e)
@@ -214,22 +219,23 @@ public class ClientDAO extends DAO<Client>
   @Override
   public boolean delete(Client entity)
   {
-      boolean rez = false;
-      try (Connection con = DbUtil.getConnectionFromPool())
+    boolean rez = false;
+    try (Connection con = DbUtil.getConnectionFromPool())
+    {
+      PreparedStatement pStmt = con.prepareStatement(DELETE_CLIENT_SQL);
+
+      pStmt.setLong(1, entity.getId());
+      if (pStmt.executeUpdate() == 1)
       {
-          PreparedStatement pStmt = con.prepareStatement(DELETE_CLIENT_SQL);
-
-          pStmt.setLong(1, entity.getId());
-          if (pStmt.executeUpdate() == 1){
-              rez = true;
-          }
-
+        rez = true;
       }
-      catch (SQLException e)
-      {
-          e.printStackTrace();
 
-      }
-      return rez;
+    }
+    catch (SQLException e)
+    {
+      e.printStackTrace();
+
+    }
+    return rez;
   }
 }
