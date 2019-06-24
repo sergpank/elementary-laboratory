@@ -1,6 +1,7 @@
 package entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class Client
 {
@@ -10,13 +11,15 @@ public class Client
   private Address address;
   private Date birthDate;
   private String phoneNr;
+  private List<Pet> pets;
 
-  public Client(String name, String surname, Address address, Date birthDate, String phoneNr)
+  public Client(String name, String surname, Address address, Date birthDate, String phoneNr,List<Pet>pets)
+
   {
-    this(0, name, surname, address, birthDate, phoneNr);
+    this(0, name, surname, address, birthDate, phoneNr, pets);
   }
 
-  public Client(long id, String name, String surname, Address address, Date birthDate, String phoneNr)
+  public Client(long id, String name, String surname, Address address, Date birthDate, String phoneNr,List<Pet>pets)
   {
     this.id = id;
     this.name = name;
@@ -24,6 +27,7 @@ public class Client
     this.address = address;
     this.birthDate = birthDate;
     this.phoneNr = phoneNr;
+    this.pets = pets;
   }
 
   public long getId()
@@ -86,19 +90,28 @@ public class Client
     this.phoneNr = phoneNr;
   }
 
+  public List<Pet> getPets()
+  {
+    return pets;
+  }
+
+  public void setPets(List<Pet> pets)
+  {
+    this.pets = pets;
+  }
+
   @Override
   public String toString()
   {
-    final StringBuilder sb = new StringBuilder("Client{");
-    sb.append("id=").append(id);
-    sb.append(", name='").append(name).append('\'');
-    sb.append(", surname='").append(surname).append('\'');
-    sb.append(", address=").append(address);
-    sb.append(", birthDate=").append(birthDate);
-    sb.append(", phoneNr='").append(phoneNr).append('\'');
-    sb.append('}'+
-    "\n");
-    return sb.toString();
+    return "Client{" +
+        "id=" + id +
+        ", name='" + name + '\'' +
+        ", surname='" + surname + '\'' +
+        ", address=" + address +
+        ", birthDate=" + birthDate +
+        ", phoneNr='" + phoneNr + '\'' +
+        ", pets=" + pets +
+        '}' + "\n";
   }
 
   @Override

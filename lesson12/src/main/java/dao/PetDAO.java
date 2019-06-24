@@ -1,12 +1,10 @@
 package dao;
 
+import entity.Client;
 import entity.Pet;
 import util.DbUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,23 +13,24 @@ import java.util.List;
  * Created by Vaio on 16.06.19.
  */
 public class PetDAO extends DAO<Pet> {
-    public static final String INSERT_Pet_SQL = "INSERT INTO pet (name,birthDate,type) VALUES(?,?,?)";
-    public static final String SELECT_Pet_SQL = "SELECT id,name,birthDate,type FROM pet where id = ?;";
-    public static final String SELECT_Pet_SQL_ALL = "SELECT id,name,birthDate,type FROM pet";
-    public static final String UPDATE_Pet_SQL = "UPDATE pet SET name=? ,birthDate=? ,type=? WHERE id = ?";
+    public static final String INSERT_Pet_SQL = "INSERT INTO pet (name,birthDate,type,client_id) VALUES(?,?,?,?)";
+    public static final String SELECT_Pet_SQL = "SELECT id,name,birthDate,type,client_id FROM pet where id = ?;";
+    public static final String SELECT_Pet_SQL_ALL = "SELECT id,name,birthDate,type client_id FROM pet";
+    public static final String UPDATE_Pet_SQL = "UPDATE pet SET name=? ,birthDate=? ,type=?, client_id=? WHERE id = ?";
     public static final String DELETE_Pet_SQL = "DELETE FROM pet WHERE id = ?";
+
 
     @Override
     public Pet create(Pet entity) {
         try (Connection con = DbUtil.getConnectionFromPool())
         {
-            PreparedStatement pStmt = con.prepareStatement(INSERT_Pet_SQL);
+            PreparedStatement pStmt = con.prepareStatement(INSERT_Pet_SQL,Statement.RETURN_GENERATED_KEYS);
             pStmt.setString(1, entity.getName());
             pStmt.setLong(2, entity.getBirthDate().getTime());
             pStmt.setString(3, entity.getType());
+            pStmt.setLong(4,entity.getMaster_id());
 
             pStmt.execute();
-
             entity.setId(getKey(pStmt));
             return entity;
         }
@@ -54,7 +53,8 @@ public class PetDAO extends DAO<Pet> {
             String name = resultSet.getString("name");
             Date date = new Date(resultSet.getLong("birthDate"));
             String type = resultSet.getString("type");
-            pet = new Pet(ids,name,date,type);
+            long client_id = resultSet.getLong("client_id");
+            pet = new Pet(ids,name,date,type,client_id);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,8 @@ public class PetDAO extends DAO<Pet> {
             String name = resultSet.getString("name");
             Date date = new Date(resultSet.getLong("birthDate"));
             String type = resultSet.getString("type");
-            pet = new Pet(ids,name,date,type);
+            long client_id = resultSet.getLong("client_id");
+            pet = new Pet(ids,name,date,type,client_id);
                 petList.add(pet);
             }
         } catch (SQLException e) {

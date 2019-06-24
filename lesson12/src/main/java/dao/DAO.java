@@ -13,7 +13,7 @@ public abstract class DAO<T>
 
   public abstract List<T> readAll();
 
-  public abstract boolean update(T entity);
+  public abstract boolean update(T entity) throws SQLException;
 
   public abstract boolean delete(T entity);
 
