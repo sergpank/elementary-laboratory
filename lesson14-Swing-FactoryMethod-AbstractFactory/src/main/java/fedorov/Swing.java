@@ -1,5 +1,7 @@
 package fedorov;
 
+import fedorov.ui.MainFrame;
+
 import javax.swing.*;
 
 public class Swing

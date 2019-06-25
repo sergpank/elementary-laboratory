@@ -1,4 +1,6 @@
-package fedorov;
+package fedorov.ui;
+
+import fedorov.db.ConnectionDB;
 
 import javax.swing.*;
 import java.awt.*;
