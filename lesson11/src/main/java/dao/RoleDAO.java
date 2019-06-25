@@ -1,7 +1,7 @@
 package dao;
 
 import util.DbUtil;
-import vo.Group;
+import vo.Role;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,30 +10,30 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GroupDAO implements DAO<Group>
+public class RoleDAO implements DAO<Role>
 {
-  public static final String INSETR_group_SQL =
-      "INSERT INTO groups (name,description) VALUES (?,?);";
+  public static final String INSETR_role_SQL =
+      "INSERT INTO role (name,description) VALUES (?,?);";
   public static final String SELECT_group_SQL =
-      "SELECT * FROM groups WHERE id = ?;";
-  public static final String SELECT_all_group_SQL =
-      "SELECT * FROM groups;";
-  public static final String UPDATE_group_SQL =
-      "UPDATE groups SET name=?,description=? WHERE id=?;";
-  public static final String DELETE_group_SQL =
-      "DELETE FROM groups WHERE id=?;";
+      "SELECT * FROM role WHERE id = ?;";
+  public static final String SELECT_all_role_SQL =
+      "SELECT * FROM role;";
+  public static final String UPDATE_role_SQL =
+      "UPDATE role SET name=?,description=? WHERE id=?;";
+  public static final String DELETE_role_SQL =
+      "DELETE FROM role WHERE id=?;";
   @Override
-  public boolean create(Group group)
+  public boolean create(Role role)
   {
     boolean rezult = false;
-    if (group == null){
+    if (role == null){
       return rezult;
     }
     try (Connection con = DbUtil.getConnectionFromPool())
     {
-      PreparedStatement stmnt = con.prepareStatement(INSETR_group_SQL);
-      stmnt.setString(1,group.getName());
-      stmnt.setString(2,group.getDescription());
+      PreparedStatement stmnt = con.prepareStatement(INSETR_role_SQL);
+      stmnt.setString(1,role.getName());
+      stmnt.setString(2,role.getDescription());
       if (stmnt.executeUpdate() == 1){
         rezult = true;
       }
@@ -43,12 +43,13 @@ public class GroupDAO implements DAO<Group>
       e.printStackTrace();
     }
     return rezult;
+
   }
 
   @Override
-  public Group read(int id)
+  public Role read(int id)
   {
-    Group group = null;
+    Role role = null;
     try (Connection con = DbUtil.getConnectionFromPool())
     {
       PreparedStatement stmnt = con.prepareStatement(SELECT_group_SQL);
@@ -58,53 +59,53 @@ public class GroupDAO implements DAO<Group>
         int uid = set.getInt("id");
         String name = set.getString("name");
         String description = set.getString("description");
-        group = new Group(uid,name,description);
+        role = new Role(uid,name,description);
       }
     }
     catch (SQLException e)
     {
       e.printStackTrace();
     }
-    return group;
+    return role;
   }
 
   @Override
-  public List<Group> read()
+  public List<Role> read()
   {
-    List<Group> groups = new ArrayList<>();
-    Group group = null;
+    List<Role> roles = new ArrayList<>();
+    Role role = null;
     try (Connection con = DbUtil.getConnectionFromPool())
     {
-      PreparedStatement statement = con.prepareStatement(SELECT_all_group_SQL);
+      PreparedStatement statement = con.prepareStatement(SELECT_all_role_SQL);
       ResultSet set = statement.executeQuery();
       while (set.next()){
         int uid = set.getInt("id");
         String name = set.getString("name");
         String description = set.getString("description");
-        group = new Group(uid,name,description);
-        groups.add(group);
+        role = new Role(uid,name,description);
+        roles.add(role);
       }
     }
     catch (SQLException e)
     {
       e.printStackTrace();
     }
-    return groups;
+    return roles;
   }
 
   @Override
-  public boolean update(Group group)
+  public boolean update(Role role)
   {
     boolean rezult = false;
-    if (group == null){
+    if (role == null){
       return rezult;
     }
     try (Connection con = DbUtil.getConnectionFromPool())
     {
-      PreparedStatement stmnt = con.prepareStatement(UPDATE_group_SQL);
-      stmnt.setString(1,group.getName());
-      stmnt.setString(2,group.getDescription());
-      stmnt.setLong(3,group.getId());
+      PreparedStatement stmnt = con.prepareStatement(UPDATE_role_SQL);
+      stmnt.setString(1,role.getName());
+      stmnt.setString(2,role.getDescription());
+      stmnt.setLong(3,role.getId());
       if (stmnt.executeUpdate() == 1){
         rezult = true;
       }
@@ -123,7 +124,7 @@ public class GroupDAO implements DAO<Group>
 
     try (Connection con = DbUtil.getConnectionFromPool())
     {
-      PreparedStatement stmnt = con.prepareStatement(DELETE_group_SQL);
+      PreparedStatement stmnt = con.prepareStatement(DELETE_role_SQL);
       stmnt.setLong(1,id);
 
       if (stmnt.executeUpdate() == 1){

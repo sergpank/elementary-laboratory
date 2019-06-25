@@ -39,7 +39,7 @@ public class ClientDAO extends DAO<Client>
   public Client create(Client client)
   {
     Client tempClient = readAll(client);
-<<<<<<< HEAD
+
     if (tempClient == null)
     {
       try (Connection con = DbUtil.getConnectionFromPool())
@@ -65,7 +65,7 @@ public class ClientDAO extends DAO<Client>
       }
     }
     return tempClient;
-=======
+
       if (tempClient == null)
       {
         try (Connection con = DbUtil.getConnectionFromPool())
@@ -105,7 +105,7 @@ public class ClientDAO extends DAO<Client>
       pets.add(petDAO.read(set.getLong("id")));
     }
     return pets;
->>>>>>> 57292b7c5d33997b0db60c1f48bcf47743f8b96a
+
   }
   private long saveAddress(Address address, Connection con) throws SQLException
   {
@@ -211,9 +211,7 @@ public class ClientDAO extends DAO<Client>
       String name = resultSet.getString(pos++);
       String surname = resultSet.getString(pos++);
       Date birthDate = new Date(resultSet.getLong(pos++));
-      String phoneNr = resultSet.getString(pos++);
-
-<<<<<<< HEAD
+      String phoneNr = resultSet.getString(pos++)
       long aId = resultSet.getLong(pos++);
       String street = resultSet.getString(pos++);
       String house = resultSet.getString(pos++);
@@ -221,7 +219,7 @@ public class ClientDAO extends DAO<Client>
       long zip = resultSet.getLong(pos);
 
       client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr);
-=======
+
         long aId = resultSet.getLong(pos++);
         String street = resultSet.getString(pos++);
         String house = resultSet.getString(pos++);
@@ -229,7 +227,7 @@ public class ClientDAO extends DAO<Client>
         long zip = resultSet.getLong(pos);
         List<Pet>pets = getPets(con,cId);
         client = new Client(cId, name, surname, new Address(aId, street, house, apartmentNr, zip), birthDate, phoneNr, pets);
->>>>>>> 57292b7c5d33997b0db60c1f48bcf47743f8b96a
+
 
 
       return client;

@@ -12,14 +12,14 @@ insert into user (name, login, password) values
   ('Pavel Pavlov', 'pasha', '1q2w3e'),
   ('Vladimir Vladimirov', 'vova', 'qwe123');
 
-create table group
+create table groups
 (
   id integer primary key,
   name text,
   description text
 );
 
-insert into group (name, description) values
+insert into groups (name, description) values
   ('admin', 'super user'),
   ('user', 'regular user'),
   ('guest', 'limited acces user');
