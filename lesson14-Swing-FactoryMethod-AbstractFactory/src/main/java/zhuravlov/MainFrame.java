@@ -1,17 +1,20 @@
 package zhuravlov;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import panko.db.DbUtil;
+
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.*;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import java.sql.*;
 
 public class MainFrame extends JFrame
 {
   private static final Logger log = LogManager.getLogger(MainFrame.class);
+  private JPanel tableListPanel;
+  private JPanel dataTable;
 
   public void initUI()
   {
@@ -20,8 +23,8 @@ public class MainFrame extends JFrame
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     JPanel connectionPanel = createConnectionPanel();
-    JPanel tableListPanel = createTableListPanel();
-    JPanel dataTable = createMockTablePanel();
+    tableListPanel = createTableListPanel();
+    dataTable = createMockTablePanel();
 
     this.add(connectionPanel, BorderLayout.NORTH);
     this.add(tableListPanel, BorderLayout.WEST);
@@ -53,11 +56,77 @@ public class MainFrame extends JFrame
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        JOptionPane.showMessageDialog(panel, "HELLO !");
+        //String dbPath = pathField.getText();
+        String dbPath = "D:\\elementary-laboratory\\lesson12\\resources\\DB.sqlite3";
+        log.info("Sqlite DB path : {}", dbPath);
+
+        DbUtil.init(dbPath);
+        JOptionPane.showMessageDialog(panel, "Database is loaded successfully");
+
+        try (Connection con = DbUtil.getConnection())
+        {
+          tableListPanel.removeAll();
+          tableListPanel.setLayout(new BoxLayout(tableListPanel, BoxLayout.Y_AXIS));
+
+          Statement stmt = con.createStatement();
+          ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
+
+          while (rs.next())
+          {
+            String tableName = rs.getString(1);
+            System.out.println(tableName);
+
+            JButton tableButton = new JButton(tableName);
+            tableListPanel.add(tableButton);
+
+            tableButton.addActionListener(new ActionListener()
+            {
+              @Override
+              public void actionPerformed(ActionEvent e)
+              {
+                String query = "PRAGMA table_info(" + tableName + ");";
+                Connection con = DbUtil.getConnection();
+
+                try (PreparedStatement preparedStatement = con.prepareStatement(query))
+                {
+                  ResultSet resultSet = preparedStatement.executeQuery();
+                  ResultSetMetaData rsmd = resultSet.getMetaData();
+                  int NumOfCol = 0;
+                  NumOfCol = rsmd.getColumnCount();
+
+                  String[] colums = new String[NumOfCol];
+                  while (resultSet.next())
+                  {
+                    int i = 0;
+                    String columnName = resultSet.getString(2);
+                    colums[i] = columnName;
+                  }
+                }
+                catch (SQLException ex)
+                {
+                  ex.printStackTrace();
+                }
+              }
+
+            });
+          }
+          tableListPanel.revalidate();
+        }
+        catch (SQLException ex)
+        {
+          log.error("{} : {}", ex.getClass(), ex.getMessage(), ex);
+          ex.printStackTrace();
+        }
       }
     });
 
     return panel;
+  }
+
+
+  private class OpenButtonListener implements ActionListener
+  {
+
   }
 
   private JPanel createTableListPanel()
@@ -80,7 +149,7 @@ public class MainFrame extends JFrame
 
   private JPanel createMockTablePanel()
   {
-    String[] columnNames = new String[] {"Column A", "Column B", "Column C"};
+    String[] columnNames = new String[]{"Column A", "Column B", "Column C"};
     String[][] rowData = new String[][]{
         {"cell 1", "cell 2", "cell 3"},
         {"cell 1", "cell 2", "cell 3"},
