@@ -3,6 +3,10 @@ package panko.concurrency;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
 public class VolatileCounter
 {
   private static final Logger log = LogManager.getLogger(VolatileCounter.class);
@@ -10,13 +14,13 @@ public class VolatileCounter
 
   Object lock = new Object();
 
-  public static void main(String[] args)
+  public static void main(String[] args) throws InterruptedException
   {
     new VolatileCounter().test();
 
   }
 
-  private void test()
+  private void test() throws InterruptedException
   {
     Thread[] pool = new Thread[10];
 
@@ -39,21 +43,30 @@ public class VolatileCounter
       }
     }
 
-    log.info("cnt = {}", cnt);
+//      ExecutorService pool = Executors.newFixedThreadPool(10);
+//      for (int i = 0; i < 10; i++)
+//      {
+//        pool.submit(new CntThread());
+//      }
+//
+//      pool.shutdown();
+//      pool.awaitTermination(1, TimeUnit.SECONDS);
+
+      log.info("cnt = {}", cnt);
   }
 
   class CntThread extends Thread
   {
+    @Override
     public void run()
     {
       log.info("start");
       for (int i = 0; i < 1000_000; i++)
       {
-//        synchronized(lock)
-//        {
-//          cnt = cnt + 1;
-//        }
-        cnt++;
+        synchronized (lock)
+        {
+          cnt++;
+        }
       }
       log.info("end : {}", cnt);
     }

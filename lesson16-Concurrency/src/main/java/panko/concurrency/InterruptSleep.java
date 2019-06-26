@@ -1,54 +1,38 @@
 package panko.concurrency;
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.concurrent.TimeUnit;
+
 public class InterruptSleep
 {
-    private static final Logger log = LogManager.getLogger(InterruptSleep.class);
+  private static final Logger log = LogManager.getLogger(InterruptSleep.class);
 
-    public static void main(String[] args)
+  public static void main(String[] args) throws InterruptedException
+  {
+    log.info("start");
+    Thread thread = new Thread(new Runnable()
     {
-        final InterruptSleep demo = new InterruptSleep();
-        demo.show();
-    }
-
-    void show()
-    {
-        Thread sleepThread = createSleepThread();
-        sleepThread.start();
-
-        log.info("fast sleep for 3 seconds ...");
-        sleep(TimeUnit.SECONDS, 3);
-        log.info("fast sleep is over");
-
-        sleepThread.interrupt();
-    }
-
-    private Thread createSleepThread()
-    {
-        return new Thread(new Runnable() {
-            @Override public void run()
-            {
-                long duration = 1;
-                log.info("Long Sleep for {} minutes ...", duration);
-                sleep(TimeUnit.MINUTES, duration);
-                log.info("Long Sleep for {} minutes is over!", duration);
-            }
-        });
-    }
-
-    private void sleep(TimeUnit unit, long duration)
-    {
+      @Override
+      public void run()
+      {
         try
         {
-            unit.sleep(duration);
+          log.info("start");
+          TimeUnit.SECONDS.sleep(10);
         }
         catch (InterruptedException e)
         {
-            log.error("Sleep was interrupted!", e);
+          e.printStackTrace();
         }
-    }
+      }
+    });
+
+    thread.start();
+
+    TimeUnit.SECONDS.sleep(3);
+    thread.interrupt();
+    log.info("stop");
+  }
 }
