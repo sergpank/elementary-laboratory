@@ -18,25 +18,6 @@ public class SqliteClient
   public static void main(String[] args)
   {
     log.debug("Starting application ...");
-    try
-    {
-      Class.forName("org.sqlite.JDBC");
-    }
-    catch (ClassNotFoundException e)
-    {
-      e.printStackTrace();
-    }
-
-    Connection connection = null;
-    try
-    {
-      connection = DriverManager.getConnection("jdbc:sqlite:database.db");
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-    String dbpath = "C:\\Users\\roma_velik\\javaElementary\\elementary-laboratory - копия\\lesson14-Swing-FactoryMethod-AbstractFactory\\database.db";
 
     MainFrame mainFrame = new MainFrame();
 
