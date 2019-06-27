@@ -37,7 +37,6 @@ public class MainFrame extends JFrame
     this.add(connectionPanel, BorderLayout.NORTH);
     this.add(tableListPanel, BorderLayout.WEST);
     this.add(dataPanel, BorderLayout.CENTER);
-    log.info("UI is initialized");
   }
 
   private JPanel createConnectionPanel()
@@ -63,11 +62,15 @@ public class MainFrame extends JFrame
           String query = "SELECT * FROM sqlite_master WHERE type='table'";
           PreparedStatement preparedStatement = connection.prepareStatement(query);
           ResultSet resultSet = preparedStatement.executeQuery();
+
+          tables = new ArrayList<>();
           while(resultSet.next())
           {
             tables.add(resultSet.getString("tbl_name"));
           }
-          initUI();
+          tableListPanel.removeAll();
+          tableListPanel.add(createTableListPanel());
+          tableListPanel.revalidate();
         }
         catch (SQLException e)
         {
@@ -98,13 +101,11 @@ public class MainFrame extends JFrame
       }
       return panel;
     }
-    else
-    {
-      panel.add(new Label("NO"));
-      panel.add(new Label("TABLES"));
-      panel.add(new Label("AVAILABLE"));
-    }
-    return panel;
+     panel.add(new Label("NO"));
+     panel.add(new Label("TABLES"));
+     panel.add(new Label("AVAILABLE"));
+
+     return panel;
   }
 
   private JPanel createDataPanel()
