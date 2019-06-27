@@ -1,14 +1,14 @@
-package zhuravlov;
+package rvelikorod.ui;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import panko.db.DbUtil;
-
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
+import javax.swing.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import rvelikorod.db.DbUtil;
 
 public class MainFrame extends JFrame
 {
@@ -56,8 +56,8 @@ public class MainFrame extends JFrame
       @Override
       public void actionPerformed(ActionEvent e)
       {
-        //String dbPath = pathField.getText();
-        String dbPath = "D:\\elementary-laboratory\\lesson12\\resources\\DB.sqlite3";
+        String dbPath = pathField.getText();
+
         log.info("Sqlite DB path : {}", dbPath);
 
         DbUtil.init(dbPath);
@@ -68,46 +68,24 @@ public class MainFrame extends JFrame
           tableListPanel.removeAll();
           tableListPanel.setLayout(new BoxLayout(tableListPanel, BoxLayout.Y_AXIS));
 
-          Statement stmt = con.createStatement();
-          ResultSet rs = stmt.executeQuery("SELECT name FROM sqlite_master WHERE type='table'");
+          PreparedStatement stmt = con.prepareStatement("SELECT name FROM sqlite_master WHERE type='table'");
+          ResultSet rs = stmt.executeQuery();
 
-          while (rs.next())
+          while(rs.next())
           {
             String tableName = rs.getString(1);
             System.out.println(tableName);
-
             JButton tableButton = new JButton(tableName);
             tableListPanel.add(tableButton);
-
             tableButton.addActionListener(new ActionListener()
             {
               @Override
               public void actionPerformed(ActionEvent e)
               {
-                String query = "PRAGMA table_info(" + tableName + ");";
-                Connection con = DbUtil.getConnection();
-
-                try (PreparedStatement preparedStatement = con.prepareStatement(query))
-                {
-                  ResultSet resultSet = preparedStatement.executeQuery();
-                  ResultSetMetaData rsmd = resultSet.getMetaData();
-                  int NumOfCol = 0;
-                  NumOfCol = rsmd.getColumnCount();
-
-                  String[] colums = new String[NumOfCol];
-                  while (resultSet.next())
-                  {
-                    int i = 0;
-                    String columnName = resultSet.getString(2);
-                    colums[i] = columnName;
-                  }
-                }
-                catch (SQLException ex)
-                {
-                  ex.printStackTrace();
-                }
+                JOptionPane.showMessageDialog(MainFrame.this, "Table = " + tableName);
+                updateTablePanel(getColumnNames(dbPath, tableName), getTableInfo(dbPath, tableName, getColumnNames(dbPath, tableName)));
+                log.info(tableName, "is opened");
               }
-
             });
           }
           tableListPanel.revalidate();
@@ -123,10 +101,92 @@ public class MainFrame extends JFrame
     return panel;
   }
 
-
-  private class OpenButtonListener implements ActionListener
+  private String[] getColumnNames(String path, String tableName)
   {
+    String[] columnsArray = null;
+    DbUtil.init(path);
+    try
+    {
+      PreparedStatement ps = DbUtil.getConnection().prepareStatement("PRAGMA table_info (" + tableName + ")");
+      ResultSet columnNames = ps.executeQuery();
+      int length = getArrayLength(columnNames);
+      int i = 0;
+      while (columnNames.next())
+      {
+        length++;
+      }
+      columnsArray = new String[length];
+      columnNames = ps.executeQuery();
+      while(columnNames.next())
+      {
+        columnsArray[i]=columnNames.getString("name");
+        i++;
+      }
+    }
+    catch (SQLException ex)
+    {
+      log.error("{} : {}", ex.getClass(), ex.getMessage(), ex);
+      ex.printStackTrace();
+    }
+    return columnsArray;
+  }
 
+  private String[][] getTableInfo(String path, String tableName, String[] columnNames)
+  {
+    String[][]data = null;
+    DbUtil.init(path);
+    try
+    {
+      PreparedStatement stmt = DbUtil.getConnection().prepareStatement("SELECT * FROM " + tableName);
+      ResultSet tablesInfo = stmt.executeQuery();
+      int length = getArrayLength(tablesInfo);
+      data = new String[length][columnNames.length];
+      tablesInfo = stmt.executeQuery();
+      int i = 0;
+      while (tablesInfo.next())
+      {
+        for(int j = 0; j<columnNames.length; j++)
+        {
+          data [i][j] = tablesInfo.getString(columnNames[j]);
+        }
+        i++;
+      }
+    }
+    catch (SQLException ex)
+    {
+      log.error("{} : {}", ex.getClass(), ex.getMessage(), ex);
+      ex.printStackTrace();
+    }
+    return data;
+
+  }
+
+  private int getArrayLength(ResultSet tablesInfo)
+  {
+    int length = 0;
+    while (true)
+    {
+      try
+      {
+        if (!tablesInfo.next()) break;
+      }
+      catch (SQLException e)
+      {
+        e.printStackTrace();
+      }
+      length++;
+    }
+    return length;
+  }
+
+
+  private void updateTablePanel(String[] columnNames, String [][] rowData)
+  {
+    JTable table = new JTable(rowData, columnNames);
+    dataTable.removeAll();
+    dataTable.setLayout(new BorderLayout(10, 10));
+    dataTable.add(new JScrollPane(table), BorderLayout.CENTER);
+    dataTable.revalidate();
   }
 
   private JPanel createTableListPanel()
@@ -149,7 +209,7 @@ public class MainFrame extends JFrame
 
   private JPanel createMockTablePanel()
   {
-    String[] columnNames = new String[]{"Column A", "Column B", "Column C"};
+    String[] columnNames = new String[] {"Column A", "Column B", "Column C"};
     String[][] rowData = new String[][]{
         {"cell 1", "cell 2", "cell 3"},
         {"cell 1", "cell 2", "cell 3"},
@@ -170,4 +230,5 @@ public class MainFrame extends JFrame
 
     return panel;
   }
+
 }
