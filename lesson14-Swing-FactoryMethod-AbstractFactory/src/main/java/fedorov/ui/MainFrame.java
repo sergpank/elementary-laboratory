@@ -21,6 +21,9 @@ public class MainFrame extends JFrame
   JPanel tableListPanel;
   JPanel dataPanel;
   ArrayList<String> tables = new ArrayList<>();
+  String[][] rowData;
+  String[] columnNames;
+  private static Connection connection;
 
   public void initUI()
   {
@@ -58,7 +61,7 @@ public class MainFrame extends JFrame
         try
         {
           ConnectionDB connectionDB = new ConnectionDB();
-          Connection connection = connectionDB.getConnection(textField.getText());
+          connection = connectionDB.getConnection(textField.getText());
           String query = "SELECT * FROM sqlite_master WHERE type='table'";
           PreparedStatement preparedStatement = connection.prepareStatement(query);
           ResultSet resultSet = preparedStatement.executeQuery();
@@ -95,8 +98,30 @@ public class MainFrame extends JFrame
         if(!(temp.equals("sqlite_sequence")))
         {
           JButton button = new JButton(temp);
+          button.addActionListener(new ActionListener()
+          {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+              try
+              {
+                String query = "PRAGMA table_info(" + e.getActionCommand() + ")";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+              while(resultSet.next())
+              {
+                //columnNames[0] = resultSet.getString("name");
+                // сделать заполнение таблицы
+              }
+              }
+            catch (SQLException ex)
+            {
+              ex.printStackTrace();
+            }
+            }
+          });
           panel.add(button);
-          System.out.println(temp);
         }
       }
       return panel;
@@ -111,6 +136,14 @@ public class MainFrame extends JFrame
   private JPanel createDataPanel()
   {
     JPanel panel = new JPanel();
+    panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    panel.setBorder(BorderFactory.createLineBorder(Color.black));
+    if(! (columnNames == null))
+    {
+      JTable table = new JTable(rowData, columnNames);
+      panel.add(new JScrollPane(table));
+      return panel;
+    }
     return panel;
   }
 }
