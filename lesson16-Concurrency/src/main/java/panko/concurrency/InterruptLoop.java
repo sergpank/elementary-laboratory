@@ -1,39 +1,35 @@
 package panko.concurrency;
 
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.concurrent.TimeUnit;
+
 public class InterruptLoop
 {
-    private static final Logger log = LogManager.getLogger(InterruptLoop.class);
+  private static final Logger log = LogManager.getLogger(InterruptLoop.class);
 
-    public static void main(String[] args)
+  public static void main(String[] args) throws InterruptedException
+  {
+    log.info("start");
+    Thread thread = new Thread(new Runnable()
     {
-        final InterruptLoop interruptLoop = new InterruptLoop();
+      @Override
+      public void run()
+      {
+        int cnt = 0;
+        while( ! Thread.currentThread().interrupted())
+        {
+          log.info(cnt++);
+        }
+        log.info(Thread.currentThread().isInterrupted());
+      }
+    });
 
-        Thread thread = interruptLoop.createThread();
-        thread.start();
+    thread.start();
 
-        log.debug("Interrupting thread ...");
-        thread.interrupt();
-        log.debug("Thread is interrupted : {}", thread.isInterrupted());
-        log.debug("Thread is interrupted : {}", thread.isInterrupted());
-        log.debug("Thread is interrupted : {}", thread.isInterrupted());
-        log.debug("Thread is interrupted : {}", thread.isInterrupted());
-        log.debug("Thread is interrupted : {}", thread.isInterrupted());
-    }
-
-    Thread createThread()
-    {
-        return new Thread(new Runnable() {
-            @Override public void run()
-            {
-                for (int i = 0; i < 1000; i++)
-                {
-                    log.debug(i);
-                }
-            }
-        });
-    }
+    TimeUnit.SECONDS.sleep(3);
+    thread.stop();
+    log.info("stop");
+  }
 }

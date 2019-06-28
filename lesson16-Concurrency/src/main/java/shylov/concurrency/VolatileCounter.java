@@ -1,11 +1,7 @@
-package panko.concurrency;
+package shylov.concurrency;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class VolatileCounter
 {
@@ -14,13 +10,13 @@ public class VolatileCounter
 
   Object lock = new Object();
 
-  public static void main(String[] args) throws InterruptedException
+  public static void main(String[] args)
   {
     new VolatileCounter().test();
 
   }
 
-  private void test() throws InterruptedException
+  private void test()
   {
     Thread[] pool = new Thread[10];
 
@@ -43,30 +39,21 @@ public class VolatileCounter
       }
     }
 
-//      ExecutorService pool = Executors.newFixedThreadPool(10);
-//      for (int i = 0; i < 10; i++)
-//      {
-//        pool.submit(new CntThread());
-//      }
-//
-//      pool.shutdown();
-//      pool.awaitTermination(1, TimeUnit.SECONDS);
-
-      log.info("cnt = {}", cnt);
+    log.info("cnt = {}", cnt);
   }
 
   class CntThread extends Thread
   {
-    @Override
     public void run()
     {
       log.info("start");
       for (int i = 0; i < 1000_000; i++)
       {
-        synchronized (lock)
-        {
-          cnt++;
-        }
+//        synchronized(lock)
+//        {
+//          cnt = cnt + 1;
+//        }
+        cnt++;
       }
       log.info("end : {}", cnt);
     }
