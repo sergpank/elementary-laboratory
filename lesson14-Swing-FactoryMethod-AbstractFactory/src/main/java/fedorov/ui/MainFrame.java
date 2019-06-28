@@ -8,11 +8,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainFrame extends JFrame
 {
@@ -21,8 +20,9 @@ public class MainFrame extends JFrame
   JPanel tableListPanel;
   JPanel dataPanel;
   ArrayList<String> tables = new ArrayList<>();
-  String[][] rowData;
-  String[] columnNames;
+  ArrayList<String> columnNames = new ArrayList<>();
+  Map<String, ArrayList<String>> data = new HashMap<>();
+
   private static Connection connection;
 
   public void initUI()
@@ -65,7 +65,6 @@ public class MainFrame extends JFrame
           String query = "SELECT * FROM sqlite_master WHERE type='table'";
           PreparedStatement preparedStatement = connection.prepareStatement(query);
           ResultSet resultSet = preparedStatement.executeQuery();
-
           tables = new ArrayList<>();
           while(resultSet.next())
           {
@@ -90,8 +89,7 @@ public class MainFrame extends JFrame
     JPanel panel = new JPanel();
     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
     panel.setBorder(BorderFactory.createLineBorder(Color.black));
-    if( ! tables.isEmpty())
-    {
+
       for(int i = 0; i < tables.size(); i++)
       {
         String temp = tables.get(i);
@@ -105,15 +103,28 @@ public class MainFrame extends JFrame
             {
               try
               {
+                data.clear();
+                columnNames.clear();
                 String query = "PRAGMA table_info(" + e.getActionCommand() + ")";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 ResultSet resultSet = preparedStatement.executeQuery();
-
               while(resultSet.next())
               {
-                //columnNames[0] = resultSet.getString("name");
-                // сделать заполнение таблицы
+                String clmName = resultSet.getString("name");
+                columnNames.add(clmName);
+                String query1 = "SELECT " + clmName + " FROM " + e.getActionCommand();
+                PreparedStatement preparedStatement1 = connection.prepareStatement(query1);
+                ResultSet resultSet1 = preparedStatement1.executeQuery();
+                ArrayList<String> temp = new ArrayList<>();
+                while(resultSet1.next())
+                {
+                 temp.add(resultSet1.getString(clmName));
+                }
+                data.put(clmName,temp);
               }
+                dataPanel.removeAll();
+                dataPanel.add(createDataPanel());
+                dataPanel.revalidate();
               }
             catch (SQLException ex)
             {
@@ -124,13 +135,7 @@ public class MainFrame extends JFrame
           panel.add(button);
         }
       }
-      return panel;
-    }
-     panel.add(new Label("NO"));
-     panel.add(new Label("TABLES"));
-     panel.add(new Label("AVAILABLE"));
-
-     return panel;
+    return panel;
   }
 
   private JPanel createDataPanel()
@@ -138,10 +143,11 @@ public class MainFrame extends JFrame
     JPanel panel = new JPanel();
     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
     panel.setBorder(BorderFactory.createLineBorder(Color.black));
-    if(! (columnNames == null))
+    if( ! columnNames.isEmpty())
     {
-      JTable table = new JTable(rowData, columnNames);
+      JTable table = new JTable(data.size(), columnNames.size());
       panel.add(new JScrollPane(table));
+      // заполнение сделать
       return panel;
     }
     return panel;
