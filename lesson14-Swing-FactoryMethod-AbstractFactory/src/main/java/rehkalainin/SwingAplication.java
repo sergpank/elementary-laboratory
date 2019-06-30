@@ -1,8 +1,10 @@
 package rehkalainin;
 
+import rehkalainin.ui.MainFrame;
+
 import javax.swing.*;
 
-public class SwingDemo
+public class SwingAplication
 {
   public static void main(String[] args)
   {
