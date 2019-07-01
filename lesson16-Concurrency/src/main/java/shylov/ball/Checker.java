@@ -15,7 +15,7 @@ public class Checker
     this.balls = balls;
   }
 
-  public synchronized boolean check(Ball checkBall)
+  public boolean check(Ball checkBall)
   {
     boolean rez = false;
     if (checkBoarder(checkBall))
@@ -25,54 +25,69 @@ public class Checker
     return rez;
   }
 
-  private boolean checkContact(Ball checkBall)
+  private synchronized boolean checkContact(Ball checkBall)
   {
     boolean rez = true;
     for (int i = 0; i < balls.size(); i++)
     {
       if (!checkBall.equals(balls.get(i)))
       {
-
         int newX = checkBall.getX();
         int newY = checkBall.getY();
         int speed = checkBall.getSpeed();
         int diametr = checkBall.getDiametr();
-        switch (checkBall.getHeading()){
-          case NORTH:{
+        switch (checkBall.getHeading())
+        {
+          case NORTH:
+          {
             newY -= speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case SOUTH:{
+          }
+          case SOUTH:
+          {
             newY += speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case WEST:{
+          }
+          case WEST:
+          {
             newX -= speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case EAST:{
+          }
+          case EAST:
+          {
             newX += speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case NW:{
+          }
+          case NW:
+          {
             newY -= speed;
             newX -= speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case NE:{
+          }
+          case NE:
+          {
             newY -= speed;
             newX += speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case SE:{
+          }
+          case SE:
+          {
             newY += speed;
             newX += speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
-          }case SW:{
+          }
+          case SW:
+          {
             newY += speed;
             newX -= speed;
-            rez = contact(newX,newY,diametr,balls.get(i));
+            rez = contact(newX, newY, diametr, balls.get(i));
             break;
           }
         }
@@ -81,14 +96,20 @@ public class Checker
     return rez;
   }
 
-  private boolean contact(int x1, int y1, int r1,Ball ball)
+  private boolean contact(int x1, int y1, int r1, Ball ball)
   {
-    int x2 = ball.getX();
-    int y2 = ball.getY();
-    int r2 = ball.getDiametr();
+    r1 /= 2;
+    x1 = x1 + r1;
+    y1 = y1 + r1;
+    int r2 = ball.getDiametr() / 2;
+    int x2 = ball.getX() + r2;
+    int y2 = ball.getY() + r2;
+
     boolean rez = true;
-    double gep = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-    if (gep <= (r1/2 + r2/2)){
+
+    double gep = Math.sqrt(Math.pow((x1 - x2), 2) + Math.pow((y1 - y2), 2));
+    if (gep <= (r1 + r2))
+    {
       rez = false;
     }
     return rez;

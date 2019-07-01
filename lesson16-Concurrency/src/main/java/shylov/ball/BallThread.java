@@ -3,6 +3,7 @@ package shylov.ball;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -15,7 +16,7 @@ public class BallThread extends Thread
   private BallPanel ballPanel;
 
 
-  public BallThread(BallPanel ballPanel,Checker checker,Ball ball)
+  public BallThread(BallPanel ballPanel, Checker checker, Ball ball)
   {
     this.ball = ball;
     this.ballPanel = ballPanel;
@@ -25,29 +26,33 @@ public class BallThread extends Thread
   @Override
   public void run()
   {
-    while(true)
+    while (true)
     {
-      if (checker.check(ball)){
+      if (checker.check(ball))
+      {
         ball.move();
         ballPanel.repaint();
-      }else {
-        if (ball.getHeading().getNumeric() < Direction.values().length - 1){
-          ball.setHeading(Direction.values()[ball.getHeading().getNumeric()+1]);
-        }else {
-          ball.setHeading(Direction.values()[0]);
+      }
+      else
+      {
+        Random random = new Random(new Date().getTime());
+        Direction direction = ball.getHeading();
+        while (direction == ball.getHeading())
+        {
+          direction = Direction.values()[random.nextInt(Direction.values().length)];
         }
+        ball.setHeading(direction);
       }
       sleep();
     }
   }
 
 
-
   private void sleep()
   {
     try
     {
-      TimeUnit.MILLISECONDS.sleep(4);
+      TimeUnit.MILLISECONDS.sleep(3);
     }
     catch (InterruptedException e)
     {

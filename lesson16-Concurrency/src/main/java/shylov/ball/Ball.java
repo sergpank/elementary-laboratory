@@ -1,5 +1,7 @@
 package shylov.ball;
 
+import java.awt.*;
+
 public class Ball
 {
   private int x;
@@ -8,24 +10,67 @@ public class Ball
   private int speed;
   private Direction heading;
 
-  public Ball(int x, int y, int diametr, int speed, Direction heading)
+  public Color getColor()
+  {
+    return color;
+  }
+
+  private Color color;
+
+  public Ball(int x, int y, int diametr, int speed, Direction heading, Color color)
   {
     this.x = x;
     this.y = y;
     this.diametr = diametr;
     this.speed = speed;
     this.heading = heading;
+    this.color = color;
   }
-  public void move(){
-    switch (heading){
-      case NORTH:{moveNorth();break;}
-      case SOUTH:{moveSouth();break;}
-      case WEST:{moveWest();break;}
-      case EAST:{moveEast();break;}
-      case NW:{moveNW();break;}
-      case NE:{moveNE();break;}
-      case SE:{moveSE();break;}
-      case SW:{moveSW();break;}
+
+  public synchronized void move()
+  {
+    switch (heading)
+    {
+      case NORTH:
+      {
+        moveNorth();
+        break;
+      }
+      case SOUTH:
+      {
+        moveSouth();
+        break;
+      }
+      case WEST:
+      {
+        moveWest();
+        break;
+      }
+      case EAST:
+      {
+        moveEast();
+        break;
+      }
+      case NW:
+      {
+        moveNW();
+        break;
+      }
+      case NE:
+      {
+        moveNE();
+        break;
+      }
+      case SE:
+      {
+        moveSE();
+        break;
+      }
+      case SW:
+      {
+        moveSW();
+        break;
+      }
     }
   }
 
@@ -157,5 +202,13 @@ public class Ball
     result = 31 * result + speed;
     result = 31 * result + (heading != null ? heading.hashCode() : 0);
     return result;
+  }
+
+  @Override
+  public String toString()
+  {
+    return "Ball{" +
+        "color=" + color.toString() +
+        '}';
   }
 }

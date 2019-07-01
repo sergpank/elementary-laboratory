@@ -9,7 +9,7 @@ public class BallPanel extends JPanel
 {
   private List<Ball> balls;
 
-  public BallPanel( List<Ball> balls)
+  public BallPanel(List<Ball> balls)
   {
     this.balls = balls;
 
@@ -19,9 +19,10 @@ public class BallPanel extends JPanel
   protected void paintComponent(Graphics g)
   {
     super.paintComponent(g);
-    for (Ball ball:balls)
+    for (Ball ball : balls)
     {
-      g.fillOval(ball.getX(),ball.getY(),ball.getDiametr(),ball.getDiametr());
+      g.setColor(ball.getColor());
+      g.fillOval(ball.getX(), ball.getY(), ball.getDiametr(), ball.getDiametr());
     }
 
   }
