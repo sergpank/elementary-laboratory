@@ -3,17 +3,23 @@ package shylov.ball;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class BallThread extends Thread
 {
   private static final Logger log = LogManager.getLogger(BallThread.class);
-  private BallPanel panel;
-  private int dx = 1;
+  private Ball ball;
+  private Checker checker;
+  private BallPanel ballPanel;
 
-  public BallThread(BallPanel panel)
+
+  public BallThread(BallPanel ballPanel,Checker checker,Ball ball)
   {
-    this.panel = panel;
+    this.ball = ball;
+    this.ballPanel = ballPanel;
+    this.checker = checker;
   }
 
   @Override
@@ -21,35 +27,27 @@ public class BallThread extends Thread
   {
     while(true)
     {
-      checkDx();
-
-      log.info("x = {} ; dx = {}", panel.getX(), dx);
-
-      panel.setCordX(panel.getCordX() + dx);
-      panel.repaint();
-
-      sleep();git 
+      if (checker.check(ball)){
+        ball.move();
+        ballPanel.repaint();
+      }else {
+        if (ball.getHeading().getNumeric() < Direction.values().length - 1){
+          ball.setHeading(Direction.values()[ball.getHeading().getNumeric()+1]);
+        }else {
+          ball.setHeading(Direction.values()[0]);
+        }
+      }
+      sleep();
     }
   }
 
-  private void checkDx()
-  {
-    System.out.println(panel.getSize());
-    if (panel.getCordX() >= (panel.getSize().getWidth() - panel.getBALL_SIZE()))
-    {
-      dx = -1;
-    }
-    else if (panel.getCordX() <= 0)
-    {
-      dx = 1;
-    }
-  }
+
 
   private void sleep()
   {
     try
     {
-      TimeUnit.MILLISECONDS.sleep(1);
+      TimeUnit.MILLISECONDS.sleep(4);
     }
     catch (InterruptedException e)
     {

@@ -10,18 +10,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainFrame extends JFrame
 {
-  private static final Logger log = LogManager.getLogger(rehkalainin.MainFrame.class);
+  private static final Logger log = LogManager.getLogger(MainFrame.class);
   JPanel connectionPanel;
   JPanel tableListPanel;
   JPanel dataPanel;
   ArrayList<String> tables = new ArrayList<>();
   ArrayList<String> columnNames = new ArrayList<>();
-  Map<String, ArrayList<String>> data = new HashMap<>();
+  ArrayList<String[]> data = new ArrayList<>();
 
   private static Connection connection;
 
@@ -90,24 +88,24 @@ public class MainFrame extends JFrame
     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
     panel.setBorder(BorderFactory.createLineBorder(Color.black));
 
-      for(int i = 0; i < tables.size(); i++)
+    for(int i = 0; i < tables.size(); i++)
+    {
+      String temp = tables.get(i);
+      if(!(temp.equals("sqlite_sequence")))
       {
-        String temp = tables.get(i);
-        if(!(temp.equals("sqlite_sequence")))
+        JButton button = new JButton(temp);
+        button.addActionListener(new ActionListener()
         {
-          JButton button = new JButton(temp);
-          button.addActionListener(new ActionListener()
+          @Override
+          public void actionPerformed(ActionEvent e)
           {
-            @Override
-            public void actionPerformed(ActionEvent e)
+            try
             {
-              try
-              {
-                data.clear();
-                columnNames.clear();
-                String query = "PRAGMA table_info(" + e.getActionCommand() + ")";
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
-                ResultSet resultSet = preparedStatement.executeQuery();
+              data.clear();
+              columnNames.clear();
+              String query = "PRAGMA table_info(" + e.getActionCommand() + ")";
+              PreparedStatement preparedStatement = connection.prepareStatement(query);
+              ResultSet resultSet = preparedStatement.executeQuery();
               while(resultSet.next())
               {
                 String clmName = resultSet.getString("name");
@@ -118,23 +116,23 @@ public class MainFrame extends JFrame
                 ArrayList<String> temp = new ArrayList<>();
                 while(resultSet1.next())
                 {
-                 temp.add(resultSet1.getString(clmName));
+                  temp.add(resultSet1.getString(clmName));
                 }
-                data.put(clmName,temp);
+                data.add(temp.toArray(new String[temp.size()]));
               }
-                dataPanel.removeAll();
-                dataPanel.add(createDataPanel());
-                dataPanel.revalidate();
-              }
+              dataPanel.removeAll();
+              dataPanel.add(createDataPanel());
+              dataPanel.revalidate();
+            }
             catch (SQLException ex)
             {
               ex.printStackTrace();
             }
-            }
-          });
-          panel.add(button);
-        }
+          }
+        });
+        panel.add(button);
       }
+    }
     return panel;
   }
 
@@ -145,9 +143,17 @@ public class MainFrame extends JFrame
     panel.setBorder(BorderFactory.createLineBorder(Color.black));
     if( ! columnNames.isEmpty())
     {
-      JTable table = new JTable(data.size(), columnNames.size());
+      String[] testClmn = columnNames.toArray(new String[columnNames.size()]);
+      int a = data.size();
+      int b = data.get(0).length;
+      String[][] testData = new String[b][a];
+      for(int i = 0; i < b; i++)
+        for(int j = 0; j < a; j++)
+        {
+          testData[i][j] = data.get(j)[i];
+        }
+      JTable table = new JTable(testData, testClmn);
       panel.add(new JScrollPane(table));
-      // заполнение сделать
       return panel;
     }
     return panel;

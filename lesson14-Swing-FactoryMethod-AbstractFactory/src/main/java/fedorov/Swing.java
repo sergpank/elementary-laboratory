@@ -11,12 +11,12 @@ public class Swing
     MainFrame mainFrame = new MainFrame();
 
     SwingUtilities.invokeLater(new Runnable()
+  {
+    @Override
+    public void run()
     {
-      @Override
-      public void run()
-      {
-        mainFrame.initUI();
-      }
-    });
+      mainFrame.initUI();
+    }
+  });
   }
 }
