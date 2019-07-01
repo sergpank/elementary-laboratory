@@ -8,19 +8,26 @@ public class Checker
   private int hight;
   private List<Ball> balls;
 
-  public boolean check(Ball checkBall)
+  public Checker(int width, int hight, List<Ball> balls)
+  {
+    this.width = width;
+    this.hight = hight;
+    this.balls = balls;
+  }
+
+  public synchronized boolean check(Ball checkBall)
   {
     boolean rez = false;
     if (checkBoarder(checkBall))
     {
-      rez = !checkContact(checkBall);
+      rez = checkContact(checkBall);
     }
     return rez;
   }
 
   private boolean checkContact(Ball checkBall)
   {
-    boolean rez = false;
+    boolean rez = true;
     for (int i = 0; i < balls.size(); i++)
     {
       if (!checkBall.equals(balls.get(i)))
@@ -32,7 +39,41 @@ public class Checker
         int diametr = checkBall.getDiametr();
         switch (checkBall.getHeading()){
           case NORTH:{
-            
+            newY -= speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case SOUTH:{
+            newY += speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case WEST:{
+            newX -= speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case EAST:{
+            newX += speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case NW:{
+            newY -= speed;
+            newX -= speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case NE:{
+            newY -= speed;
+            newX += speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case SE:{
+            newY += speed;
+            newX += speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
+          }case SW:{
+            newY += speed;
+            newX -= speed;
+            rez = contact(newX,newY,diametr,balls.get(i));
+            break;
           }
         }
       }
@@ -45,10 +86,10 @@ public class Checker
     int x2 = ball.getX();
     int y2 = ball.getY();
     int r2 = ball.getDiametr();
-    boolean rez = false;
+    boolean rez = true;
     double gep = Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     if (gep <= (r1/2 + r2/2)){
-      rez = true;
+      rez = false;
     }
     return rez;
 
@@ -69,22 +110,25 @@ public class Checker
         {
           rez = true;
         }
+        break;
       }
       case SOUTH:
       {
         newY += speed;
-        if (newY < hight - checkBall.getDiametr())
+        if (newY <= hight - checkBall.getDiametr())
         {
           rez = true;
         }
+        break;
       }
       case EAST:
       {
         newX += speed;
-        if (newX < width - checkBall.getDiametr())
+        if (newX <= width - checkBall.getDiametr())
         {
           rez = true;
         }
+        break;
       }
       case WEST:
       {
@@ -93,24 +137,27 @@ public class Checker
         {
           rez = true;
         }
+        break;
       }
       case NE:
       {
         newX += speed;
         newY -= speed;
-        if (newY >= 0 && newX < width - checkBall.getDiametr())
+        if (newY >= 0 && newX <= width - checkBall.getDiametr())
         {
           rez = true;
         }
+        break;
       }
       case SE:
       {
         newY += speed;
         newX += speed;
-        if (newY < hight - checkBall.getDiametr() && newX < width - checkBall.getDiametr())
+        if (newY <= hight - checkBall.getDiametr() && newX <= width - checkBall.getDiametr())
         {
           rez = true;
         }
+        break;
       }
       case NW:
       {
@@ -120,15 +167,17 @@ public class Checker
         {
           rez = true;
         }
+        break;
       }
       case SW:
       {
         newX -= speed;
         newY += speed;
-        if (newX >= 0 && newY < hight - checkBall.getDiametr())
+        if (newX >= 0 && newY <= hight - checkBall.getDiametr())
         {
           rez = true;
         }
+        break;
       }
     }
     return rez;
