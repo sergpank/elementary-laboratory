@@ -8,12 +8,12 @@ import java.util.concurrent.TimeUnit;
 public class BallThread extends Thread
 {
   private static final Logger log = LogManager.getLogger(BallThread.class);
-  private BallPanel panel;
+  private Ball ball;
   private int dx = 1;
 
-  public BallThread(BallPanel panel)
+  public BallThread(Ball ball)
   {
-    this.panel = panel;
+    this.ball = ball;
   }
 
   @Override
@@ -28,7 +28,7 @@ public class BallThread extends Thread
       panel.setCordX(panel.getCordX() + dx);
       panel.repaint();
 
-      sleep();git 
+      sleep();
     }
   }
 

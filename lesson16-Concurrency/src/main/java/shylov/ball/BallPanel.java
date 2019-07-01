@@ -22,6 +22,7 @@ public class BallPanel extends JPanel
   {
     super.paintComponent(g);
     ((Graphics2D) g).setPaint(Color.RED);
+
     g.fillOval(cordX, cordY, BALL_SIZE, BALL_SIZE);
   }
 
