@@ -1,26 +1,23 @@
 package fedorov;
 
+
 import javax.swing.*;
-import java.awt.*;
 
-public class App extends JFrame
+public class App
 {
-  public App()
-  {
-    setTitle("Шарики");
-    setSize(600,400);
-    setVisible(true);
-    setDefaultCloseOperation(EXIT_ON_CLOSE);
-  }
-
-  public void paint(Graphics g)
-  {
-    g.setColor(Color.RED);
-    g.fillOval(10,40,100,100);
-  }
-
   public static void main(String[] args)
   {
-    App app = new App();
+    // мы сейчас рисуем ball и передаем его потоку. нужно что-бы было графическое поле в которое эти шарики добавляются
+    // что-бы можно было каждый из них передать новому потоку на обработку
+    JFrame frame = new JFrame();
+    Ball ball = new Ball();
+    new BallThread(ball).start();
+
+
+    frame.setTitle("Шарики");
+    frame.setContentPane(ball);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(600, 400);
+    frame.setVisible(true);
   }
 }
