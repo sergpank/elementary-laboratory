@@ -6,31 +6,28 @@ import java.awt.*;
 public class Ball extends JPanel
 {
   public int BALL_SIZE;
-  private static int ballCount = 0;
   private int positionX = 0;
   private int positionY = 0;
   private Color color;
+  private int speed;
 
-  public Ball()
+  public Ball(int x, int y, int speed, int size, Color color)
   {
-    switch(ballCount)
-    {
-      case 0: color = Color.RED; BALL_SIZE = 50;  break;
-      case 1: color = Color.GREEN; BALL_SIZE = 40; break;
-      case 2: color = Color.BLUE; BALL_SIZE = 70; break;
-      case 3: color = Color.YELLOW; BALL_SIZE = 10; break;
-      case 4: color = Color.MAGENTA; BALL_SIZE = 80; break;
-      default: break;
-    }
-    ballCount++;
+    this.BALL_SIZE = size;
+    this.positionX = x;
+    this.positionY = y;
+    this.color = color;
+    this.speed = speed;
   }
 
-  @Override
-  protected void paintComponent(Graphics g)
+  public int getBALL_SIZE()
   {
-    super.paintComponent(g);
-    ((Graphics2D) g).setPaint(color);
-    g.fillOval(positionX, positionY, BALL_SIZE, BALL_SIZE);
+    return BALL_SIZE;
+  }
+
+  public void setBALL_SIZE(int BALL_SIZE)
+  {
+    this.BALL_SIZE = BALL_SIZE;
   }
 
   public int getPositionX()
@@ -51,5 +48,25 @@ public class Ball extends JPanel
   public void setPositionY(int positionY)
   {
     this.positionY = positionY;
+  }
+
+  public Color getColor()
+  {
+    return color;
+  }
+
+  public void setColor(Color color)
+  {
+    this.color = color;
+  }
+
+  public int getSpeed()
+  {
+    return speed;
+  }
+
+  public void setSpeed(int speed)
+  {
+    this.speed = speed;
   }
 }
