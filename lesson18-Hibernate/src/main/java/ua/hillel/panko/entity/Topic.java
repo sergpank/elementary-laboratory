@@ -1,6 +1,5 @@
 package ua.hillel.panko.entity;
 
-import javafx.geometry.Pos;
 
 import java.util.Date;
 import java.util.List;
@@ -11,5 +10,5 @@ public class Topic
   private User author;
   private String title;
   private Date dateCreated;
-  private List<Pos> posts;
+  private List<Post> posts;
 }
