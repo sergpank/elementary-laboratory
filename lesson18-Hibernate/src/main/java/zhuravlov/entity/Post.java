@@ -1,4 +1,4 @@
-package ua.hillel.panko.entity;
+package zhuravlov.entity;
 
 import org.hibernate.annotations.GenericGenerator;
 

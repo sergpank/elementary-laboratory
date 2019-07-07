@@ -1,12 +1,10 @@
-package ua.hillel.panko.dao;
+package zhuravlov.dao;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import ua.hillel.panko.entity.User;
+import zhuravlov.entity.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao

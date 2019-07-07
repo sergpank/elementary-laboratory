@@ -1,11 +1,10 @@
-package ua.hillel.panko.dao;
+package zhuravlov.dao;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import ua.hillel.panko.entity.Post;
-import ua.hillel.panko.entity.User;
+import zhuravlov.entity.Post;
+import zhuravlov.entity.User;
 
 public class HibernateUtil
 {

@@ -1,11 +1,8 @@
-package ua.hillel.panko;
+package zhuravlov;
 
-import ua.hillel.panko.dao.UserDao;
-import ua.hillel.panko.entity.Post;
-import ua.hillel.panko.entity.User;
+import zhuravlov.dao.UserDao;
+import zhuravlov.entity.User;
 
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 public class MAIN
