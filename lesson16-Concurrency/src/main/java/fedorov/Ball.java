@@ -10,12 +10,12 @@ public class Ball extends JPanel
   private int positionY = 0;
   private Color color;
   private int speed;
+  private int moveDX = 1;
+  private int moveDY = 1;
 
-  public Ball(int x, int y, int speed, int size, Color color)
+  public Ball(int speed, int size, Color color)
   {
     this.BALL_SIZE = size;
-    this.positionX = x;
-    this.positionY = y;
     this.color = color;
     this.speed = speed;
   }
@@ -68,5 +68,25 @@ public class Ball extends JPanel
   public void setSpeed(int speed)
   {
     this.speed = speed;
+  }
+
+  public int getMoveDX()
+  {
+    return moveDX;
+  }
+
+  public void setMoveDX(int moveDX)
+  {
+    this.moveDX = moveDX;
+  }
+
+  public int getMoveDY()
+  {
+    return moveDY;
+  }
+
+  public void setMoveDY(int moveDY)
+  {
+    this.moveDY = moveDY;
   }
 }

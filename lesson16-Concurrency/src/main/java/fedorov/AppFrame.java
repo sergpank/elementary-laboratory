@@ -69,18 +69,19 @@ public class AppFrame extends JFrame
   {
     Ball temp = ballsStorage.get(ballsCount);
     balls.add(temp);
-    new BallThread(temp, ballPanel).start();
+    new BallThread(temp, ballPanel, balls).start();
   }
 
   private List<Ball> fillBallsStorage()
   {
     List<Ball> temp = new ArrayList<>();
-    temp.add(new Ball(0,0, 6,50, Color.RED));
-    temp.add(new Ball(0,50, 4,75, Color.GREEN));
-    temp.add(new Ball(0,125, 8,40, Color.BLUE));
-    temp.add(new Ball(0,165, 10,30, Color.CYAN));
-    temp.add(new Ball(0,195, 2,90, Color.MAGENTA));
+    temp.add(new Ball(6,50, Color.RED));
+    temp.add(new Ball(4,75, Color.GREEN));
+    temp.add(new Ball(8,40, Color.BLUE));
+    temp.add(new Ball(10,30, Color.CYAN));
+    temp.add(new Ball(2,90, Color.MAGENTA));
 
     return temp;
   }
+
 }

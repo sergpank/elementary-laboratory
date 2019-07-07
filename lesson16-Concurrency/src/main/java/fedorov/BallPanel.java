@@ -27,4 +27,5 @@ public class BallPanel extends JPanel
       g2d.fillOval(ball.getPositionX(), ball.getPositionY(), size, size);
     }
   }
+
 }
