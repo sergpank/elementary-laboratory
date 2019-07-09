@@ -12,6 +12,8 @@ public class Ball extends JPanel
   private int speed;
   private int moveDX = 1;
   private int moveDY = 1;
+  private int centerX;
+  private int centerY;
 
   public Ball(int speed, int size, Color color)
   {
@@ -88,5 +90,25 @@ public class Ball extends JPanel
   public void setMoveDY(int moveDY)
   {
     this.moveDY = moveDY;
+  }
+
+  public int getCenterX()
+  {
+    return centerX;
+  }
+
+  public void setCenterX(int centerX)
+  {
+    this.centerX = centerX;
+  }
+
+  public int getCenterY()
+  {
+    return centerY;
+  }
+
+  public void setCenterY(int centerY)
+  {
+    this.centerY = centerY;
   }
 }

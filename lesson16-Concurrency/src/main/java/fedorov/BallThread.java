@@ -1,6 +1,7 @@
 package fedorov;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +23,8 @@ public class BallThread extends  Thread
   {
     while(true)
     {
+      ball.setCenterX(ball.getPositionX() + ball.BALL_SIZE/2);
+      ball.setCenterY(ball.getPositionY() + ball.BALL_SIZE/2);
       checkDirection();
       ball.setPositionX(ball.getPositionX() + ball.getMoveDX());
       ball.setPositionY(ball.getPositionY() + ball.getMoveDY());
@@ -45,7 +48,14 @@ public class BallThread extends  Thread
       {
         if(! (balls.indexOf(ball) == i))
         {
-          // тут должна была быть обработка столкновений
+          while(Math.sqrt(Math.pow(balls.get(i).getCenterY() - ball.getCenterY(), 2) +
+                    Math.pow(balls.get(i).getCenterX() - ball.getCenterX(), 2))
+              <=
+              ((balls.get(i).getBALL_SIZE() + ball.getBALL_SIZE())/2))
+          {
+            this.stop();
+          }
+
         }
       }
 
