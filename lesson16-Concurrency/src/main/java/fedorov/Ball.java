@@ -111,4 +111,31 @@ public class Ball extends JPanel
   {
     this.centerY = centerY;
   }
+
+  public Ball changeMoveDX()
+  {
+    if(moveDX == 1)
+    {
+      moveDX = -1;
+    }
+    else if(moveDX == -1)
+    {
+      moveDX = 1;
+    }
+    return this;
+  }
+
+  public Ball changeMoveDY()
+  {
+
+    if(moveDY == 1)
+    {
+      moveDY = -1;
+    }
+    else if(moveDY == -1)
+    {
+      moveDY = 1;
+    }
+    return this;
+  }
 }

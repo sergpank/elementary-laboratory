@@ -1,7 +1,6 @@
 package fedorov;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -25,7 +24,14 @@ public class BallThread extends  Thread
     {
       ball.setCenterX(ball.getPositionX() + ball.BALL_SIZE/2);
       ball.setCenterY(ball.getPositionY() + ball.BALL_SIZE/2);
-      checkDirection();
+      try
+      {
+        checkDirection();
+      }
+      catch (InterruptedException e)
+      {
+        e.printStackTrace();
+      }
       ball.setPositionX(ball.getPositionX() + ball.getMoveDX());
       ball.setPositionY(ball.getPositionY() + ball.getMoveDY());
       ballPanel.repaint();
@@ -33,7 +39,7 @@ public class BallThread extends  Thread
     }
   }
 
-  private void checkDirection()
+  private void checkDirection() throws InterruptedException
   {
     if(ball.getPositionX() >= ballPanel.getSize().getWidth() - ball.BALL_SIZE)
     {
@@ -48,14 +54,13 @@ public class BallThread extends  Thread
       {
         if(! (balls.indexOf(ball) == i))
         {
-          while(Math.sqrt(Math.pow(balls.get(i).getCenterY() - ball.getCenterY(), 2) +
+          if(Math.sqrt(Math.pow(balls.get(i).getCenterY() - ball.getCenterY(), 2) +
                     Math.pow(balls.get(i).getCenterX() - ball.getCenterX(), 2))
               <=
               ((balls.get(i).getBALL_SIZE() + ball.getBALL_SIZE())/2))
           {
-            this.stop();
+            ball.changeMoveDX().changeMoveDY();
           }
-
         }
       }
 
