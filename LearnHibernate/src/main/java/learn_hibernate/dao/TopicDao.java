@@ -11,10 +11,10 @@ public class TopicDao extends AbstractDao<Topic>
   @Override
   public Topic read(long id)
   {
-    Long key=Long.valueOf(id);
+    Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Topic topic=session.get(Topic.class, key);
-    if(topic!=null)
+    Topic topic = session.get(Topic.class, key);
+    if (topic != null)
     {
       loadPosts(topic);
     }
@@ -26,8 +26,8 @@ public class TopicDao extends AbstractDao<Topic>
   public List<Topic> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
-    List<Topic> topics=session.createQuery("from Topic").list();
-    for(Topic t: topics)
+    List<Topic> topics = session.createQuery("from Topic").list();
+    for (Topic t : topics)
     {
       loadPosts(t);
     }
@@ -37,6 +37,9 @@ public class TopicDao extends AbstractDao<Topic>
 
   private void loadPosts(Topic topic)
   {
-    for(Post p : topic.getPosts());
+    for (Post p : topic.getPosts())
+    {
+      ;
+    }
   }
 }

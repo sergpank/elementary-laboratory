@@ -5,16 +5,16 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="topics")
+@Table(name = "topics")
 public class Topic extends AbstractEntity
 {
-  @Column(name="topic_title")
+  @Column(name = "topic_title")
   private String title;
   @Temporal(TemporalType.DATE)
-  @Column(name="date_created")
+  @Column(name = "date_created")
   private Date dateCreated;
   @ManyToOne(optional = false)
-  @JoinColumn(name="author_id")
+  @JoinColumn(name = "author_id")
   private User author;
   @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL)
   private List<Post> posts;

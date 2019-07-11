@@ -8,7 +8,7 @@ public class GroupBuilder implements IEntityBuilder<Group>
 
   public GroupBuilder()
   {
-    item=new Group();
+    item = new Group();
   }
 
   public GroupBuilder setName(String name)
@@ -18,9 +18,9 @@ public class GroupBuilder implements IEntityBuilder<Group>
   }
 
   @Override
-  public Group build()throws IllegalAccessException
+  public Group build() throws IllegalAccessException
   {
-    if(item.getName()==null)
+    if (item.getName() == null)
     {
       throw new IllegalAccessException();
     }

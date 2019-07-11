@@ -10,9 +10,9 @@ public class VotesDao extends AbstractDao<Votes>
   @Override
   public Votes read(long id)
   {
-    Long key=Long.valueOf(id);
+    Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Votes votes=session.get(Votes.class, key);
+    Votes votes = session.get(Votes.class, key);
     session.close();
     return votes;
   }
@@ -21,7 +21,7 @@ public class VotesDao extends AbstractDao<Votes>
   public List<Votes> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
-    List<Votes> votesList=session.createQuery("from Votes").list();
+    List<Votes> votesList = session.createQuery("from Votes").list();
     session.close();
     return votesList;
   }

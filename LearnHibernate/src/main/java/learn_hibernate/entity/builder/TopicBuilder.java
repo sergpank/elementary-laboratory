@@ -25,6 +25,7 @@ public class TopicBuilder implements IEntityBuilder<Topic>
     item.setDateCreated(date);
     return this;
   }
+
   public TopicBuilder setAuthor(User author)
   {
     item.setAuthor(author);
@@ -34,9 +35,9 @@ public class TopicBuilder implements IEntityBuilder<Topic>
   @Override
   public Topic build() throws IllegalAccessException
   {
-    if(item.getTitle()==null
-        || item.getDateCreated()==null
-        || item.getAuthor().getId()==0)
+    if (item.getTitle() == null
+        || item.getDateCreated() == null
+        || item.getAuthor().getId() == 0)
     {
       throw new IllegalAccessException();
     }

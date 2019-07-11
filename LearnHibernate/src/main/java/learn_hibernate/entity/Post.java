@@ -6,16 +6,16 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="posts")
+@Table(name = "posts")
 public class Post extends AbstractEntity
 {
-  @Column(name="content")
+  @Column(name = "content", length = 2000)
   private String text;
   @Temporal(TemporalType.DATE)
-  @Column(name="date_created")
+  @Column(name = "date_created")
   private Date dateCreated;
   @ManyToOne(optional = false)
-  @JoinColumn(name="author_id")
+  @JoinColumn(name = "author_id")
   private User author;
   @OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "post")
   private Votes votes;

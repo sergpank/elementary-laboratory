@@ -12,10 +12,10 @@ public class UserDao extends AbstractDao<User>
   @Override
   public User read(long id)
   {
-    Long key=Long.valueOf(id);
+    Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
     User user = session.get(User.class, key);
-    if(user!=null)
+    if (user != null)
     {
       loadTopics(user);
       loadPosts(user);
@@ -28,8 +28,8 @@ public class UserDao extends AbstractDao<User>
   public List<User> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
-    List<User> users=session.createQuery("from User").list();
-    for(User u: users)
+    List<User> users = session.createQuery("from User").list();
+    for (User u : users)
     {
       loadTopics(u);
       loadPosts(u);
@@ -40,10 +40,17 @@ public class UserDao extends AbstractDao<User>
 
   private void loadPosts(User user)
   {
-    for(Post p: user.getPosts());
+    for (Post p : user.getPosts())
+    {
+      ;
+    }
   }
+
   private void loadTopics(User user)
   {
-    for(Topic t: user.getTopics());
+    for (Topic t : user.getTopics())
+    {
+      ;
+    }
   }
 }

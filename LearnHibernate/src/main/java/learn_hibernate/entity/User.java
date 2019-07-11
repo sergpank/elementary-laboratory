@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User extends AbstractEntity
 {
   @Column
@@ -13,7 +13,7 @@ public class User extends AbstractEntity
   @Column
   private String password;
   @Temporal(TemporalType.DATE)
-  @Column(name="registration_date")
+  @Column(name = "registration_date")
   private Date registrationDate;
   @ManyToOne(optional = false)
   @JoinColumn(name = "group_id")

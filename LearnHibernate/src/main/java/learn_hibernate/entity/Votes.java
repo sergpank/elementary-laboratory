@@ -3,15 +3,15 @@ package learn_hibernate.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="votes")
+@Table(name = "votes")
 public class Votes extends AbstractEntity
 {
-  @Column(name="up_votes")
+  @Column(name = "up_votes")
   private int upVotes;
-  @Column(name ="down_votes")
+  @Column(name = "down_votes")
   private int downVotes;
   @OneToOne(optional = false)
-  @JoinColumn(name="post_id")
+  @JoinColumn(name = "post_id")
   private Post post;
 
   public int getUpVotes()

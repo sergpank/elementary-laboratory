@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS groups(
+CREATE TABLE IF NOT EXISTS groups_table(
 id SERIAL,
 group_name VARCHAR(100),
 PRIMARY KEY(id)) engine InnoDB;
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users(
     group_id BIGINT UNSIGNED,
     PRIMARY KEY(id),
     FOREIGN KEY (group_id)
-    REFERENCES groups (id)
+    REFERENCES groups_table (id)
     ON DELETE CASCADE
 ) engine InnoDB;
 

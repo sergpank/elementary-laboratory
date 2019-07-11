@@ -10,9 +10,9 @@ public class PostDao extends AbstractDao<Post>
   @Override
   public Post read(long id)
   {
-    Long key=Long.valueOf(id);
+    Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Post post=session.get(Post.class, key);
+    Post post = session.get(Post.class, key);
     session.close();
     return post;
   }
@@ -21,7 +21,7 @@ public class PostDao extends AbstractDao<Post>
   public List<Post> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
-    List<Post> posts=session.createQuery("from Post").list();
+    List<Post> posts = session.createQuery("from Post").list();
     session.close();
     return posts;
   }

@@ -11,10 +11,10 @@ public class GroupDao extends AbstractDao<Group>
   @Override
   public Group read(long id)
   {
-    Long key=Long.valueOf(id);
+    Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
-    Group group=session.get(Group.class, key);
-    if(group!=null)
+    Group group = session.get(Group.class, key);
+    if (group != null)
     {
       loadUsers(group);
     }
@@ -26,8 +26,8 @@ public class GroupDao extends AbstractDao<Group>
   public List<Group> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
-    List<Group> groups=session.createQuery("from Group").list();
-    for(Group g:groups)
+    List<Group> groups = session.createQuery("from Group").list();
+    for (Group g : groups)
     {
       loadUsers(g);
     }
@@ -37,6 +37,9 @@ public class GroupDao extends AbstractDao<Group>
 
   private void loadUsers(Group group)
   {
-    for(User u : group.getUsers());
+    for (User u : group.getUsers())
+    {
+      ;
+    }
   }
 }

@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "groups")
+@Table(name = "groups_table")
 public class Group extends AbstractEntity
 {
-  @Column(name="group_name")
+  @Column(name = "group_name")
   private String name;
 
   @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
@@ -39,7 +39,7 @@ public class Group extends AbstractEntity
     return "Group{" +
         "id=" + super.getId() +
         ", name='" + name + '\'' +
-        ", users=" + (users!=null? users : "none") +
+        ", users=" + (users != null ? users : "none") +
         '}';
   }
 }

@@ -1,0 +1,12 @@
+* {
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 900px;
+	margin: 10px auto 5px;
+}
+.inline {
+	display: inline-block;
+	margin: 5px 10px 5px 0;
+}

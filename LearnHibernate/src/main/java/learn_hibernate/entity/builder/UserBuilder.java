@@ -11,7 +11,7 @@ public class UserBuilder implements IEntityBuilder<User>
 
   public UserBuilder()
   {
-    item=new User();
+    item = new User();
   }
 
   public UserBuilder setLogin(String login)
@@ -31,6 +31,7 @@ public class UserBuilder implements IEntityBuilder<User>
     item.setRegistrationDate(date);
     return this;
   }
+
   public UserBuilder setGroup(Group group)
   {
     item.setGroup(group);
@@ -38,12 +39,12 @@ public class UserBuilder implements IEntityBuilder<User>
   }
 
   @Override
-  public User build()throws IllegalAccessException
+  public User build() throws IllegalAccessException
   {
-    if(item.getLogin()==null
-        || item.getPassword()==null
-        || item.getRegistrationDate()==null
-        || item.getGroup().getId()==0)
+    if (item.getLogin() == null
+        || item.getPassword() == null
+        || item.getRegistrationDate() == null
+        || item.getGroup().getId() == 0)
     {
       throw new IllegalAccessException();
     }

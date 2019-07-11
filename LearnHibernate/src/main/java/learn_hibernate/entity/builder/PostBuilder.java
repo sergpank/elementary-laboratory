@@ -12,7 +12,7 @@ public class PostBuilder implements IEntityBuilder<Post>
 
   public PostBuilder()
   {
-    item=new Post();
+    item = new Post();
   }
 
   public PostBuilder setText(String text)
@@ -26,6 +26,7 @@ public class PostBuilder implements IEntityBuilder<Post>
     item.setDateCreated(date);
     return this;
   }
+
   public PostBuilder setAuthor(User author)
   {
     item.setAuthor(author);
@@ -41,10 +42,10 @@ public class PostBuilder implements IEntityBuilder<Post>
   @Override
   public Post build() throws IllegalAccessException
   {
-    if(item.getText()==null
-        || item.getDateCreated()==null
-        || item.getAuthor().getId()==0
-        || item.getTopic().getId()==0)
+    if (item.getText() == null
+        || item.getDateCreated() == null
+        || item.getAuthor().getId() == 0
+        || item.getTopic().getId() == 0)
     {
       throw new IllegalAccessException();
     }
