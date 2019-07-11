@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3dddb871-98da-4df6-a608-d0b95c93cca8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson1/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson1/src/figurePrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson1/src/main/java/Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson1/src/main/java/hillel/FindMax.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson1/src/main/java/hillel/GeometryPrinter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson10/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson10/src/main/java/homework/ColorGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson10/src/main/java/homework/HotelRankCalculator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/lib/sqlite-jdbc-3.27.2.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/resources/db_schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/resources/test.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/src/main/java/CirclePanel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/src/main/java/HelloSwing.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/src/main/java/JdbcDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson11/src/main/java/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/DB.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/db_schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/JdbcDemo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PerformanceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/DbUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/ArrayRotation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/IPv4Validator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/QuickSort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/main/java/hillel/ImageRotator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/main/java/hillel/IpAddressValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/main/java/hillel/PalindromeVerifier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/test/java/hillel/ImageRotatorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/test/java/hillel/IpAddressValidatorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson2/src/test/java/hillel/PalindromeVerifierTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/src/main/java/EmailValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/src/main/java/MsisdnValidator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/src/main/java/TwoSum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/src/test/java/EmailValidatorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/src/test/java/MsisdnValidatorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson3/src/test/java/TwoSumTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/main/java/Factorial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/main/java/Fibonacci.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/main/java/Pascal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/main/java/StackOverflow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/main/java/StopWatch.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/main/java/list/LinkedList.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson6/src/test/java/list/LinkedListTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson7/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson7/src/main/java/RankCalculator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson7/src/main/java/TEST.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson8/csv/10000 Records.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson8/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson8/src/main/java/homework/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson8/src/main/java/homework/Solution.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson9/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson9/src/main/java/homework/RomanConverter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lesson9/src/test/java/homework/RomanConverterTest.java" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="sMaklashevsky" />
+      </map>
+    </option>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="sMaklashevsky" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$/.." source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/entity/Pet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Client.java" />
+        <option value="$PROJECT_DIR$/src/main/java/entity/Address.java" />
+        <option value="$PROJECT_DIR$/src/main/java/res/db_scheme.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/ClientDAO.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="lesson12" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3dddb871-98da-4df6-a608-d0b95c93cca8" name="Default Changelist" comment="" />
+      <created>1560184329117</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560184329117</updated>
+      <workItem from="1560184332050" duration="4630000" />
+      <workItem from="1562861601139" duration="621000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5251000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Database" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://C:/Program Files/Java/jdk-12/lib/src.zip!/java.base/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="236" column="12" lean-forward="true" selection-start-line="236" selection-start-column="12" selection-end-line="236" selection-end-column="12" />
+          <folding>
+            <element signature="e#10105#10106#0" expanded="true" />
+            <element signature="e#10188#10189#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/DAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/res/db_scheme.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="60" selection-start-line="19" selection-start-column="60" selection-end-line="19" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Pet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding>
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#645#646#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#712#713#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#780#781#0" expanded="true" />
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Address.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+          <folding>
+            <element signature="e#690#691#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#814#815#0" expanded="true" />
+            <element signature="e#858#859#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#1000#1001#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1072#1073#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1158#1159#0" expanded="true" />
+            <element signature="e#1204#1205#0" expanded="true" />
+            <element signature="e#1232#1233#0" expanded="true" />
+            <element signature="e#1258#1259#0" expanded="true" />
+            <element signature="e#1294#1295#0" expanded="true" />
+            <element signature="e#1324#1325#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/entity/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="25" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="e#593#594#0" expanded="true" />
+            <element signature="e#627#628#0" expanded="true" />
+            <element signature="e#655#656#0" expanded="true" />
+            <element signature="e#686#687#0" expanded="true" />
+            <element signature="e#713#714#0" expanded="true" />
+            <element signature="e#753#754#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#818#819#0" expanded="true" />
+            <element signature="e#849#850#0" expanded="true" />
+            <element signature="e#895#896#0" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#969#970#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/ClientDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/ef80a8e9-9c1e-4eeb-9ee5-bf9ac4c7ab32/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+</project>
