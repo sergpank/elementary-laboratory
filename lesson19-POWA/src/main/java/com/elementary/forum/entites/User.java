@@ -20,7 +20,7 @@ public class User
   @Column
   private String password;
 
-//  @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//  @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 //  private List<Post> posts;
 
   @Column(name = "registration_date")

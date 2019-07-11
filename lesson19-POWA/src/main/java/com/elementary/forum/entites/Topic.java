@@ -27,7 +27,7 @@ public class Topic
   @Temporal(TemporalType.DATE)
   private Date dateCreated;
 
-  @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+  @OneToMany(mappedBy = "topic", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
   private List<Post> posts;
 
   public long getId()
@@ -79,4 +79,15 @@ public class Topic
   {
     this.posts = posts;
   }
+
+    @Override public String toString()
+    {
+        return "Topic{" +
+                "id=" + id +
+                ", author=" + author +
+                ", title='" + title + '\'' +
+                ", dateCreated=" + dateCreated +
+                ", posts=" + posts +
+                '}';
+    }
 }

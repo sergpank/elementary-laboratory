@@ -28,7 +28,7 @@ public class UserDao
     session.beginTransaction();
 
     // SAVE HERE
-    session.save(user);
+    session.saveOrUpdate(user);
 
     session.getTransaction().commit();
     session.close();

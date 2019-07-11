@@ -14,6 +14,11 @@
     <servlet-name>topics</servlet-name>
     <servlet-class>com.elementary.forum.servlets.TopicsServlet</servlet-class>
   </servlet>
+    
+  <servlet>
+    <servlet-name>posts</servlet-name>
+    <servlet-class>com.elementary.forum.servlets.TopicPostsServlet</servlet-class>
+  </servlet>
 
   <servlet-mapping>
     <servlet-name>hello</servlet-name>
@@ -23,6 +28,11 @@
   <servlet-mapping>
     <servlet-name>topics</servlet-name>
     <url-pattern>/topics</url-pattern>
+  </servlet-mapping>
+    
+  <servlet-mapping>
+    <servlet-name>posts</servlet-name>
+    <url-pattern>/posts</url-pattern>
   </servlet-mapping>
 
 </web-app>

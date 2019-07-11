@@ -1,11 +1,14 @@
 package com.elementary.forum;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import com.elementary.forum.dao.TopicDao;
 import com.elementary.forum.dao.UserDao;
+import com.elementary.forum.entites.Post;
 import com.elementary.forum.entites.Topic;
 import com.elementary.forum.entites.User;
-
-import java.util.Date;
 
 public class MAIN
 {
@@ -30,6 +33,19 @@ public class MAIN
       topic.setAuthor(userDao.getById(i));
       topic.setDateCreated(new Date());
       topic.setTitle("Topic-" + i);
+
+        List<Post> posts = new ArrayList<>();
+        for (int j = 1; j <= 10; j++)
+        {
+            final Post post = new Post();
+            post.setAuthorId(j);
+            post.setTopic(topic);
+            post.setDateCreated(new Date());
+            post.setText("post " + j + " text ... la-la-la");
+            posts.add(post);
+        }
+
+        topic.setPosts(posts);
 
       topicDao.save(topic);
     }

@@ -14,9 +14,12 @@ public class Post
   @GenericGenerator(name="increment", strategy = "increment")
   private long id;
 
+  @Column
+  private long authorId;
+
   @ManyToOne
-  @JoinColumn(name = "user_id")
-  private User author;
+  @JoinColumn(name = "topic_id")
+  private Topic topic;
 
   @Column
   private String text;
@@ -35,17 +38,27 @@ public class Post
     this.id = id;
   }
 
-  public User getAuthor()
+    public long getAuthorId()
+    {
+        return authorId;
+    }
+
+    public void setAuthorId(long authorId)
+    {
+        this.authorId = authorId;
+    }
+
+    public Topic getTopic()
   {
-    return author;
+      return topic;
   }
 
-  public void setAuthor(User author)
+  public void setTopic(Topic topic)
   {
-    this.author = author;
+      this.topic = topic;
   }
 
-  public String getText()
+    public String getText()
   {
     return text;
   }
@@ -70,7 +83,7 @@ public class Post
   {
     final StringBuilder sb = new StringBuilder("Post{");
     sb.append("id=").append(id);
-    sb.append(", author=").append(author.getId());
+    sb.append(", authorId=").append(authorId);
     sb.append(", text='").append(text).append('\'');
     sb.append(", dateCreated=").append(dateCreated);
     sb.append('}');
