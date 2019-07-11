@@ -15,17 +15,17 @@ public class Checker
     this.balls = balls;
   }
 
-  public boolean check(Ball checkBall)
+  public synchronized boolean check(Ball checkBall)
   {
     boolean rez = false;
     if (checkBoarder(checkBall))
     {
-      rez = checkContact(checkBall);
+      rez = checkContactBall(checkBall);
     }
     return rez;
   }
 
-  private synchronized boolean checkContact(Ball checkBall)
+  private boolean checkContactBall(Ball checkBall)
   {
     boolean rez = true;
     for (int i = 0; i < balls.size(); i++)
