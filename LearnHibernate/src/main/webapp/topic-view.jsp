@@ -17,11 +17,11 @@
 			<c:if test="${topicList!=null && topicList.size() > 0}">
 				<ul>
 					<c:forEach var="topic" items="${topicList}">
-				        <li>
-				          <h4><a href='<c:url value="/topic" />?id=${topic.id}'>${topic.title}</a></h4>
-				          <p>Author: ${topic.author.login}; Created: ${topic.dateCreated}</p>
-				       	</li>
-			      	</c:forEach>
+            <li>
+              <h4><a href='<c:url value="/topic" />?id=${topic.id}'>${topic.title}</a></h4>
+              <p>Author: ${topic.author.login}; Created: ${topic.dateCreated}</p>
+            </li>
+			     </c:forEach>
 				</ul>
 			</c:if>
 		</main>
