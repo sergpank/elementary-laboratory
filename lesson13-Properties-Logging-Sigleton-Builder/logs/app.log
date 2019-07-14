@@ -1,0 +1,10 @@
+2019-06-13 20:27:03,596 TRACE l.LoggerDemo [main] Log4j2
+2019-06-13 20:27:03,600 DEBUG l.LoggerDemo [main] Log4j2
+2019-06-13 20:27:03,600 INFO l.LoggerDemo [main] Log4j2
+2019-06-13 20:27:03,600 WARN l.LoggerDemo [main] Log4j2
+2019-06-13 20:27:03,601 ERROR l.LoggerDemo [main] Log4j2
+2019-06-13 20:27:03,601 TRACE l.LoggerDemo [main] SLF4J
+2019-06-13 20:27:03,601 DEBUG l.LoggerDemo [main] SLF4J
+2019-06-13 20:27:03,602 INFO l.LoggerDemo [main] SLF4J
+2019-06-13 20:27:03,602 WARN l.LoggerDemo [main] SLF4J
+2019-06-13 20:27:03,602 ERROR l.LoggerDemo [main] SLF4J
