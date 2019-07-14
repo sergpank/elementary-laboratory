@@ -23,12 +23,6 @@ public class Hotels
     System.out.println (SortedRanks );
 
 
-    for(Map.Entry<Integer, Integer> e : SortedRanks.entrySet())
-    {
-      System.out.printf("Rank %d : Hotel id %s\n", e.getKey(), e.getValue());
-    }
-
-
   }
 
   private static Map<Integer, List<String>> HotelsData()

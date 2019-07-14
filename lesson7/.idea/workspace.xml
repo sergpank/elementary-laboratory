@@ -2,14 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="55a666c6-383e-4e02-beaa-25e4a7e1fa8a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Hotels.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Rank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../RomanNumbers/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../RomanNumbers/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/MAIN.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Rank.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Rank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RankCalculator$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RankCalculator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Hotels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Hotels.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Booking.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,12 +18,12 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Hotels.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="222">
+              <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -36,12 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Rank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-68">
+            <state relative-caret-position="34">
               <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-              <folding>
-                <element signature="e#1444#1445#0" expanded="true" />
-                <element signature="e#1480#1481#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -66,6 +57,7 @@
         <option value="$PROJECT_DIR$/src/main/java/RankCalculator.java" />
         <option value="$PROJECT_DIR$/src/main/java/Rank.java" />
         <option value="$PROJECT_DIR$/src/main/java/Booking.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Hotels.java" />
       </list>
     </option>
   </component>
@@ -80,6 +72,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -126,8 +120,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -146,9 +138,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Booking">
+  <component name="RunManager" selected="Application.Hotels">
     <configuration name="Booking" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Booking" />
+      <module name="lesson7" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Hotels" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Hotels" />
       <module name="lesson7" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -177,6 +176,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Hotels" />
         <item itemvalue="Application.Booking" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.RankCalculator" />
@@ -199,8 +199,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2647504" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2685325" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -209,7 +210,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3289689" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -257,59 +258,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/RankCalculator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#3382#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/classes/Main.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="47" column="8" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="56" />
-          <folding>
-            <element signature="e#0#2147#0" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MAIN.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="55" column="1" lean-forward="true" selection-start-line="5" selection-end-line="55" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Rank.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="67" lean-forward="true" selection-start-line="5" selection-end-line="70" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RankCalculator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="103" column="9" lean-forward="true" selection-start-line="5" selection-end-line="106" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RankCalculator$1.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/RankCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="15" selection-end-line="60" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/target/classes/RankCalculator.class" />
+    <entry file="file://$PROJECT_DIR$/target/classes/Main.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/MAIN.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Rank.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/RankCalculator.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/RankCalculator$1.class" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/RankCalculator.java" />
     <entry file="file://$PROJECT_DIR$/lesson7.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -319,19 +274,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Rank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
+        <state relative-caret-position="34">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding>
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1480#1481#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Hotels.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="222">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="4" />
         </state>
       </provider>
     </entry>
