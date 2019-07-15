@@ -33,6 +33,5 @@ public class TopicServlet extends HttpServlet
       req.setAttribute("topic", topic);
       getServletContext().getRequestDispatcher("/single-topic-view.jsp").forward(req, resp);
     }
-
   }
 }
