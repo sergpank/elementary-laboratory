@@ -64,7 +64,6 @@ public class BallThread extends  Thread
         }
       }
 
-
     if(ball.getPositionY() >= ballPanel.getSize().getHeight() - ball.BALL_SIZE)
     {
       ball.setMoveDY(-1);
