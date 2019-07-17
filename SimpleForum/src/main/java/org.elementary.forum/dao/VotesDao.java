@@ -26,6 +26,16 @@ public class VotesDao extends AbstractDao<Votes>
     return votesList;
   }
 
+  public Votes readByPostId(long postId)
+  {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List<Votes> votesList = session.createQuery("from Votes as v where post.id= :postId")
+        .setParameter("postId", postId)
+        .list();
+    session.close();
+    return votesList.size()>0?votesList.get(0):null;
+  }
+
   @Override
   public Votes loadDependentProperty(Votes item, String propName)
   {

@@ -21,6 +21,13 @@
 			  <div class="card-footer text-muted">
 			      <span class="d-inline">Votes Up: <c:out value="${post.votes.upVotes}" default="0" />;</span>
 			      <span class="d-inline">Votes Down: <c:out value="${post.votes.downVotes}" default="0" /></span>
+			      <form action="edit-votes" method="POST" class="float-right">
+			      	<input type="hidden" name="postId" value="${post.id}">
+			      	<input type="hidden" name="returnUrl" value=<%= request.getRequestedURI()+
+			      	request.getQueryString()==null? "" : "?"+request.getQueryString(); %>>
+			      	<button type="submit" class="btn btn-primary" name="action" value="up">Up</button>
+			      	<button type="submit" class="btn btn-primary" name="action" value="down">Down</button>
+			      </form>
 			  </div>
 			</div>
       	</c:forEach>

@@ -8,6 +8,7 @@
   <listener>
     <listener-class>org.elementary.forum.servlets.AppLifeCycleListener</listener-class>
   </listener>
+
   <servlet>
     <servlet-name>topic_servlet</servlet-name>
     <servlet-class>org.elementary.forum.servlets.TopicServlet</servlet-class>

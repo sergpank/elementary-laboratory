@@ -3,6 +3,7 @@ package org.elementary.forum.entity.build;
 import org.elementary.forum.entity.Post;
 import org.elementary.forum.entity.Topic;
 import org.elementary.forum.entity.User;
+import org.elementary.forum.entity.Votes;
 
 import java.util.Date;
 
@@ -39,6 +40,12 @@ public class PostBuilder implements IEntityBuilder<Post>
     return this;
   }
 
+  public PostBuilder setVotes(Votes votes)
+  {
+    item.setVotes(votes);
+    return this;
+  }
+
   @Override
   public Post build() throws IllegalAccessException
   {
@@ -48,6 +55,12 @@ public class PostBuilder implements IEntityBuilder<Post>
         || item.getTopic().getId() == 0)
     {
       throw new IllegalAccessException();
+    }
+    if(item.getVotes()==null)
+    {
+      Votes votes=new VotesBuilder()
+          .setPost(item)
+          .build();
     }
     return item;
   }

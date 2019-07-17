@@ -17,7 +17,7 @@ public class Post extends AbstractEntity
   @ManyToOne(optional = false)
   @JoinColumn(name = "author_id")
   private User author;
-  @OneToOne(optional = true, cascade = CascadeType.ALL, mappedBy = "post")
+  @OneToOne(optional = false, cascade = CascadeType.ALL, mappedBy = "post")
   private Votes votes;
   @ManyToOne(optional = false)
   @JoinColumn(name = "topic_id")
