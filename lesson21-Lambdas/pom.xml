@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>hillel</groupId>
-  <artifactId>lesson20</artifactId>
+  <artifactId>lesson21</artifactId>
   <version>1.0</version>
 
-  <name>lesson20 - Lambdas</name>
+  <name>lesson21 - Lambdas</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

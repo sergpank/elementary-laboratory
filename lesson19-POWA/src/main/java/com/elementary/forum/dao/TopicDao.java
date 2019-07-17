@@ -1,8 +1,6 @@
 package com.elementary.forum.dao;
 
 import com.elementary.forum.entites.Topic;
-import com.elementary.forum.entites.User;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -23,18 +21,24 @@ public class TopicDao
 
   public Topic save(Topic topic)
   {
-    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-    Session session = sessionFactory.openSession();
+    final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-    session.beginTransaction();
-
-    // SAVE HERE
-    session.save(topic);
-
-    session.getTransaction().commit();
-    session.close();
+    SessionWrapper wrapper = (Session s, Topic t) -> s.save(t);
+    wrapper.wrap(sessionFactory, topic);
 
     return topic;
+
+//    Session session = sessionFactory.openSession();
+//
+//    session.beginTransaction();
+//
+//    // SAVE HERE
+//    session.save(topic);
+//
+//    session.getTransaction().commit();
+//    session.close();
+//
+//    return topic;
   }
 
   public List<Topic> loadAll()

@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
+import java.util.function.IntBinaryOperator;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Solution
 {
@@ -15,20 +17,12 @@ public class Solution
 
     System.out.println(file.getAbsolutePath());
 
-    List<Employee> employees = readEmployees(file);
+    int sumOfSquares = IntStream.of(1, 10)
+        .map(i -> i * i)
+        .reduce((a, b) -> a + b)
+        .getAsInt();
 
-    Set<String> firstNames = employees.stream()
-        .map(e -> e.getFirstName())
-        .collect(Collectors.toSet());
-
-    List<Employee> millenials = employees.stream()
-        .filter(e -> e.getAge() > 20 && e.getAge() < 30)
-        //.sorted((e1, e2) -> {return (int) (e1.getAge() - e2.getAge());})
-        .sorted(Comparator.comparingDouble(Employee::getAge))
-        //.map(Employee::getLastName)
-        .collect(Collectors.toList());
-
-    millenials.forEach(m -> System.out.printf("%2.2f - %s\n", m.getAge(), m.getLastName()));
+    System.out.println(sumOfSquares);
   }
 
   private static List<Employee> readEmployees(File file)
