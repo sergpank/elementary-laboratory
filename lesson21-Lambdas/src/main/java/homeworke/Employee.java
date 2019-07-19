@@ -1,6 +1,6 @@
 package homeworke;
 
-public class Employee
+public class Employee implements Comparable<Employee>
 {
   private String firstName;
   private String lastName;
@@ -37,7 +37,7 @@ public class Employee
     return gender;
   }
 
-  public int getSalary()
+  public Integer getSalary()
   {
     return salary;
   }
@@ -53,5 +53,11 @@ public class Employee
     sb.append(", age=").append(age);
     sb.append('}');
     return sb.toString();
+  }
+
+  @Override
+  public int compareTo(Employee o)
+  {
+    return getSalary().compareTo(o.getSalary());
   }
 }

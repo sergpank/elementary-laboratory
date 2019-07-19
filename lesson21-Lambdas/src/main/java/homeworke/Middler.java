@@ -7,26 +7,43 @@ public class Middler
 {
   public int getmiddle(List<Employee> employees)
   {
-    return (int) (employees.stream()
-        .mapToLong(value -> value.getSalary())
-        .sum() /
-        employees.stream().count());
+    int size = employees.size();
+    List<Employee> list = employees.stream()
+        .sorted().collect(Collectors.toList());
+    if (size%2 != 0){
+    return  (list.stream()
+        .skip(size/2)
+        .findFirst().get().getSalary());
+    }else {
+      return list.stream()
+          .skip((size/2)-1)
+          .limit(2)
+          .mapToInt(value -> value.getSalary())
+          .sum()/2;
+    }
+
+
   }
 
   public int getmiddle(List<Employee> employees, String gender)
   {
-    return (int) (employees.stream()
+    List<Employee> list =employees.stream()
         .filter(employee -> employee.getGender().equals(gender))
-        .mapToLong(value -> value.getSalary())
-        .sum() /
-        employees.stream().count());
+        .collect(Collectors.toList());
+    return getmiddle(list);
+
   }
 
-  public int getmiddle(List<Employee> employees, int cut)
+  public int getmiddle(List<Employee> employees, int cutP)
   {
-    return (int) (employees.stream()
-        .mapToLong(value -> value.getSalary() * (100 - cut) / 100)
-        .sum()/employees.size());
+    int cut = employees.size()*cutP/100;
+    List<Employee> list = (employees.stream()
+        .sorted(new ComporatorAge())
+        .skip(cut)
+        .limit(employees.size() - cut)
+        .collect(Collectors.toList()));
+    return getmiddle(list);
+
   }
 
   public int getmiddle(List<Employee> employees, int min, int max)
@@ -35,9 +52,7 @@ public class Middler
         .filter(employee -> employee.getAge() > min && employee.getAge() <= max)
         .collect(Collectors.toList());
 
-       return(int) employeesFilter.stream().mapToLong(value -> value.getSalary())
-        .sum()/
-        employeesFilter.size();
+       return getmiddle(employeesFilter);
 
   }
 }
