@@ -3,6 +3,7 @@ package learn_hibernate.entity.builder;
 import learn_hibernate.entity.Post;
 import learn_hibernate.entity.Topic;
 import learn_hibernate.entity.User;
+import learn_hibernate.entity.Votes;
 
 import java.util.Date;
 
@@ -39,6 +40,12 @@ public class PostBuilder implements IEntityBuilder<Post>
     return this;
   }
 
+  public PostBuilder setVotes(Votes votes)
+  {
+    item.setVotes(votes);
+    return this;
+  }
+
   @Override
   public Post build() throws IllegalAccessException
   {
@@ -48,6 +55,13 @@ public class PostBuilder implements IEntityBuilder<Post>
         || item.getTopic().getId() == 0)
     {
       throw new IllegalAccessException();
+    }
+    if(item.getVotes()==null)
+    {
+      Votes votes=new VotesBuilder()
+          .setPost(item)
+          .build();
+      item.setVotes(votes);
     }
     return item;
   }

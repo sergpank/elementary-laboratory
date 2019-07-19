@@ -21,7 +21,7 @@ public class VotesBuilder implements IEntityBuilder<Votes>
   @Override
   public Votes build() throws IllegalAccessException
   {
-    if (item.getPost().getId() == 0)
+    if (item.getPost()==null)
     {
       throw new IllegalAccessException();
     }

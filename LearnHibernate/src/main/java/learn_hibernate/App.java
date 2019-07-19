@@ -107,15 +107,5 @@ public class App
       posts.add(p);
     }
 
-    for (Post post : posts)
-    {
-      int upVotes = (int) (Math.random() * 100);
-      int downVotes = (int) (Math.random() * 100);
-      Votes v = new VotesBuilder().setPost(post).build();
-      v.setDownVotes(downVotes);
-      v.setUpVotes(upVotes);
-      vd.create(v);
-    }
-
   }
 }

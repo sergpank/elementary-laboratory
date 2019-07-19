@@ -40,6 +40,12 @@ public class PostBuilder implements IEntityBuilder<Post>
     return this;
   }
 
+  public PostBuilder setParent(Post parent)
+  {
+    item.setParent(parent);
+    return this;
+  }
+
   public PostBuilder setVotes(Votes votes)
   {
     item.setVotes(votes);
@@ -51,8 +57,8 @@ public class PostBuilder implements IEntityBuilder<Post>
   {
     if (item.getText() == null
         || item.getDateCreated() == null
-        || item.getAuthor().getId() == 0
-        || item.getTopic().getId() == 0)
+        || item.getAuthor().getId() == null
+        || item.getTopic().getId() == null)
     {
       throw new IllegalAccessException();
     }
@@ -61,6 +67,7 @@ public class PostBuilder implements IEntityBuilder<Post>
       Votes votes=new VotesBuilder()
           .setPost(item)
           .build();
+      item.setVotes(votes);
     }
     return item;
   }

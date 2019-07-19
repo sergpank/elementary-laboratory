@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +20,9 @@ public class LoginServlet extends HttpServlet
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
   {
+    String returnUrl=req.getParameter("returnUrl");
     req.setAttribute("title", "Log In");
+    req.setAttribute("returnUrl", returnUrl);
     ServletContext servletContext=getServletContext();
     RequestDispatcher requestDispatcher=servletContext.getRequestDispatcher("/login.jsp");
     requestDispatcher.forward(req, resp);
@@ -30,6 +33,7 @@ public class LoginServlet extends HttpServlet
   {
     String login=req.getParameter("login");
     String password=req.getParameter("password");
+    String returnUrl=req.getParameter("returnUrl");
 
     List<String> errors=new ArrayList<>();
     if(login==null || login.isEmpty())
@@ -63,6 +67,7 @@ public class LoginServlet extends HttpServlet
     {
       req.setAttribute("title", "Log In");
       req.setAttribute("errors", errors);
+      req.setAttribute("returnUrl", returnUrl);
       User u=new User();
       u.setLogin(login);
       req.setAttribute("user", u);
@@ -72,8 +77,13 @@ public class LoginServlet extends HttpServlet
     }
     else
     {
-      String path=getServletContext().getContextPath()+"/topics";
-      resp.sendRedirect(path);
+
+      returnUrl=returnUrl!=null? URLDecoder.decode(returnUrl,"UTF-8")
+          : getServletContext().getContextPath()+"/topics";
+
+      resp.setContentType("text/html");
+      resp.setCharacterEncoding("UTF-8");
+      resp.sendRedirect(returnUrl);
     }
   }
 }

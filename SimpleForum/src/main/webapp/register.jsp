@@ -1,4 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page errorPage="error-page.jsp"%>
+<%@page import="java.net.URLDecoder"%>
 <jsp:include page="head.jsp" />
 <jsp:include page="header.jsp" />
 <main>
@@ -12,6 +15,7 @@
 		</div>
 	</c:if>
 	<form method="POST" action="">
+		<input type="hidden" name="returnUrl" value="${returnUrl}">
 	  <div class="form-group row">
 	    <label for="colFormLabelSm" class="col-sm-4 col-form-label">Your Login:</label>
 	    <div class="col-sm-8">
@@ -32,7 +36,7 @@
 	    </div>
 	  </div>
 	  <button class="btn btn-primary" type="submit">Submit form</button>
-	  <a href='<c:url value="/topics" />' class="btn btn-secondary">Cancel</a>
+	  <a href='<%=URLDecoder.decode((String)request.getAttribute("returnUrl"),"UTF-8")%>' class="btn btn-secondary">Cancel</a>
 	</form>
 </main>
 <jsp:include page="foot.jsp" />

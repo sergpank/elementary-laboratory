@@ -44,7 +44,7 @@ public class UserBuilder implements IEntityBuilder<User>
     if (item.getLogin() == null
         || item.getPassword() == null
         || item.getRegistrationDate() == null
-        || item.getGroup().getId() == 0)
+        || item.getGroup().getId() == null)
     {
       throw new IllegalAccessException();
     }

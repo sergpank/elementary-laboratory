@@ -37,7 +37,7 @@ public class TopicBuilder implements IEntityBuilder<Topic>
   {
     if (item.getTitle() == null
         || item.getDateCreated() == null
-        || item.getAuthor().getId() == 0)
+        || item.getAuthor().getId() == null)
     {
       throw new IllegalAccessException();
     }

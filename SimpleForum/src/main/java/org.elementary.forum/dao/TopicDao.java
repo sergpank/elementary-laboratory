@@ -13,7 +13,9 @@ public class TopicDao extends AbstractDao<Topic>
   {
     Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     Topic topic = session.get(Topic.class, key);
+    session.getTransaction().commit();
     session.close();
     return topic;
   }
@@ -22,7 +24,9 @@ public class TopicDao extends AbstractDao<Topic>
   public List<Topic> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     List<Topic> topics = session.createQuery("from Topic as t order by t.dateCreated desc").list();
+    session.getTransaction().commit();
     session.close();
     return topics;
   }
@@ -30,16 +34,12 @@ public class TopicDao extends AbstractDao<Topic>
   @Override
   public Topic loadDependentProperty(Topic item, String propName)
   {
-    Session session = HibernateUtil.getSessionFactory().openSession();
-    session.update(item);
     if(propName.equals("posts"))
     {
-      for(Post p : item.getPosts())
-      {
-
-      }
+      PostDao postDao=new PostDao();
+      List<Post> posts=postDao.readAllByTopicId(item.getId());
+      item.setPosts(posts);
     }
-    session.close();
     return item;
   }
 }

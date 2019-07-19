@@ -1,6 +1,8 @@
 package org.elementary.forum.servlets;
 
+import org.elementary.forum.dao.PostDao;
 import org.elementary.forum.dao.TopicDao;
+import org.elementary.forum.entity.Post;
 import org.elementary.forum.entity.Topic;
 
 import javax.servlet.ServletException;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TopicServlet extends HttpServlet
@@ -25,10 +28,16 @@ public class TopicServlet extends HttpServlet
     }
     else
     {
+      PostDao postDao=new PostDao();
       req.setAttribute("title", "Posts");
       long key = Long.parseLong(id);
       Topic topic = topicDao.read(key);
-      topicDao.loadDependentProperty(topic,"posts");
+      topic=topicDao.loadDependentProperty(topic,"posts");
+
+      for(Post p : topic.getPosts())
+      {
+        postDao.loadDependentProperty(p, "children");
+      }
       req.setAttribute("topic", topic);
       getServletContext().getRequestDispatcher("/single-topic-view.jsp").forward(req, resp);
     }

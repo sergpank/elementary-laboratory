@@ -14,7 +14,9 @@ public class UserDao extends AbstractDao<User>
   {
     Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     User user = session.get(User.class, key);
+    session.getTransaction().commit();
     session.close();
     return user;
   }
@@ -23,7 +25,9 @@ public class UserDao extends AbstractDao<User>
   public List<User> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     List<User> users = session.createQuery("from User as u order by e.login").list();
+    session.getTransaction().commit();
     session.close();
     return users;
   }
@@ -32,6 +36,7 @@ public class UserDao extends AbstractDao<User>
   public User loadDependentProperty(User item, String propName)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     session.update(item);
     if(propName.equals("posts"))
     {
@@ -47,6 +52,7 @@ public class UserDao extends AbstractDao<User>
 
       }
     }
+    session.getTransaction().commit();
     session.close();
     return item;
   }
@@ -54,9 +60,11 @@ public class UserDao extends AbstractDao<User>
   public User readByLogin(String login)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     List<User> users = session.createQuery("from User as u where u.login= :login")
         .setParameter("login", login)
         .list();
+    session.getTransaction().commit();
     session.close();
     return users.size()>0? users.get(0) : null;
   }
@@ -64,9 +72,11 @@ public class UserDao extends AbstractDao<User>
   public boolean loginExists(String login)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     List<User> users = session.createQuery("select u.id from User as u where u.login= :login")
         .setParameter("login", login)
         .list();
+    session.getTransaction().commit();
     session.close();
     return users.size()>0;
   }

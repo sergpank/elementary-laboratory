@@ -10,10 +10,10 @@
 
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://45.88.78.250:3306/chatdb?useSSL=false</property>
+        <property name="hibernate.connection.url">jdbc:mysql://45.88.78.250:3306/simple_forumdb?useSSL=false</property>
 
-        <property name="connection.username">chat</property>
-        <property name="connection.password">chat</property>
+        <property name="connection.username">simple_forum</property>
+        <property name="connection.password">simple_forum</property>
 
         <!-- SQL DIALECT -->
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>

@@ -7,8 +7,20 @@
 h1{
 	padding: 20px;
 	margin-top: 10px;
-	background-color: #2127D6;
 }
 .user-name{
-	padding: 20px;
+	padding: 10px;
+}
+
+.post-footer .btn, .topic-footer .btn{
+	margin-left: 5px !important;
+}
+.badge{
+	margin-right: 5px;
+}
+.card .card{
+	margin-right: -20px !important;
+}
+nav{
+	margin-bottom: 50px;
 }

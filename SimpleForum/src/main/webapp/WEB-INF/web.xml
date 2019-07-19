@@ -5,6 +5,16 @@
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+  <filter>
+    <filter-name>current_url_filter</filter-name>
+    <filter-class>org.elementary.forum.servlets.filters.CurrentUrlFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>current_url_filter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
   <listener>
     <listener-class>org.elementary.forum.servlets.AppLifeCycleListener</listener-class>
   </listener>
@@ -29,6 +39,21 @@
     <servlet-class>org.elementary.forum.servlets.LogoutServlet</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>edit_votes_servlet</servlet-name>
+    <servlet-class>org.elementary.forum.servlets.EditVotesServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>edit_post_servlet</servlet-name>
+    <servlet-class>org.elementary.forum.servlets.EditPostServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>edit_topic_servlet</servlet-name>
+    <servlet-class>org.elementary.forum.servlets.EditTopicServlet</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>topic_servlet</servlet-name>
     <url-pattern>/topics</url-pattern>
@@ -47,6 +72,21 @@
   <servlet-mapping>
     <servlet-name>logout_servlet</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>edit_votes_servlet</servlet-name>
+    <url-pattern>/editVotes</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>edit_post_servlet</servlet-name>
+    <url-pattern>/editPost</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>edit_topic_servlet</servlet-name>
+    <url-pattern>/editTopic</url-pattern>
   </servlet-mapping>
 
 </web-app>

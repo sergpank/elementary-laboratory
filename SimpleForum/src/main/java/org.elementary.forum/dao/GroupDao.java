@@ -13,7 +13,9 @@ public class GroupDao extends AbstractDao<Group>
   {
     Long key = Long.valueOf(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     Group group = session.get(Group.class, key);
+    session.getTransaction().commit();
     session.close();
     return group;
   }
@@ -22,7 +24,9 @@ public class GroupDao extends AbstractDao<Group>
   public List<Group> readAll()
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     List<Group> groups = session.createQuery("from Group").list();
+    session.getTransaction().commit();
     session.close();
     return groups;
   }
@@ -31,6 +35,7 @@ public class GroupDao extends AbstractDao<Group>
   public Group loadDependentProperty(Group item, String propName)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     session.update(item);
     if(propName.equals("users"))
     {
@@ -39,6 +44,7 @@ public class GroupDao extends AbstractDao<Group>
 
       }
     }
+    session.getTransaction().commit();
     session.close();
     return item;
   }
@@ -46,9 +52,11 @@ public class GroupDao extends AbstractDao<Group>
   public Group readByName(String groupName)
   {
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     List<Group> groups = session.createQuery("from Group as g where g.name= :name")
         .setParameter("name", groupName)
         .list();
+    session.getTransaction().commit();
     session.close();
     return groups.size()>0? groups.get(0) : null;
   }

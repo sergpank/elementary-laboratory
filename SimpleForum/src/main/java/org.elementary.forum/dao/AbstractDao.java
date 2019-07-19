@@ -8,7 +8,7 @@ public abstract class AbstractDao<T extends AbstractEntity> implements IDao<T>
   @Override
   public T create(T item)
   {
-    if (item.getId() == 0)
+    if (item.getId() == null)
     {
       Session session = HibernateUtil.getSessionFactory().openSession();
       session.beginTransaction();
@@ -23,7 +23,7 @@ public abstract class AbstractDao<T extends AbstractEntity> implements IDao<T>
   @Override
   public void update(T item)
   {
-    if (item.getId() != 0)
+    if (item.getId() != null)
     {
       Session session = HibernateUtil.getSessionFactory().openSession();
       session.beginTransaction();
@@ -34,10 +34,14 @@ public abstract class AbstractDao<T extends AbstractEntity> implements IDao<T>
   }
 
   @Override
-  public void delete(T item)
+  public void delete(long id)
   {
+    T item=read(id);
     Session session = HibernateUtil.getSessionFactory().openSession();
+    session.beginTransaction();
     session.delete(item);
+    session.flush();
+    session.getTransaction().commit();
     session.close();
   }
 }

@@ -14,5 +14,5 @@ public interface IDao<T>
 
   void update(T item);
 
-  void delete(T item);
+  void delete(long id);
 }

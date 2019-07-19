@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,6 +23,8 @@ public class RegisterServlet extends HttpServlet
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
   {
+    String returnUrl=req.getParameter("returnUrl");
+    req.setAttribute("returnUrl", returnUrl);
     req.setAttribute("title", "Registration");
     ServletContext servletContext=getServletContext();
     RequestDispatcher requestDispatcher=servletContext.getRequestDispatcher("/register.jsp");
@@ -32,6 +35,7 @@ public class RegisterServlet extends HttpServlet
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
   {
+    String returnUrl=req.getParameter("returnUrl");
     String login=req.getParameter("login");
     String password=req.getParameter("password");
     String confirmPassword=req.getParameter("confirm_password");
@@ -77,6 +81,7 @@ public class RegisterServlet extends HttpServlet
     }
     if(errors.size()>0)
     {
+      req.setAttribute("returnUrl", returnUrl);
       req.setAttribute("title", "Registration");
       req.setAttribute("errors", errors);
       User u=new User();
@@ -88,9 +93,12 @@ public class RegisterServlet extends HttpServlet
     }
     else
     {
-      req.setAttribute("title", "Registration success");
-      String path=getServletContext().getContextPath()+"/registration-success.jsp";
-      resp.sendRedirect(path);
+      returnUrl=returnUrl!=null? URLDecoder.decode(returnUrl,"UTF-8")
+          : getServletContext().getContextPath()+"/topics";
+
+      resp.setContentType("text/html");
+      resp.setCharacterEncoding("UTF-8");
+      resp.sendRedirect(returnUrl);
     }
   }
 }

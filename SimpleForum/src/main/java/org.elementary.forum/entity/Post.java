@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -22,6 +23,11 @@ public class Post extends AbstractEntity
   @ManyToOne(optional = false)
   @JoinColumn(name = "topic_id")
   private Topic topic;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "parent")
+  List<Post> children;
+  @ManyToOne(optional = true)
+  @JoinColumn(name = "parent_id")
+  Post parent;
 
   public String getText()
   {
@@ -73,4 +79,22 @@ public class Post extends AbstractEntity
     this.topic = topic;
   }
 
+  public Post getParent()
+  {
+    return parent;
+  }
+
+  public void setParent(Post parent)
+  {
+    this.parent = parent;
+  }
+
+  public List<Post> getChildren()
+  {
+    return children;
+  }
+  public void setChildren(List<Post> children)
+  {
+    this.children = children;
+  }
 }
