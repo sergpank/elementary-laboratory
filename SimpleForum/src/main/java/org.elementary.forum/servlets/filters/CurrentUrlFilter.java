@@ -11,6 +11,7 @@ public class CurrentUrlFilter implements Filter
   public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException
   {
     HttpServletRequest request=(HttpServletRequest) servletRequest;
+    request.setCharacterEncoding("UTF-8");
     String currentUrl=request.getRequestURI()+(request.getQueryString()==null? "" : "?"+request.getQueryString());
     servletRequest.setAttribute("currentUrl", currentUrl);
     servletRequest.setAttribute("url", URLEncoder.encode(currentUrl, "UTF-8"));

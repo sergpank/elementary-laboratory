@@ -44,9 +44,17 @@ public class RegisterServlet extends HttpServlet
     {
       errors.add("Empty login field");
     }
+    else
+    {
+      login=login.trim();
+    }
     if(password==null || password.isEmpty())
     {
       errors.add("Emty password field");
+    }
+    else
+    {
+      password=password.trim();
     }
     if(confirmPassword==null || confirmPassword.isEmpty() || password!=null && !confirmPassword.equals(password))
     {

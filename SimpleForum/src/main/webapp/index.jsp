@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page errorPage="error-page.jsp"%>
+<% request.setAttribute("title","Home"); %>
 <jsp:include page="head.jsp" />
 	<main>
 		<div class="jumbotron">

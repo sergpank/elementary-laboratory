@@ -13,7 +13,7 @@
 			</ul>
 		</div>
 	</c:if>
-	<form method="POST" action="" accept-charset="UTF-8">
+	<form method="POST" action="">
 	  <div class="form-group">
 	  	<input type="hidden" name="returnUrl" value="${returnUrl}">
 	    <label for="example">Введите название новой темы:</label>

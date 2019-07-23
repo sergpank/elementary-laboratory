@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -79,6 +81,7 @@ public class EditPostServlet extends HttpServlet
       }
       if(errors.size()==0)
       {
+
         long topicKey=Long.parseLong(topicId);
         TopicDao topicDao=new TopicDao();
         Topic topic=topicDao.read(topicKey);

@@ -11,10 +11,15 @@
 		<h2 class="display-4 bg-light">${topic.title}</h2>
 		 <p>Author of topic: ${topic.author.login}; Created: ${topic.dateCreated}</p>
 		 <h3>Posts:</h3>
-		<%=renderPostList(((Topic)request.getAttribute("topic")).getPosts(),
-			request.getAttribute("url"),
-			session.getAttribute("user"),
-			application.getContextPath())%>
+		 <c:if test="${topic.posts==null || topic.posts.size()==0}">
+		  <h4>В этом разделе пока отсутствуют сообщения. Ваше может стать первым!</h4>
+		 </c:if>
+		 <c:if test="${topic.posts!=null && topic.posts.size()>0}">
+      <%=renderPostList(((Topic)request.getAttribute("topic")).getPosts(),
+        request.getAttribute("url"),
+        session.getAttribute("user"),
+        application.getContextPath())%>
+			</c:if>
 	</c:if>
 </main>
 <jsp:include page="foot.jsp" />

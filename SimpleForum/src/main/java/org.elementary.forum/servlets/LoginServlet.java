@@ -40,9 +40,18 @@ public class LoginServlet extends HttpServlet
     {
       errors.add("Empty login field");
     }
+    else
+    {
+      login=login.trim();
+    }
+
     if(password==null || password.isEmpty())
     {
       errors.add("Emty password field");
+    }
+    else
+    {
+      password=password.trim();
     }
 
     if(errors.size()==0)
