@@ -4,7 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import ua.hillel.rvelikorod.entity.User;
+import rvelikorod.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,7 @@
-package ua.hillel.rvelikorod;
 
-import ua.hillel.rvelikorod.dao.UserDao;
-import ua.hillel.rvelikorod.entity.Post;
-import ua.hillel.rvelikorod.entity.User;
+import rvelikorod.dao.UserDao;
+import rvelikorod.entity.Post;
+import rvelikorod.entity.User;
 
 import java.util.Arrays;
 import java.util.Date;
