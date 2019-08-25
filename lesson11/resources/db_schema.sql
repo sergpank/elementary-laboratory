@@ -1,4 +1,4 @@
-create table users
+create table user
 (
   id integer primary key,
   name text,
@@ -6,7 +6,7 @@ create table users
   password text
 );
 
-insert into users (name, login, password) values
+insert into user (name, login, password) values
   ('Alexandr Alexandrov', 'alex', 'asd123'),
   ('Ivan Ivanov', 'vanya', '123456'),
   ('Pavel Pavlov', 'pasha', '1q2w3e'),
@@ -24,14 +24,14 @@ insert into groups (name, description) values
   ('user', 'regular user'),
   ('guest', 'limited acces user');
 
-create table roles
+create table role
 (
   id integer primary key,
   name text,
   description text
 );
 
-insert into roles (name, description) values
+insert into role (name, description) values
   ('rwx','full access'),
   ('rw', 'read and write file, no execution premitted'),
   ('r', 'read-only access');

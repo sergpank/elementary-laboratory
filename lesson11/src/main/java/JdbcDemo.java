@@ -1,3 +1,10 @@
+import dao.GroupDAO;
+import dao.RoleDAO;
+import dao.UserDAO;
+import vo.Group;
+import vo.Role;
+import vo.User;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,68 +13,11 @@ public class JdbcDemo
 {
   public static void main(String[] args) throws SQLException
   {
-    loadDriver();
-
-    Connection connection = getConnection();
-    try
-    {
-//      Statement statement = connection.createStatement();
-//      String userLogin = "alex";
-//      ResultSet resultSet = statement.executeQuery("SELECT * from USERS WHERE login = '" + userLogin + "'");
-
-      PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from USERS WHERE login = ?");
-      preparedStatement.setString(1, "alex");
-      ResultSet resultSet = preparedStatement.executeQuery();
-
-      List<User> users = new ArrayList<>();
-
-      while (resultSet.next())
-      {
-        long id = resultSet.getLong("id");
-        String name = resultSet.getString("name");
-        String login = resultSet.getString("login");
-        String password = resultSet.getString("password");
-
-        users.add(new User(id, name, login, password));
-      }
-
-      users.forEach(System.out::println);
-
-    }
-    catch (Exception e)
-    {
-      e.printStackTrace();
-    }
-    finally
-    {
-      connection.close();
-    }
-  }
-
-  private static void loadDriver()
-  {
-    try
-    {
-      Class.forName("org.sqlite.JDBC");
-    }
-    catch (ClassNotFoundException e)
-    {
-      e.printStackTrace();
-    }
-  }
-
-  private static Connection getConnection()
-  {
-    Connection connection = null;
-    try
-    {
-      connection = DriverManager.getConnection("jdbc:sqlite:test.sqlite3");
-    }
-    catch (SQLException e)
-    {
-      e.printStackTrace();
-    }
-
-    return connection;
+    RoleDAO userDao = new RoleDAO();
+    System.out.println("create role " + userDao.create(new Role("my group1", "test create")));
+    System.out.println("update role " + userDao.update(new Role(4, "my group2", "test update")));
+    System.out.println(userDao.read(4));
+    System.out.println("delete role " + userDao.delete(4));
+    System.out.println(userDao.read());
   }
 }
