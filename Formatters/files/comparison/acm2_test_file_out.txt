@@ -1,0 +1,27 @@
+13
+. 0
+download_client.sh 1
+random1000_queries_sport.txt 2
+times.txt 3
+site 4
+site_kz_domains_random1000_2011-07-26.txt 5
+site_ru_domains_top1000_2011-07-27.txt 6
+site_by_domains_top1000_2011-07-27.txt 7
+kz 8
+random1000 9
+site_kz_random1000_2011-07-16.xml 10
+ru 15
+random1000 16
+-1
+0
+0
+0
+0
+4
+4
+4
+4
+8
+9
+4
+15

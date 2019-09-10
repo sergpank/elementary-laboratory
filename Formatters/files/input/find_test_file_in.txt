@@ -1,0 +1,17 @@
+find
+find
+13
+. 0
+./download_client.sh 1
+./random1000_queries_sport.txt 2
+./times.txt 3
+./site 4
+./site/site_kz_domains_random1000_2011-07-26.txt 5
+./site/site_ru_domains_top1000_2011-07-27.txt 6
+./site/site_by_domains_top1000_2011-07-27.txt 7
+./site/kz 8
+./site/kz/random1000 9
+./site/kz/random1000/site_kz_random1000_2011-07-16.xml 10
+./site/ru 15
+./site/ru/random1000 16
+

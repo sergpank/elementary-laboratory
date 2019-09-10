@@ -1,0 +1,21 @@
+xml
+xml
+<dir name='.' id='0'>
+	<file name='download_client.sh' id='1'/>
+	<file name='random1000_queries_sport.txt' id='2'/>
+	<file name='times.txt' id='3'/>
+	<dir name='site' id='4'>
+		<file name='site_kz_domains_random1000_2011-07-26.txt' id='5'/>
+		<file name='site_ru_domains_top1000_2011-07-27.txt' id='6'/>
+		<file name='site_by_domains_top1000_2011-07-27.txt' id='7'/>
+		<dir name='kz' id='8'>
+		  <dir name='random1000' id='9'>
+			  <file name='site_kz_random1000_2011-07-16.xml' id='10'/>
+			</dir>
+		</dir>
+		<dir name='ru' id='15'>
+			<file name='random1000' id='16'/>
+		</dir>
+	</dir>
+</dir>
+
